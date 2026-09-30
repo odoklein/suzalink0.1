@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/*
+ * Site tokens (PRD, Design direction). The accent is a fallback until the
+ * brand kit lands: swap --color-accent and --color-accent-* only.
+ */
+@theme {
+  --color-bg: #ffffff;
+  --color-surface: #f5f8fc;
+  --color-ink: #0b1220;
+  --color-ink-soft: #1f2937;
+  /* Second line of a two-tone headline */
+  --color-ink-quiet: #5d6d8c;
+  --color-muted: #5b6475;
+  --color-line: #e5e7eb;
+  --color-line-strong: #d4d8df;
+  --color-accent: #3355ff;
+  --color-accent-hover: #2344e6;
+  --color-accent-tint: #eff1ff;
+  --color-accent-soft: #dfe4ff;
+  --color-success: #16a34a;
+  --color-success-tint: #ecfdf3;
+  --color-success-ink: #166534;
+
+  /* Lastik (one weight, 400) for headlines, Satoshi for everything else. */
+  --font-display: var(--font-lastik), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale: desktop / mobile pairs. A serif display sets tighter than a sans. */
+  --text-h1: 4.5rem;
+  --text-h1--line-height: 4.625rem;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1m: 2.75rem;
+  --text-h1m--line-height: 3rem;
+  --text-h1m--letter-spacing: -0.018em;
+  --text-h2: 3.25rem;
+  --text-h2--line-height: 3.5rem;
+  --text-h2--letter-spacing: -0.018em;
+  --text-h2m: 2.25rem;
+  --text-h2m--line-height: 2.5rem;
+  --text-h2m--letter-spacing: -0.014em;
+  --text-h3: 1.625rem;
+  --text-h3--line-height: 2rem;
+  --text-h3--letter-spacing: -0.008em;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.75rem;
+  --text-bodym: 1rem;
+  --text-bodym--line-height: 1.625rem;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.25rem;
+
+  --radius-card: 20px;
+  --radius-button: 999px;
+
+  --shadow-card: 0 1px 2px rgb(11 18 32 / 0.04), 0 8px 24px -12px rgb(11 18 32 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(11 18 32 / 0.05), 0 16px 40px -16px rgb(11 18 32 / 0.18);
+  --shadow-window: 0 1px 1px rgb(11 18 32 / 0.04), 0 24px 64px -24px rgb(11 18 32 / 0.28);
+
+  --animate-key-press: key-press 3.2s ease-in-out infinite;
+  --animate-toast: toast 3.2s ease-in-out infinite;
+  --animate-price: price-in 240ms ease-out;
+
+  @keyframes key-press {
+    0%, 30%, 50%, 100% { transform: translateY(0); box-shadow: 0 3px 0 var(--color-line-strong), 0 6px 16px -6px rgb(11 18 32 / 0.2); }
+    36%, 44% { transform: translateY(3px); box-shadow: 0 0 0 var(--color-line-strong), 0 2px 6px -4px rgb(11 18 32 / 0.2); }
+  }
+  @keyframes toast {
+    0%, 38% { opacity: 0; transform: translateY(6px); }
+    46%, 86% { opacity: 1; transform: translateY(0); }
+    94%, 100% { opacity: 0; transform: translateY(-4px); }
+  }
+  @keyframes price-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-bodym);
+    line-height: var(--text-bodym--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: var(--text-body);
+      line-height: var(--text-body--line-height);
+    }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  /* Lastik ships one weight: never let the browser fake a bold. */
+  h1, h2, h3, h4, .font-display {
+    font-synthesis-weight: none;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: calc(1200px + 3rem);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility section-y {
+  padding-block: 4.5rem;
+  @media (min-width: 768px) {
+    padding-block: 8rem;
+  }
+}
+
+/*
+ * Sky: soft blue light behind the product and the big headlines. Pure CSS,
+ * decorative only (aria-hidden, pointer-events none on the element using it).
+ */
+@utility sky-glow {
+  background:
+    radial-gradient(40% 56% at 14% 44%, rgb(110 170 255 / 0.8), transparent 70%),
+    radial-gradient(38% 52% at 86% 38%, rgb(70 110 255 / 0.55), transparent 70%),
+    radial-gradient(50% 60% at 50% 80%, rgb(140 205 255 / 0.75), transparent 72%);
+  filter: blur(56px);
+}
+
+@utility sky-haze {
+  background:
+    radial-gradient(34% 62% at 30% 52%, rgb(196 222 255 / 0.6), transparent 70%),
+    radial-gradient(38% 60% at 72% 44%, rgb(170 202 255 / 0.45), transparent 70%);
+  filter: blur(44px);
+}
+
+/* Two cloud banks (left and right) under a blue sky that fades to white; the centre stays clear for the headline. */
+@utility sky-clouds {
+  background:
+    radial-gradient(12% 20% at 5% 50%, rgb(255 255 255 / 0.95) 35%, transparent 72%),
+    radial-gradient(11% 22% at 13% 40%, rgb(255 255 255 / 0.9) 35%, transparent 72%),
+    radial-gradient(13% 18% at 21% 54%, rgb(255 255 255 / 0.9) 35%, transparent 72%),
+    radial-gradient(9% 14% at 28% 46%, rgb(255 255 255 / 0.75) 30%, transparent 72%),
+    radial-gradient(12% 20% at 95% 46%, rgb(255 255 255 / 0.95) 35%, transparent 72%),
+    radial-gradient(11% 22% at 87% 36%, rgb(255 255 255 / 0.9) 35%, transparent 72%),
+    radial-gradient(13% 18% at 79% 52%, rgb(255 255 255 / 0.9) 35%, transparent 72%),
+    radial-gradient(9% 14% at 72% 44%, rgb(255 255 255 / 0.75) 30%, transparent 72%),
+    radial-gradient(10% 7% at 40% 16%, rgb(255 255 255 / 0.55), transparent 75%),
+    radial-gradient(12% 8% at 60% 12%, rgb(255 255 255 / 0.5), transparent 75%),
+    linear-gradient(180deg, #7fb6ff 0%, #b3d4ff 42%, #e6f0ff 70%, rgb(255 255 255 / 0) 100%);
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+@utility lift {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/*
+ * « Le fil Suzalink »: SVG paths with pathLength="1" draw themselves as they
+ * scroll into view. Browsers without scroll timelines show the line drawn.
+ */
+.thread-draw path[data-draw] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The timeline sits on the HTML container, which is more reliable than on the SVG path. */
+    .thread-draw {
+      view-timeline-name: --thread;
+    }
+    .thread-draw path[data-draw] {
+      stroke-dashoffset: 1;
+      animation: thread-draw linear both;
+      animation-timeline: --thread;
+      animation-range: entry 10% cover 50%;
+    }
+  }
+}
+
+@keyframes thread-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The consent banner and the mobile CTA bar never overlap. */
+html[data-consent-open] .mobile-cta {
+  display: none;
+}
+
+/* Header shrinks after 80 px of scroll (state set by SiteHeader). */
+[data-scrolled="true"] .header-bar {
+  padding-block: 0.625rem;
+  box-shadow: 0 1px 0 var(--color-line), 0 8px 24px -16px rgb(11 18 32 / 0.16);
+  background: rgb(255 255 255 / 0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
