@@ -191,7 +191,7 @@ export const about = {
   peopleTitle: "Les visages de Suzalink",
   people: [
     { name: "Hichem Hammouche", role: "CEO, Suzali Conseil", org: "Agence de prospection" },
-    { name: "Jean-François Manier", role: "CEO, Captain Prospect", org: "Agence commerciale" },
+    { name: "Amine Hallab", role: "Finance et management", org: "Finance" },
     { name: "Odo Klein", role: "Product Owner, Suzali Conseil", org: "Produit" },
   ],
   values: {

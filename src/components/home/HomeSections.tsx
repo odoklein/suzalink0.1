@@ -1,7 +1,9 @@
 import { ArrowRight, Quote } from "lucide-react";
+import Image from "next/image";
 import type { Audience } from "@/config/audiences";
 import { FEATURES } from "@/config/claims";
 import { site } from "@/config/site";
+import { PEOPLE, personSlug } from "@/config/visuals";
 import { dict, resolveText, visibleItems } from "@/content";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
@@ -236,8 +238,21 @@ export async function BuiltByAgencies() {
   );
 }
 
-/** Real photos go in public/people/<slug>.jpg (same light grey background, matched light). */
+/**
+ * A real portrait when one is set in `PEOPLE` (src/config/visuals.ts), else the
+ * person's initials. Portraits live in public/people/, same light grey background.
+ */
 export function PersonPhoto({ name, size = "md" }: { name: string; size?: "md" | "lg" }) {
+  const src = PEOPLE[personSlug(name)];
+  const box = size === "lg" ? "size-28" : "size-16";
+  if (src) {
+    return (
+      <span className={cn("relative inline-block shrink-0 overflow-hidden rounded-[16px] bg-[#eceef2] ring-1 ring-line", box)}>
+        {/* The name is printed beside the portrait, so the image itself stays decorative. */}
+        <Image src={src} alt="" fill sizes={size === "lg" ? "112px" : "64px"} className="object-cover" />
+      </span>
+    );
+  }
   const initials = name
     .split(/[\s-]+/)
     .map((w) => w[0])
@@ -248,7 +263,8 @@ export function PersonPhoto({ name, size = "md" }: { name: string; size?: "md" |
       aria-hidden
       className={cn(
         "inline-flex shrink-0 items-center justify-center rounded-[16px] bg-[#eceef2] font-sans font-bold text-ink/50 ring-1 ring-line",
-        size === "lg" ? "size-28 text-2xl" : "size-16 text-lg",
+        box,
+        size === "lg" ? "text-2xl" : "text-lg",
       )}
     >
       {initials}

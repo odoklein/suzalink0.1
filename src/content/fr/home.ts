@@ -189,7 +189,7 @@ export const home = {
       "Nous avons d'abord construit Suzalink pour notre propre agence : trop d'outils, et trop de mal à prouver nos résultats, les rendez-vous obtenus chaque mois. Aujourd'hui, nous l'ouvrons aux commerciaux qui vivent la même chose.",
     people: [
       { name: "Hichem Hammouche", role: "CEO, Suzali Conseil" },
-      { name: "Jean-François Manier", role: "CEO, Captain Prospect" },
+      { name: "Amine Hallab", role: "Finance et management" },
       { name: "Odo Klein", role: "Product Owner, Suzali Conseil" },
     ],
     link: "Notre histoire",

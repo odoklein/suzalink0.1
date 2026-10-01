@@ -7,7 +7,7 @@ const directeur: SolutionContent = {
   name: "Directeur commercial",
   navBlurb: "Vous prospectez seul ? Récupérez vos heures.",
   plan: "solo",
-  visual: "V8a",
+  visual: "H1",
   meta: {
     title: "Logiciel de prospection pour directeur commercial",
     description:

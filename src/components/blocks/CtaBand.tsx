@@ -1,10 +1,10 @@
 import { dict, resolveTexts } from "@/content";
 import type { Cta } from "@/content/types";
-import { LogoMark } from "../layout/Logo";
 import { CtaLink } from "../ui/CtaLink";
 import { H2, Lead } from "../ui/Section";
+import { Mascot } from "../visuals/Mascot";
 
-/** Closing band: a band of sky, the logo tile, and the line motif running through to the CTA. */
+/** Closing band: a band of sky, the mascot waving, and the line motif running through to the CTA. */
 export async function CtaBand({
   title,
   sub,
@@ -40,9 +40,7 @@ export async function CtaBand({
             />
           </svg>
           <div className="relative mx-auto max-w-3xl">
-            <span aria-hidden className="mb-8 inline-flex size-14 items-center justify-center rounded-[16px] bg-white shadow-[var(--shadow-lift)] ring-1 ring-line">
-              <LogoMark className="size-8" />
-            </span>
+            <Mascot className="mb-6 w-28 md:w-36" />
             <H2>{title}</H2>
             {sub ? <Lead className="mt-5">{sub}</Lead> : null}
             <div className="mt-9 flex flex-wrap justify-center gap-3">

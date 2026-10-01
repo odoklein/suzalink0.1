@@ -69,3 +69,5 @@ Captured from a demo workspace filled with realistic fake French data (never rea
 | V10 | v10-sur-mesure.webp | 2026-09-30 | Cropped to 1437×1024 around the headset row, so the Sur-mesure band keeps the calendar in frame |
 | V12 | v12-404.webp | 2026-09-30 | 1536×1024 (3:2, not 1:1) |
 | V14 | v14-bientot.webp | 2026-09-30 | Transparent. Trimmed to an 844×844 square around the box (source 1254×1254) |
+| Mascot | mascot-wave.webp | 2026-09-30 | Waving pose. Cut out of its white background (flood fill from the edges, floor and shadow removed below the feet), trimmed to 735×848 with transparency. The shadow is drawn in CSS by `Mascot` |
+| H1 | h1-solo.webp | 2026-09-30 | Generated photography, anonymous. 4:5 crop (832×1040) of an 832×1248 source; hero of /solutions/directeur-commercial. Upscale 2x for retina |

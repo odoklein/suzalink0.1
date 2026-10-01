@@ -1,5 +1,5 @@
 /**
- * Generated visuals (V) and product screenshots (S). Until a file is
+ * Generated visuals (V), human photography (H) and product screenshots (S). Until a file is
  * delivered, `src` stays null and the page renders a labelled placeholder.
  * Prompts and file names are logged in public/visuals/README.md.
  *
@@ -9,7 +9,8 @@
  */
 export type VisualId =
   | "V1" | "V2" | "V3a" | "V3b" | "V3c" | "V3d" | "V4" | "V5" | "V6" | "V7"
-  | "V8a" | "V8b" | "V8c" | "V10" | "V11" | "V12" | "V13" | "V14";
+  | "V8a" | "V8b" | "V8c" | "V10" | "V11" | "V12" | "V13" | "V14"
+  | "H1";
 
 export type ScreenshotId = "S1" | "S2" | "S3" | "S4" | "S5" | "S6";
 
@@ -48,7 +49,46 @@ export const VISUALS: Record<VisualId, Asset> = {
   V12: { label: "Page introuvable", alt: "Un combiné décroché et un fil bleu emmêlé.", width: 1536, height: 1024, src: "/visuals/v12-404.webp" },
   V13: { label: "Couverture de guide", alt: "", width: 1024, height: 1536, src: null },
   V14: { label: "Bientôt", alt: "", width: 844, height: 844, src: "/visuals/v14-bientot.webp" },
+  // Human photography (generated, anonymous): mood only, never captioned as a customer.
+  H1: {
+    label: "Directrice commerciale en appel",
+    alt: "Une directrice commerciale en appel à son bureau, casque sur la tête, ordinateur ouvert.",
+    width: 832,
+    height: 1040,
+    src: "/visuals/h1-solo.webp",
+  },
 };
+
+/**
+ * The Suzalink mascot, one file per pose, cut out on a transparent background
+ * (no baked floor shadow: `Mascot` draws a soft one in CSS).
+ */
+export const MASCOT = {
+  wave: { src: "/visuals/mascot-wave.webp", width: 735, height: 848 },
+} as const;
+
+/**
+ * Portraits of the people named on the site, keyed by slug (`personSlug`).
+ * Square, 1:1, light grey background. Without a file the site shows initials.
+ *
+ * The current files are AI-generated stand-ins, not photos of these people.
+ * Replace each with the person's real photo before launch
+ * (retouch steps in public/people/README.md).
+ */
+export const PEOPLE: Record<string, string | null> = {
+  "hichem-hammouche": "/people/hichem-hammouche.webp",
+  "amine-hallab": "/people/amine-hallab.webp",
+  "odo-klein": "/people/odo-klein.webp",
+};
+
+export function personSlug(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "") // strip accents after NFD
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 export const SCREENSHOTS: Record<ScreenshotId, Asset> = {
   S1: {

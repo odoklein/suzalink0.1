@@ -60,6 +60,8 @@
   --animate-key-press: key-press 3.2s ease-in-out infinite;
   --animate-toast: toast 3.2s ease-in-out infinite;
   --animate-price: price-in 240ms ease-out;
+  --animate-bob: bob 4.8s ease-in-out infinite;
+  --animate-bob-shadow: bob-shadow 4.8s ease-in-out infinite;
 
   @keyframes key-press {
     0%, 30%, 50%, 100% { transform: translateY(0); box-shadow: 0 3px 0 var(--color-line-strong), 0 6px 16px -6px rgb(11 18 32 / 0.2); }
@@ -73,6 +75,15 @@
   @keyframes price-in {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  /* Mascot: a slow float, its shadow narrowing and fading as it rises */
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+  @keyframes bob-shadow {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.82); opacity: 0.65; }
   }
 }
 
