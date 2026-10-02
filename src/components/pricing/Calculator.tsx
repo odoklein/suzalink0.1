@@ -112,7 +112,7 @@ export function Calculator({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
-      <div className="space-y-8 rounded-[20px] bg-white p-6 ring-1 ring-line md:p-8">
+      <div className="space-y-8 rounded-[24px] bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-line md:p-8">
         <Slider
           label={labels.users}
           value={users}
@@ -125,7 +125,7 @@ export function Calculator({
           display={`${users} ${users === 1 ? labels.usersUnit.one : labels.usersUnit.other}`}
         />
 
-        <label className="flex cursor-pointer items-start gap-3">
+        <label className="flex cursor-pointer items-start gap-3 rounded-[16px] bg-surface p-4 ring-1 ring-inset ring-line transition-colors has-[:checked]:bg-accent-tint has-[:checked]:ring-accent/25">
           <input
             type="checkbox"
             checked={multiClient}
@@ -167,8 +167,10 @@ export function Calculator({
                   aria-pressed={active}
                   onClick={() => touch(setSourcingPack)(id)}
                   className={cn(
-                    "h-11 rounded-[12px] px-3 text-sm font-medium ring-1 ring-inset transition-colors",
-                    active ? "bg-accent-tint text-accent ring-accent" : "bg-white text-ink-soft ring-line hover:ring-line-strong",
+                    "h-11 rounded-full px-3 text-sm font-semibold ring-1 ring-inset transition-[background-color,color,box-shadow] duration-300",
+                    active
+                      ? "bg-[linear-gradient(180deg,#5571ff,#2f4ff5)] text-white shadow-[0_8px_18px_-8px_rgb(51_85_255/0.8)] ring-transparent"
+                      : "bg-white text-ink-soft ring-line hover:ring-line-strong",
                   )}
                 >
                   {pack ? labels.sourcingOption.replace("{count}", formatInt(pack.credits)) : labels.sourcingNone}
@@ -193,10 +195,22 @@ export function Calculator({
         </div>
       </div>
 
-      <div className="lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-[20px] bg-ink p-6 text-white md:p-8" aria-live="polite">
+      <div className="lg:sticky lg:top-28 lg:self-start">
+        <div className="relative isolate overflow-clip rounded-[24px] bg-night p-6 text-white shadow-[var(--shadow-float)] md:p-8" aria-live="polite">
+          <div aria-hidden className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_0%,#1d2a72_0%,#0b1230_55%,#060a1a_100%)]" />
+            <div className="stars absolute inset-0 opacity-60" />
+            <div className="absolute -left-20 -top-24 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(51_85_255/0.55),transparent)] blur-3xl" />
+            <div className="absolute -bottom-24 -right-16 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.4),transparent)] blur-3xl [animation-delay:-9s]" />
+            <div className="grain absolute inset-0 opacity-[0.06] mix-blend-overlay" />
+          </div>
           <p className="text-sm text-white/60">{labels.recommended}</p>
-          <p className="mt-1 font-display text-[28px] font-normal leading-9">{plan.name}</p>
+          <p
+            key={plan.name}
+            className="mt-1 inline-block bg-[linear-gradient(95deg,#ffffff,#c9d3ff_45%,#ffc9b0)] bg-clip-text font-display text-[34px] font-normal leading-10 text-transparent motion-safe:animate-[rise_600ms_var(--ease-out-expo)_both]"
+          >
+            {plan.name}
+          </p>
 
           <ul className="mt-6 space-y-3 border-t border-white/10 pt-6 text-[15px]">
             {quote.lines.map((l) => (
@@ -217,7 +231,12 @@ export function Calculator({
             <div className="flex items-baseline justify-between gap-4">
               <dt className="text-white/80">{labels.monthlyTotal}</dt>
               <dd className="text-right">
-                <span className="num font-display text-[32px] font-normal leading-none">{eurosExact(quote.monthlyTotal)}</span>
+                <span
+                  key={quote.monthlyTotal}
+                  className="num inline-block font-display text-[40px] font-normal leading-none motion-safe:animate-[rise_500ms_var(--ease-out-expo)_both]"
+                >
+                  {eurosExact(quote.monthlyTotal)}
+                </span>
                 {billing === "annual" ? <span className="block text-xs text-white/50">{labels.averagePerMonth}</span> : null}
               </dd>
             </div>
@@ -278,7 +297,7 @@ function Slider({
           {label}
           {badge ? <Badge tone="soon">{badge}</Badge> : null}
         </label>
-        <span className="num text-sm font-semibold text-ink">{display}</span>
+        <span className="num rounded-full bg-accent-tint px-2.5 py-0.5 text-sm font-semibold text-accent-ink">{display}</span>
       </div>
       <input
         id={id}
@@ -289,8 +308,8 @@ function Slider({
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="mt-3 h-2 w-full cursor-pointer appearance-none rounded-full bg-line accent-[var(--color-accent)] disabled:cursor-not-allowed [&::-moz-range-thumb]:size-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-accent [&::-webkit-slider-thumb]:size-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:shadow-[0_0_0_4px_white,0_1px_4px_rgb(11_18_32/0.3)]"
-        style={{ background: `linear-gradient(to right, var(--color-accent) ${pct}%, var(--color-line) ${pct}%)` }}
+        className="mt-4 h-2 w-full cursor-pointer appearance-none rounded-full disabled:cursor-not-allowed [&::-moz-range-thumb]:size-6 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-[3px] [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-accent [&::-moz-range-thumb]:shadow-[0_2px_8px_rgb(51_85_255/0.5)] [&::-webkit-slider-thumb]:size-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-[3px] [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-accent [&::-webkit-slider-thumb]:shadow-[0_0_0_1px_rgb(51_85_255/0.25),0_4px_12px_rgb(51_85_255/0.45)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-200 hover:[&::-webkit-slider-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-125"
+        style={{ background: `linear-gradient(to right, #1f93ff 0%, #3355ff ${pct / 2}%, #7a5cff ${pct}%, #e8ebf0 ${pct}%)` }}
       />
     </div>
   );

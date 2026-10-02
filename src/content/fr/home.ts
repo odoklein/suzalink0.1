@@ -207,6 +207,10 @@ export const home = {
 
   faq: {
     title: "Questions fréquentes",
+    more: {
+      title: "Une autre question ?",
+      body: "Posez-la en démo : 30 minutes, avec votre cas et vos chiffres.",
+    },
     items: [
       {
         q: "Suzalink remplace-t-il mon CRM ?",

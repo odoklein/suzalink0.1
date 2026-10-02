@@ -7,15 +7,15 @@ export type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse" | "dar
 export type ButtonSize = "sm" | "md" | "lg";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full font-medium transition-[background-color,box-shadow,color,transform,filter] duration-200 active:translate-y-px disabled:pointer-events-none disabled:opacity-60";
+  "group/btn inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full font-medium transition-[background-color,box-shadow,color,scale,filter] duration-300 ease-out-quint active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-[linear-gradient(180deg,#4d6bff_0%,#2f4ff5_100%)] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_1px_2px_rgb(11_18_32/0.16),0_8px_20px_-8px_rgb(51_85_255/0.65)] hover:brightness-110",
-  secondary: "bg-white text-ink ring-1 ring-inset ring-line-strong hover:bg-surface hover:ring-ink/25",
+    "btn-shine bg-[linear-gradient(180deg,#5571ff_0%,#2f4ff5_100%)] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.3),inset_0_-2px_6px_rgb(20_30_140/0.25),0_1px_2px_rgb(11_18_32/0.16),0_10px_24px_-10px_rgb(51_85_255/0.75)] hover:shadow-[inset_0_1px_0_rgb(255_255_255/0.3),inset_0_-2px_6px_rgb(20_30_140/0.25),0_1px_2px_rgb(11_18_32/0.16),0_16px_32px_-12px_rgb(51_85_255/0.85)] hover:brightness-110",
+  secondary: "bg-white text-ink shadow-[0_1px_2px_rgb(11_18_32/0.05)] ring-1 ring-inset ring-line-strong hover:bg-surface hover:ring-ink/25",
   ghost: "text-ink hover:bg-surface",
-  inverse: "bg-white text-ink hover:bg-white/90",
-  dark: "bg-ink text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.12),0_1px_2px_rgb(11_18_32/0.2)] hover:bg-ink-soft",
+  inverse: "btn-shine bg-white text-ink shadow-[0_8px_24px_-10px_rgb(0_0_0/0.4)] hover:bg-white/90",
+  dark: "btn-shine bg-ink text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.14),0_1px_2px_rgb(11_18_32/0.2),0_8px_20px_-10px_rgb(11_18_32/0.6)] hover:bg-[#1a2238]",
 };
 
 /** Primary links end on a small chevron that nudges forward on hover. */

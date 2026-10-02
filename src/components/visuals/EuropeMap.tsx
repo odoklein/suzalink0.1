@@ -4,7 +4,8 @@ import { MAP_HEIGHT, MAP_SRC, MAP_WIDTH, NODES } from "./europe-map-data";
  * V9, drawn in code from Natural Earth data: France is the main node, Germany
  * and Spain the backup nodes, joined by the accent line. The country shapes
  * are a cached static SVG; the line and labels are inline so they can draw on
- * scroll and stay readable to screen readers.
+ * scroll and stay readable to screen readers. Sparks of data travel along the
+ * routes and France pings (both stop under reduced motion).
  */
 export function EuropeMap({
   labels,
@@ -29,10 +30,33 @@ export function EuropeMap({
         role="img"
         aria-label={`${labels.primary} : ${labels.france}. ${labels.backup} : ${labels.germany}, ${labels.spain}.`}
       >
+        <defs>
+          <filter id="map-spark" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.4" />
+          </filter>
+        </defs>
         {/* Drawn on scroll when a parent carries .thread-draw */}
         <g fill="none" stroke="var(--color-accent)" strokeWidth={2.5} strokeLinecap="round">
           <path data-draw pathLength={1} d={toGermany} />
           <path data-draw pathLength={1} d={toSpain} />
+        </g>
+        {/* Backups flowing out of France */}
+        <g fill="none" strokeLinecap="round" className="motion-only">
+          {[toGermany, toSpain].map((d, i) => (
+            <g key={d}>
+              <path
+                d={d}
+                pathLength={1}
+                stroke="#7fb6ff"
+                strokeWidth={7}
+                strokeDasharray="0.1 1.2"
+                filter="url(#map-spark)"
+                className="animate-comet"
+                style={{ animationDelay: `${1.2 + i * 1.6}s` }}
+              />
+              <path d={d} pathLength={1} stroke="#ffffff" strokeWidth={2.5} strokeDasharray="0.06 1.2" className="animate-comet" style={{ animationDelay: `${1.2 + i * 1.6}s` }} />
+            </g>
+          ))}
         </g>
         <Node x={dx} y={dy} label={labels.germany} sub={labels.backup} />
         <Node x={sx} y={sy} label={labels.spain} sub={labels.backup} />
@@ -46,7 +70,12 @@ function Node({ x, y, label, sub, primary }: { x: number; y: number; label: stri
   const w = Math.max(label.length, sub.length) * 7.6 + 26;
   return (
     <g>
-      {primary ? <circle cx={x} cy={y} r={20} fill="var(--color-accent)" opacity={0.14} /> : null}
+      {primary ? (
+        <>
+          <circle cx={x} cy={y} r={22} fill="var(--color-accent)" opacity={0.14} />
+          <circle cx={x} cy={y} r={16} fill="var(--color-accent)" opacity={0.35} className="motion-only animate-ping-soft origin-center [transform-box:fill-box]" />
+        </>
+      ) : null}
       <circle cx={x} cy={y} r={primary ? 9 : 7} fill={primary ? "var(--color-accent)" : "#ffffff"} stroke="var(--color-accent)" strokeWidth={3} />
       <g transform={`translate(${x + 16} ${y - 44})`}>
         <rect width={w} height={40} rx={10} fill="#ffffff" stroke="var(--color-line)" />

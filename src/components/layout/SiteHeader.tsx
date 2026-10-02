@@ -1,4 +1,5 @@
 import { getLocale } from "next-intl/server";
+import { MODULE_HUE, SOLUTION_HUE } from "@/config/hues";
 import { getContent, MODULE_ORDER, SOLUTION_ORDER } from "@/content";
 import type { StaticPathname } from "@/i18n/routing";
 import { Icon } from "../ui/Icon";
@@ -13,6 +14,7 @@ export async function SiteHeader() {
     label: modules[slug].name,
     blurb: modules[slug].navBlurb,
     icon: <Icon name={modules[slug].icon} className="size-[18px]" />,
+    hue: MODULE_HUE[slug],
   }));
 
   const solutionItems: NavItem[] = [
@@ -21,14 +23,22 @@ export async function SiteHeader() {
       label: solutions[slug].name,
       blurb: solutions[slug].navBlurb,
       icon: <Icon name={solutions[slug].icon} className="size-[18px]" />,
+      hue: SOLUTION_HUE[slug],
     })),
   ];
 
+  const resourceLook = [
+    { icon: "flag", hue: "sun" },
+    { icon: "plug", hue: "azure" },
+    { icon: "shield", hue: "mint" },
+    { icon: "building", hue: "violet" },
+  ] as const;
   const resources: NavItem[] = ui.header.resourcesItems.map((item, i) => ({
     href: item.href as StaticPathname,
     label: item.label,
     blurb: item.blurb,
-    icon: <Icon name={(["flag", "plug", "shield", "building"] as const)[i]} className="size-[18px]" />,
+    icon: <Icon name={resourceLook[i].icon} className="size-[18px]" />,
+    hue: resourceLook[i].hue,
   }));
 
   return (

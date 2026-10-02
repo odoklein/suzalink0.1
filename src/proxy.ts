@@ -24,6 +24,6 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip API routes, Next internals, Vercel internals and files with an extension.
-  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+  // Skip API routes, Next internals, Vercel internals, the social images and files with an extension.
+  matcher: "/((?!api|_next|_vercel|opengraph-image|twitter-image|.*\\..*).*)",
 };

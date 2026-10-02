@@ -7,6 +7,7 @@ import { LeadFlow } from "@/components/forms/LeadFlow";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { Eyebrow, H1, Lead } from "@/components/ui/Section";
 import { calLinks } from "@/config/site";
+import { PageJsonLd } from "@/components/ui/PageJsonLd";
 import { getContent } from "@/content";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
@@ -24,6 +25,7 @@ export default async function DemoPage({ params }: PageProps<"/[locale]/demo">) 
   const { demo, home, ui } = d;
 
   return (
+    <>
     <section data-hero className="bg-surface">
       <div className="container-site grid gap-12 py-12 md:py-20 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div className="lg:pt-6">
@@ -60,5 +62,7 @@ export default async function DemoPage({ params }: PageProps<"/[locale]/demo">) 
         </div>
       </div>
     </section>
+    <PageJsonLd locale={locale} pathname="/demo" meta={demo.meta} homeLabel={ui.breadcrumbs.home} type="ContactPage" />
+    </>
   );
 }

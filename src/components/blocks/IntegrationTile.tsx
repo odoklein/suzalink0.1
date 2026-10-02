@@ -1,5 +1,19 @@
+import { HUE, hueVar, type Hue } from "@/config/hues";
+import type { IntegrationCategory } from "@/content/fr/integrations";
 import { cn } from "@/lib/cn";
 import { Badge } from "../ui/Badge";
+
+/** Each category of tool keeps one hue from the sky palette, on its monogram. */
+export const CATEGORY_HUE: Record<IntegrationCategory, Hue> = {
+  messagerie: "azure",
+  agenda: "mint",
+  telephonie: "coral",
+  crm: "sun",
+  donnees: "violet",
+  reunions: "rose",
+  finance: "mint",
+  fichiers: "accent",
+};
 
 /**
  * Name tile until official logo files are added (each brand's usage rules
@@ -11,6 +25,7 @@ export function IntegrationTile({
   soon,
   soonLabel,
   compact,
+  hue = "accent",
   className,
 }: {
   name: string;
@@ -19,6 +34,7 @@ export function IntegrationTile({
   soonLabel: string;
   /** Name only, vertically centred (homepage grid). */
   compact?: boolean;
+  hue?: Hue;
   className?: string;
 }) {
   const monogram = name
@@ -29,10 +45,27 @@ export function IntegrationTile({
     .map((w) => w[0])
     .join("")
     .toUpperCase();
+  const h = HUE[hue];
 
   return (
-    <div className={cn("flex gap-3 rounded-[16px] bg-white p-4 ring-1 ring-line", compact ? "items-center" : "items-start", className)}>
-      <span aria-hidden className="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] bg-surface font-sans text-sm font-bold text-ink-soft ring-1 ring-inset ring-line">
+    <div
+      data-spotlight
+      className={cn(
+        "group flex gap-3 rounded-[16px] bg-white p-4 shadow-[0_1px_2px_rgb(11_18_32/0.04)] ring-1 ring-line transition-[box-shadow,translate] duration-300 ease-out-quint hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]",
+        compact ? "items-center p-3" : "items-start",
+        className,
+      )}
+      style={hueVar(hue)}
+    >
+      <span
+        aria-hidden
+        className={cn(
+          "inline-flex size-10 shrink-0 items-center justify-center rounded-[11px] font-sans text-sm font-bold ring-1 ring-inset transition-transform duration-300 ease-spring group-hover:scale-110",
+          h.soft,
+          h.ink,
+          h.ring,
+        )}
+      >
         {monogram}
       </span>
       <div className="min-w-0 flex-1">

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Visual } from "@/components/ui/Media";
 import { H2, Section } from "@/components/ui/Section";
 import { CLAIMS, claimState, type ClaimId } from "@/config/claims";
+import { PageJsonLd } from "@/components/ui/PageJsonLd";
 import { getContent } from "@/content";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
@@ -73,6 +74,7 @@ export default async function ChangelogPage({ params }: PageProps<"/[locale]/nou
       </Section>
 
       <CtaBand title={home.final.title} sub={home.final.sub} section="changelog_final" />
+      <PageJsonLd locale={locale} pathname="/nouveautes" meta={c.meta} homeLabel={ui.breadcrumbs.home} type="CollectionPage" />
     </>
   );
 }

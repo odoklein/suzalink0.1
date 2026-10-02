@@ -10,6 +10,21 @@ export const site = {
   tagline: "La plateforme d'exécution commerciale qui transforme l'activité en résultats.",
 } as const;
 
+/**
+ * Only the production domain is indexed. Staging, previews and `next dev` stay
+ * out of search engines (robots.txt and the X-Robots-Tag header).
+ * Force either way with SITE_INDEXING=on|off.
+ */
+export const indexable =
+  process.env.SITE_INDEXING === "on" ||
+  (process.env.SITE_INDEXING !== "off" &&
+    process.env.NODE_ENV === "production" &&
+    (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production") &&
+    !/^(localhost|127\.|(staging|preview|dev|test)[.-])|\.vercel\.app$/.test(new URL(site.url).hostname));
+
+/** Last significant content change, used by the sitemap. Bump it when copy changes. */
+export const contentUpdatedAt = "2026-10-01";
+
 export const appLinks = {
   login: `${site.appUrl}/connexion`,
   signup: `${site.appUrl}/inscription`,

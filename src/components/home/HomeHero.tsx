@@ -1,13 +1,33 @@
+import { Check } from "lucide-react";
 import type { Audience } from "@/config/audiences";
+import { SCREENSHOTS } from "@/config/visuals";
 import { dict, resolveTexts } from "@/content";
+import { InView } from "../fx/InView";
 import { CtaLink } from "../ui/CtaLink";
+import { FitBox } from "../ui/FitBox";
 import { KeyChip } from "../ui/KeyChip";
-import { ScreenshotFrame, Visual } from "../ui/Media";
+import { ScrollReveal } from "../ui/ScrollReveal";
 import { Eyebrow } from "../ui/Section";
+import { DASHBOARD_H, DASHBOARD_W, DashboardMock } from "./DashboardMock";
+import { BookedCard, NextActionCard } from "./HeroCards";
+import { HeroSky } from "./HeroSky";
+
+/** Words rising one after the other; `from` continues the count across lines. */
+function Words({ text, from = 0 }: { text: string; from?: number }) {
+  return text.split(" ").map((word, i) => (
+    <span key={`${word}-${i}`}>
+      {i > 0 ? " " : null}
+      <span className="inline-block animate-rise" style={{ animationDelay: `${(from + i) * 70}ms` }}>
+        {word}
+      </span>
+    </span>
+  ));
+}
 
 /**
- * Headline on top, the calling workspace (S1) floating over the V1 background
- * below it, and the key chip showing an outcome logged in one keystroke.
+ * Headline under a dawn sky, the manager dashboard standing up on scroll, and
+ * product moments floating around it: an outcome keyed in, a confirmed RDV,
+ * the AI's next action.
  */
 export async function HomeHero({ audience }: { audience: Audience | null }) {
   const { home, ui } = await dict();
@@ -15,70 +35,93 @@ export async function HomeHero({ audience }: { audience: Audience | null }) {
   const sub = audience ? h.subByAudience[audience] : h.sub;
   const [first, second] = h.title;
   const words = second.split(" ");
-  const last = words.pop();
+  const last = words.pop() ?? "";
+  const firstCount = first.split(" ").length;
 
   return (
-    <section data-hero className="relative overflow-hidden bg-white">
+    // Pulled up under the transparent header so the sky starts at the top edge.
+    <section data-hero className="relative isolate -mt-[68px] overflow-hidden pt-[68px]">
+      <HeroSky />
       <div className="container-site pt-12 text-center md:pt-20">
-        <Eyebrow className="mb-6 justify-center">{h.eyebrow}</Eyebrow>
+        <div className="animate-rise">
+          <Eyebrow className="mb-7 justify-center">{h.eyebrow}</Eyebrow>
+        </div>
         <h1 className="mx-auto max-w-4xl font-display text-h1m font-normal text-ink md:text-h1">
-          <span className="block">{first}</span>
           <span className="block">
-            {words.join(" ")}{" "}
-            <span className="relative inline-block whitespace-nowrap">
-              {last}
+            <Words text={first} />
+          </span>
+          <span className="block">
+            <Words text={words.join(" ")} from={firstCount} />{" "}
+            <span className="relative inline-block animate-rise whitespace-nowrap" style={{ animationDelay: `${(firstCount + words.length) * 70}ms` }}>
+              <span className="text-dawn -mb-[0.12em] inline-block pb-[0.12em]">{last}</span>
               <svg aria-hidden className="absolute -bottom-2 left-0 h-3 w-full overflow-visible" viewBox="0 0 200 12" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="hero-squiggle" x1="0" x2="1" y1="0" y2="0">
+                    <stop offset="0" stopColor="#3355ff" />
+                    <stop offset="0.55" stopColor="#7a5cff" />
+                    <stop offset="1" stopColor="#ff7a52" />
+                  </linearGradient>
+                </defs>
                 <path
                   d="M2 8 C 40 2, 80 2, 110 6 S 170 11, 198 3"
                   fill="none"
-                  stroke="var(--color-accent)"
-                  strokeWidth={3}
+                  stroke="url(#hero-squiggle)"
+                  strokeWidth={3.5}
                   strokeLinecap="round"
                   vectorEffect="non-scaling-stroke"
                   pathLength={1}
-                  className="[stroke-dasharray:1] motion-safe:animate-[thread-draw_280ms_ease-out_200ms_both] motion-safe:[stroke-dashoffset:1]"
+                  className="[stroke-dasharray:1] motion-safe:animate-[thread-draw_900ms_var(--ease-out-expo)_650ms_both] motion-safe:[stroke-dashoffset:1]"
                 />
               </svg>
             </span>
           </span>
         </h1>
-        <p className="mx-auto mt-7 max-w-2xl text-bodym text-muted md:text-body">{sub}</p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
+        <p className="mx-auto mt-8 max-w-2xl animate-rise text-bodym text-muted [animation-delay:420ms] md:text-body">{sub}</p>
+        <div className="mt-9 flex animate-rise flex-wrap justify-center gap-3 [animation-delay:520ms]">
           <CtaLink cta={{ kind: "trial" }} label={ui.cta.trial} section="home_hero" size="lg" />
           <CtaLink cta={{ kind: "demo" }} label={ui.cta.demo} section="home_hero" size="lg" variant="secondary" />
         </div>
-        <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-small text-muted">
-          {resolveTexts(ui.microcopy.trial).map((m, i) => (
-            <span key={m.text} className="inline-flex items-center gap-3">
-              {i > 0 ? <span aria-hidden className="size-1 rounded-full bg-line-strong" /> : null}
+        <ul className="mt-6 flex animate-fade-in flex-wrap items-center justify-center gap-x-5 gap-y-2 text-small text-ink-soft [animation-delay:700ms]">
+          {resolveTexts(ui.microcopy.trial).map((m) => (
+            <li key={m.text} className="inline-flex items-center gap-1.5">
+              <span className="grid size-4 place-items-center rounded-full bg-mint-soft text-mint-ink">
+                <Check aria-hidden className="size-2.5" strokeWidth={3.5} />
+              </span>
               {m.text}
-            </span>
+            </li>
           ))}
-        </p>
+        </ul>
       </div>
 
       <div className="container-site pb-20 pt-14 md:pt-20 lg:pb-28">
-        <div className="relative mx-auto max-w-[1080px]">
-          {/* Sky light behind the product: V1 is multiplied over it, so its white objects pick up the blue */}
-          <div aria-hidden className="sky-glow pointer-events-none absolute -inset-x-10 bottom-0 top-6 md:-inset-x-36 md:top-10" />
-          <Visual
-            id="V1"
-            fill
-            priority
-            showTag={false}
-            className="absolute -inset-x-3 -top-6 bottom-12 rounded-[32px] mix-blend-multiply md:-inset-x-14 md:-top-10 md:bottom-20"
-          />
-          <div className="relative px-2 pt-4 sm:px-8 md:px-14 md:pt-10">
-            <ScreenshotFrame id="S1" priority sizes="(min-width: 1080px) 960px, 100vw" />
-            <KeyChip
-              keyLabel={h.chip.key}
-              label={h.chip.label}
-              sub={h.chip.sub}
-              className="absolute -bottom-8 left-4 sm:left-10 md:-left-2 md:bottom-16"
-            />
+        <div className="relative mx-auto max-w-[1120px] animate-fade-in [animation-delay:500ms] [animation-duration:1.2s]">
+          <div className="relative px-2 sm:px-6 md:px-10">
+            <ScrollReveal
+              overlay={
+                <>
+                  <KeyChip
+                    keyLabel={h.chip.key}
+                    label={h.chip.label}
+                    sub={h.chip.sub}
+                    className="reveal-float absolute -bottom-8 left-4 [--fx:-40px] sm:left-10 md:-left-2 md:bottom-16"
+                  />
+                  <BookedCard className="absolute -right-4 top-10 hidden lg:block xl:-right-14" />
+                  <NextActionCard className="absolute -right-2 bottom-24 hidden lg:block xl:-right-20" />
+                </>
+              }
+            >
+              <InView>
+                <FitBox designWidth={DASHBOARD_W} designHeight={DASHBOARD_H}>
+                  <DashboardMock />
+                </FitBox>
+              </InView>
+              <span className="sr-only">{SCREENSHOTS.S4.alt}</span>
+            </ScrollReveal>
           </div>
         </div>
       </div>
+      {/* The horizon: the sky warms where the product stands. */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 bg-[linear-gradient(to_bottom,transparent,rgb(255_255_255/0.85))]" />
     </section>
   );
 }

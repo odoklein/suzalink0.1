@@ -4,6 +4,8 @@ import { localizePath, type Href } from "@/i18n/paths";
 import { routing, type Locale, type StaticPathname } from "@/i18n/routing";
 import type { Meta } from "@/content/types";
 
+const SOCIAL_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: "Suzalink : moins d'onglets, plus de rendez-vous." };
+
 /** Absolute URL of a localized pathname. */
 export function absoluteUrl(locale: Locale, href: Href): string {
   const path = localizePath(href, locale);
@@ -34,9 +36,10 @@ export function pageMetadata(
       siteName: site.name,
       locale: "fr_FR",
       type: "website",
+      images: [SOCIAL_IMAGE],
     },
-    twitter: { card: "summary_large_image", title: options.ogTitle ?? meta.title, description: meta.description },
-    robots: options.noindex ? { index: false, follow: true } : undefined,
+    twitter: { card: "summary_large_image", title: options.ogTitle ?? meta.title, description: meta.description, images: [SOCIAL_IMAGE.url] },
+    robots: options.noindex ? { index: false, follow: true } : { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   };
 }
 

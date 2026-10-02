@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getContent } from "@/content";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
+import { PageJsonLd } from "../ui/PageJsonLd";
 import { Eyebrow, H1 } from "../ui/Section";
 import Cgv from "@/content/fr/legal/cgv.mdx";
 import Confidentialite from "@/content/fr/legal/confidentialite.mdx";
@@ -28,11 +29,12 @@ export function legalPage(slug: LegalSlug, updated: string) {
   async function Page({ params }: { params: Promise<{ locale: string }> }) {
     const locale = (await params).locale as Locale;
     setRequestLocale(locale);
-    const { legalMeta, legalCommon } = getContent(locale);
+    const { legalMeta, legalCommon, ui } = getContent(locale);
     const Doc = DOCS[locale][slug];
     const date = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(new Date(updated));
 
     return (
+      <>
       <article data-hero className="bg-white">
         <div className="container-site py-12 md:py-20">
           <div className="mx-auto max-w-3xl">
@@ -47,6 +49,8 @@ export function legalPage(slug: LegalSlug, updated: string) {
           </div>
         </div>
       </article>
+      <PageJsonLd locale={locale} pathname={`/${slug}`} meta={legalMeta[slug]} homeLabel={ui.breadcrumbs.home} dateModified={updated} />
+      </>
     );
   }
 

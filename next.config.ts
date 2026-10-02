@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import { indexable } from "./src/config/site";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -21,7 +22,9 @@ const nextConfig: NextConfig = {
     resolveAlias: { "next-intl/config": "./src/i18n/request.ts" },
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    // Belt and braces next to robots.txt: non-production hosts also say noindex in every response.
+    const headers = indexable ? securityHeaders : [...securityHeaders, { key: "X-Robots-Tag", value: "noindex, nofollow" }];
+    return [{ source: "/:path*", headers }];
   },
 };
 

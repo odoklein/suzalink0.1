@@ -29,6 +29,21 @@ export function LogoMark({ className, tone = "color" }: { className?: string; to
   );
 }
 
+/**
+ * The wordmark alone, cropped tight, filled with `fill` (a colour or a
+ * gradient url). Used at poster size in the footer.
+ */
+export function Wordmark({ className, fill = "currentColor", dotFill }: { className?: string; fill?: string; dotFill?: string }) {
+  return (
+    <svg viewBox="108 16 324 80" className={className} aria-hidden focusable="false">
+      <g transform={`translate(${WORDMARK.offset.x} ${WORDMARK.offset.y})`}>
+        <path d={WORDMARK.d} fill={fill} />
+        <circle cx={WORDMARK.iDot.cx} cy={WORDMARK.iDot.cy} r={WORDMARK.iDot.r} fill={dotFill ?? fill} />
+      </g>
+    </svg>
+  );
+}
+
 /** Symbol and wordmark. Height comes from `className` (28 px by default). */
 export function Logo({ className, tone = "color" }: { className?: string; tone?: Tone }) {
   const accent = tone === "white" ? "#fff" : "var(--color-accent)";

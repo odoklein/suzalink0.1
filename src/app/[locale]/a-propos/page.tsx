@@ -5,6 +5,7 @@ import { CtaBand } from "@/components/blocks/CtaBand";
 import { LogoBar } from "@/components/blocks/LogoBar";
 import { PersonPhoto } from "@/components/home/HomeSections";
 import { Eyebrow, H1, H2, Section } from "@/components/ui/Section";
+import { PageJsonLd } from "@/components/ui/PageJsonLd";
 import { getContent } from "@/content";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/a-propos
 export default async function AboutPage({ params }: PageProps<"/[locale]/a-propos">) {
   const locale = (await params).locale as Locale;
   setRequestLocale(locale);
-  const { about: a, home } = getContent(locale);
+  const { about: a, home, ui } = getContent(locale);
 
   return (
     <>
@@ -77,6 +78,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/a-propo
       </section>
 
       <CtaBand title={home.final.title} sub={home.final.sub} primary={{ kind: "demo" }} secondary={{ kind: "trial" }} section="about_final" />
+    <PageJsonLd locale={locale} pathname="/a-propos" meta={a.meta} homeLabel={ui.breadcrumbs.home} type="AboutPage" />
     </>
   );
 }

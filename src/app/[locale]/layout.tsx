@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import { notFound } from "next/navigation";
+import { PointerFX } from "@/components/fx/PointerFX";
 import { Analytics } from "@/components/layout/Analytics";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
@@ -13,7 +14,7 @@ import { site } from "@/config/site";
 import { getContent } from "@/content";
 import { LocaleProvider } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
-import { organizationSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 import "../globals.css";
 
 // Display serif for headlines (one weight), Satoshi for body and UI.
@@ -44,6 +45,11 @@ export const metadata: Metadata = {
   title: { default: "Suzalink, la console d'exécution commerciale", template: "%s | Suzalink" },
   description: site.tagline,
   applicationName: site.name,
+  category: "business",
+  alternates: { canonical: "./" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  openGraph: { type: "website", siteName: site.name, locale: "fr_FR" },
+  twitter: { card: "summary_large_image" },
   formatDetection: { telephone: false, email: false, address: false },
 };
 
@@ -59,8 +65,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const { ui } = getContent(locale);
 
   return (
-    <html lang={locale} className={`${lastik.variable} ${satoshi.variable}`}>
+    <html lang={locale} className={`${lastik.variable} ${satoshi.variable}`} data-scroll-behavior="smooth">
       <body className="flex min-h-dvh flex-col">
+        {/* Reading progress: the thread grows along the top edge as the page scrolls (CSS only). */}
+        <div aria-hidden className="scroll-thread pointer-events-none fixed inset-x-0 top-0 z-[70] h-[2.5px] bg-[linear-gradient(90deg,#3355ff_0%,#7a5cff_55%,#ff8a65_100%)]" />
         <LocaleProvider locale={locale}>
           <SiteHeader />
           <main id="contenu" className="flex-1">
@@ -70,8 +78,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <MobileCtaBar trial={ui.cta.trialShort} demo={ui.cta.demo} label={ui.mobileBar.label} />
           <ConsentBanner labels={ui.consent} />
           <Analytics />
+          <PointerFX />
         </LocaleProvider>
-        <JsonLd data={organizationSchema()} />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
     </html>
   );
