@@ -1,0 +1,31 @@
+{
+  "name": "suzalink-teaser",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Suzalink 30 s teaser « Le fil », built with Remotion",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "still": "remotion still Teaser30",
+    "render": "remotion render Teaser30 out/suzalink-teaser-30s.mp4 --codec=h264 --pixel-format=yuv420p --crf=18",
+    "poster": "remotion still Teaser30 out/poster.png --frame=899"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/motion-blur": "4.0.532",
+    "@remotion/paths": "4.0.532",
+    "@remotion/tailwind-v4": "4.0.532",
+    "lucide-react": "1.49.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

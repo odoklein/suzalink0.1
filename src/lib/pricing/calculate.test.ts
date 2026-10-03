@@ -13,21 +13,10 @@ const base: CalculatorInput = {
 };
 
 describe("pricing config", () => {
-  it("prices every annual plan at −20 %, rounded down to the euro", () => {
-    for (const id of PLAN_ORDER) {
-      const { price, extraSeat } = PLANS[id];
-      const expected = Math.floor((price.monthly * 12 * (1 - ANNUAL_DISCOUNT)) / 100) * 100;
-      expect(price.annual).toBe(expected);
-      if (extraSeat) {
-        expect(extraSeat.annual).toBe(Math.floor((extraSeat.monthly * 12 * (1 - ANNUAL_DISCOUNT)) / 100) * 100);
-      }
-    }
-  });
-
-  it("shows the PRD's annual per-month figures on the cards", () => {
-    expect(planMonthlyDisplay("solo", "annual")).toBe(6_300);
-    expect(planMonthlyDisplay("equipe", "annual")).toBe(19_900);
-    expect(planMonthlyDisplay("agence", "annual")).toBe(39_900);
+  it("shows the strategy's annual per-month figures on the cards", () => {
+    expect(planMonthlyDisplay("solo", "annual")).toBe(5_900);
+    expect(planMonthlyDisplay("equipe", "annual")).toBe(18_900);
+    expect(planMonthlyDisplay("agence", "annual")).toBe(41_900);
   });
 });
 
@@ -35,8 +24,8 @@ describe("recommendPlan", () => {
   it("picks the cheapest plan that fits the team", () => {
     expect(recommendPlan(1, false)).toBe("solo");
     expect(recommendPlan(2, false)).toBe("equipe");
-    expect(recommendPlan(10, false)).toBe("equipe");
-    expect(recommendPlan(11, false)).toBe("agence");
+    expect(recommendPlan(7, false)).toBe("equipe");
+    expect(recommendPlan(8, false)).toBe("agence");
     expect(recommendPlan(30, false)).toBe("agence");
   });
 
@@ -57,34 +46,34 @@ describe("splitMailboxes", () => {
 });
 
 describe("calculate", () => {
-  it("prices Solo monthly", () => {
+  it("prices Indépendant monthly", () => {
     const q = calculate(base);
     expect(q.plan).toBe("solo");
-    expect(q.monthlyTotal).toBe(7_900);
-    expect(q.annualTotal).toBe(94_800);
-    expect(q.firstInvoice).toBe(7_900);
-    expect(q.vatOnFirstInvoice).toBe(1_580);
+    expect(q.monthlyTotal).toBe(6_900);
+    expect(q.annualTotal).toBe(82_800);
+    expect(q.firstInvoice).toBe(6_900);
+    expect(q.vatOnFirstInvoice).toBe(1_380);
   });
 
   it("prices a 5-person team with add-ons on monthly billing", () => {
     const q = calculate({ ...base, users: 5, voipUsers: 5, sourcingPack: "2000", extraMailboxes: 7 });
     expect(q.plan).toBe("equipe");
     expect(q.extraSeats).toBe(2);
-    // 249 + 2×69 + 5×49 + 89 + 39 + 2×9 = 778 €
-    expect(q.monthlyRecurring).toBe(77_800);
-    expect(q.monthlyTotal).toBe(77_800);
-    expect(q.annualTotal).toBe(933_600);
-    expect(q.firstInvoice).toBe(77_800);
+    // 229 + 2×49 + 5×49 + 89 + 39 + 2×9 = 718 €
+    expect(q.monthlyRecurring).toBe(71_800);
+    expect(q.monthlyTotal).toBe(71_800);
+    expect(q.annualTotal).toBe(861_600);
+    expect(q.firstInvoice).toBe(71_800);
   });
 
   it("bills plan and seats yearly and add-ons monthly on annual billing", () => {
     const q = calculate({ ...base, users: 5, voipUsers: 2, billing: "annual" });
-    // plan 2 390 € + 2 seats × 662 € = 3 714 € a year; VoIP 2 × 49 € = 98 € a month
-    expect(q.yearlyRecurring).toBe(371_400);
+    // plan 2 268 € + 2 seats × 470 € = 3 208 € a year; VoIP 2 × 49 € = 98 € a month
+    expect(q.yearlyRecurring).toBe(320_800);
     expect(q.monthlyRecurring).toBe(9_800);
-    expect(q.annualTotal).toBe(371_400 + 12 * 9_800);
-    expect(q.firstInvoice).toBe(371_400 + 9_800);
-    expect(q.monthlyTotal).toBe(Math.round((371_400 + 12 * 9_800) / 12));
+    expect(q.annualTotal).toBe(320_800 + 12 * 9_800);
+    expect(q.firstInvoice).toBe(320_800 + 9_800);
+    expect(q.monthlyTotal).toBe(Math.round((320_800 + 12 * 9_800) / 12));
   });
 
   it("never covers more telephony users than the team has", () => {

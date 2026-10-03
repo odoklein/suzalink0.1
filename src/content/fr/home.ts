@@ -4,19 +4,19 @@ import type { DeepDive, Faq, Meta, Text } from "../types";
 
 export const home = {
   meta: {
-    title: "Suzalink, la console d'exécution commerciale",
-    description: "La plateforme d'exécution commerciale qui transforme l'activité en résultats.",
+    title: "Suzalink | Le CRM Outbound B2B Tout-en-Un (Appels, IA & RDV)",
+    description: "Divisez par 4 le coût de votre prospection. Vos lignes Allo & OnOff natives, Call Vault audio S3 et fiches de RDV générées par Mistral AI en 10s. Essai 14j sans carte.",
   } satisfies Meta,
 
   hero: {
-    eyebrow: "Console d'exécution commerciale",
+    eyebrow: "⚡ Machine de Guerre Outbound • Fin du Stack Morcelé",
     title: ["Moins d'onglets.", "Plus de rendez-vous."],
-    sub: "Appels, emails, listes et prise de rendez-vous dans un seul espace, avec une IA qui vous indique la prochaine action. Conçu par des agences de prospection, pour ceux qui vendent.",
+    sub: "Vos lignes Allo & OnOff connectées en 1 clic, vos appels enregistrés dans le Call Vault S3, et l'IA Mistral qui rédige la fiche de RDV en 10 secondes. Divisez votre facture logicielle par 4.",
     /** Swapped in when the visitor lands with ?utm_audience=… */
     subByAudience: {
-      solo: "Appels, emails, listes et rendez-vous dans une seule console, avec le prochain contact déjà à l'écran. Pour les directeurs commerciaux qui prospectent eux-mêmes.",
-      equipes: "Toute votre équipe appelle, écrit et réserve depuis la même console, et vous suivez l'activité en direct. Pour les équipes commerciales de 2 à 10 personnes.",
-      agences: "Un espace par client, un portail où il suit ses rendez-vous et des rapports prêts à partager. Conçu par des agences de prospection, pour les agences.",
+      solo: "Vos appels Allo/OnOff et votre Call Vault S3 dans une seule console dédiée. Fini les 5 onglets pour les directeurs commerciaux solo.",
+      equipes: "Cockpit manager en temps réel, cadences SDR, anti-collision et fiches Mistral AI prêtes pour le closer. Pour équipes de 3 à 7.",
+      agences: "Espaces clients illimités, rôle client spectateur et marque blanche intégrée. Conçu par des agences de prospection, pour les agences.",
     } satisfies Record<Audience, string>,
     chip: { key: "1", label: "RDV décroché", sub: "Issue enregistrée, contact suivant" },
   },
@@ -31,10 +31,10 @@ export const home = {
   },
 
   problem: {
-    title: "Votre prospection est éparpillée.",
-    body: "Un CRM pour les contacts, un logiciel d'appel, un outil d'emailing, un agenda et un tableur pour le reporting. Cinq abonnements, cinq onglets, des données qui ne se parlent pas.",
-    tools: ["CRM", "Logiciel d'appel", "Emailing", "Agenda", "Tableur"],
-    stackLink: "Calculez le coût de votre stack",
+    title: "Le piège du stack morcelé à 350 € / mois / commercial.",
+    body: "Un CRM lourd conçu pour les DAF, un logiciel d'appel tiers, un outil de transcription à 100 €, un séquenceur d'emails et des connecteurs Zapier fragiles. Cinq abonnements, cinq onglets, perte de contexte au handover et des factures qui explosent.",
+    tools: ["HubSpot (120 €)", "Aircall (45 €)", "Modjo (100 €)", "Lemlist (60 €)", "Zapier (30 €)"],
+    stackLink: "Simuler mes économies avec Suzalink",
   },
 
   how: {
@@ -213,28 +213,26 @@ export const home = {
     },
     items: [
       {
-        q: "Suzalink remplace-t-il mon CRM ?",
-        a: "Pour la prospection et le suivi des opportunités, oui. Vos contacts s'importent depuis un fichier CSV, y compris l'export de votre CRM actuel.",
-      },
-      { q: "Faut-il une carte bancaire pour l'essai ?", a: "Non. L'essai de {{trial.days}} jours se lance sans carte bancaire." },
-      {
-        q: "Puis-je garder ma téléphonie actuelle ?",
-        a: claimed(
-          "Oui : Ringover, Allo ou Onoff fonctionnent en click-to-call. Vous pouvez aussi prendre l'option Téléphonie illimitée.",
-          "voip-addon",
-          "Oui : Ringover, Allo ou Onoff fonctionnent en click-to-call.",
-        ),
+        q: "On utilise déjà HubSpot ou Salesforce, pourquoi passer à Suzalink ?",
+        a: "Gardez HubSpot pour votre marketing inbound si vous le souhaitez, mais donnez Suzalink à vos commerciaux en première ligne. HubSpot est une usine à gaz pour l'outbound où chaque commercial perd 30 secondes par appel à remplir des formulaires. Sur Suzalink, vos SDRs enchaînent les appels en 1 clic et vos rendez-vous qualifiés peuvent être synchronisés vers votre CRM central.",
       },
       {
-        q: "Où sont hébergées mes données ?",
-        a: claimed("En France, avec des sauvegardes en Allemagne et en Espagne.", "hosting-fr"),
-        claim: "hosting-fr",
+        q: "Pourquoi êtes-vous 4 fois moins chers qu'un stack traditionnel ?",
+        a: "Les géants comme Salesforce ou Aircall dépensent plus de 50 % de leur chiffre d'affaires en marketing et en commissions. Notre architecture moderne est optimisée sans intermédiaire. De plus, chaque client dispose d'une instance privée dédiée (Single-Tenant), là où leurs clients sont entassés sur des serveurs mutualisés.",
       },
       {
-        q: "Comment démarrer ?",
-        a: "L'essai vous guide pas à pas : connectez une boîte mail, importez une liste, passez votre premier appel.",
+        q: "Puis-je conserver mes numéros Allo ou OnOff Business existants ?",
+        a: "Absolument. Vous n'avez pas besoin de changer d'opérateur ni de payer un abonnement Aircall à 45 €/mois. Nous ingérons directement les flux audio et webhooks de vos comptes Allo ou OnOff existants, et chaque appel est horodaté et rattaché au prospect dans le Call Vault S3.",
       },
-      { q: "Puis-je résilier à tout moment ?", a: "Oui, sur les formules mensuelles. La résiliation prend effet à la fin de la période payée." },
+      {
+        q: "Comment fonctionne la fiche de RDV générée par Mistral AI ?",
+        a: "Dès qu'un prospect est booké, le modèle Mistral AI analyse l'enregistrement de l'appel ou les notes du SDR et produit instantanément en 10 secondes une fiche structurée complète (BANT, douleur principale, budget, décideurs et objections anticipées pour le closer).",
+      },
+      {
+        q: "Mes données sont-elles protégées et étanches ?",
+        a: "Oui à 100 %. Contrairement aux SaaS multi-tenant où vos prospects côtoient des millions d'entreprises étrangères, vous bénéficiez d'une instance dédiée avec votre propre base PostgreSQL isolée et votre coffre-fort audio S3 privé.",
+      },
+      { q: "Faut-il une carte bancaire pour démarrer l'essai ?", a: "Non. L'essai gratuit de {{trial.days}} jours démarre immédiatement sans carte bancaire, avec l'ensemble des modules inclus." },
     ] satisfies Faq[],
   },
 

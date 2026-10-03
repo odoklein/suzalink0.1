@@ -41,6 +41,9 @@ export type Plan = {
   aiCreditsPerMonth: number;
   leadCreditsPerMonth: number;
   support: "standard" | "priority" | "dedicated";
+  audioHours: number;
+  s3StorageGb: number;
+  whiteLabel: boolean;
   start: "trial" | "demo-then-trial";
   recommended: boolean;
   /** Fields whose value is a proposal, not a locked decision. */
@@ -50,57 +53,63 @@ export type Plan = {
 export const PLANS: Record<PlanId, Plan> = {
   solo: {
     id: "solo",
-    name: "Solo",
-    price: { monthly: 7_900, annual: 75_800 },
-    lookupKeys: { monthly: "suzalink_solo_monthly", annual: "suzalink_solo_annual" },
+    name: "Indépendant",
+    price: { monthly: 6_900, annual: 70_800 },
+    lookupKeys: { monthly: "suzalink_independant_monthly", annual: "suzalink_independant_annual" },
     seatsIncluded: 1,
     extraSeat: null,
     maxUsers: 1,
     beyondMax: "upgrade-equipe",
     clientWorkspaces: 1,
-    contacts: 10_000,
+    contacts: 15_000,
     mailboxesPerUser: 1,
-    aiCreditsPerMonth: 200,
+    aiCreditsPerMonth: 150,
     leadCreditsPerMonth: 100,
     support: "standard",
+    audioHours: 20,
+    s3StorageGb: 5,
+    whiteLabel: false,
     start: "trial",
     recommended: false,
     proposals: [],
   },
   equipe: {
     id: "equipe",
-    name: "Équipe",
-    price: { monthly: 24_900, annual: 239_000 },
-    lookupKeys: { monthly: "suzalink_equipe_monthly", annual: "suzalink_equipe_annual" },
+    name: "Small Business",
+    price: { monthly: 22_900, annual: 226_800 },
+    lookupKeys: { monthly: "suzalink_smallbiz_monthly", annual: "suzalink_smallbiz_annual" },
     seatsIncluded: 3,
     extraSeat: {
-      monthly: 6_900,
-      annual: 66_200,
-      lookupKeys: { monthly: "suzalink_equipe_seat_monthly", annual: "suzalink_equipe_seat_annual" },
+      monthly: 4_900,
+      annual: 47_000,
+      lookupKeys: { monthly: "suzalink_smallbiz_seat_monthly", annual: "suzalink_smallbiz_seat_annual" },
       proposal: true,
     },
-    maxUsers: 10,
+    maxUsers: 7,
     beyondMax: "upgrade-agence",
     clientWorkspaces: 3,
-    contacts: 50_000,
+    contacts: 60_000,
     mailboxesPerUser: 2,
-    aiCreditsPerMonth: 1_000,
+    aiCreditsPerMonth: 600,
     leadCreditsPerMonth: 500,
     support: "priority",
+    audioHours: 80,
+    s3StorageGb: 25,
+    whiteLabel: false,
     start: "demo-then-trial",
     recommended: true,
     proposals: ["extraSeat"],
   },
   agence: {
     id: "agence",
-    name: "Agence",
-    price: { monthly: 49_900, annual: 479_000 },
-    lookupKeys: { monthly: "suzalink_agence_monthly", annual: "suzalink_agence_annual" },
-    seatsIncluded: 5,
+    name: "Medium Business",
+    price: { monthly: 49_900, annual: 502_800 },
+    lookupKeys: { monthly: "suzalink_mediumbiz_monthly", annual: "suzalink_mediumbiz_annual" },
+    seatsIncluded: 8,
     extraSeat: {
-      monthly: 5_900,
-      annual: 56_600,
-      lookupKeys: { monthly: "suzalink_agence_seat_monthly", annual: "suzalink_agence_seat_annual" },
+      monthly: 3_900,
+      annual: 37_400,
+      lookupKeys: { monthly: "suzalink_mediumbiz_seat_monthly", annual: "suzalink_mediumbiz_seat_annual" },
       proposal: true,
     },
     maxUsers: 30,
@@ -108,9 +117,12 @@ export const PLANS: Record<PlanId, Plan> = {
     clientWorkspaces: "unlimited",
     contacts: 250_000,
     mailboxesPerUser: 3,
-    aiCreditsPerMonth: 3_000,
+    aiCreditsPerMonth: 2_500,
     leadCreditsPerMonth: 1_500,
     support: "dedicated",
+    audioHours: 250,
+    s3StorageGb: 100,
+    whiteLabel: true,
     start: "demo-then-trial",
     recommended: false,
     proposals: ["extraSeat", "maxUsers", "contacts", "aiCreditsPerMonth", "leadCreditsPerMonth"],
@@ -127,8 +139,36 @@ export const SUR_MESURE = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* Add-ons: billed monthly on any plan, cancel any time. All proposals. */
+/* Add-ons & Upsells: billed monthly on any plan, cancel any time.    */
 /* ------------------------------------------------------------------ */
+
+export const AUDIO_S3_ADDON = {
+  id: "audio-s3",
+  name: "Pack Stockage Audio (+50 Go S3)",
+  price: 2_900,
+  lookupKey: "suzalink_addon_audio_s3_monthly",
+} as const;
+
+export const MISTRAL_AI_ADDON = {
+  id: "mistral-ai",
+  name: "Recharge Mistral AI (+1 000 Fiches RDV)",
+  price: 4_900,
+  lookupKey: "suzalink_addon_mistral_1000_monthly",
+} as const;
+
+export const WHITE_LABEL_ADDON = {
+  id: "white-label",
+  name: "Option Marque Blanche (Packs 1 & 2)",
+  price: 9_900,
+  lookupKey: "suzalink_addon_white_label_monthly",
+} as const;
+
+export const WORKSPACE_ADDON = {
+  id: "workspace-extra",
+  name: "Workspace Client Supplémentaire",
+  price: 3_900,
+  lookupKey: "suzalink_addon_workspace_monthly",
+} as const;
 
 export const VOIP_ADDON = {
   id: "voip",

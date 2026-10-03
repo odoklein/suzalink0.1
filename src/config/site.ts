@@ -7,7 +7,7 @@ export const site = {
   linkedinUrl: "https://www.linkedin.com/company/suzalink",
   contactEmail: "contact@suzalink.com",
   /** The app tagline stays the default meta description. */
-  tagline: "La plateforme d'exécution commerciale qui transforme l'activité en résultats.",
+  tagline: "Le CRM outbound B2B tout-en-un : téléphonie Allo & OnOff, Call Vault audio S3 et fiches de RDV générées par Mistral AI en 10 secondes.",
 } as const;
 
 /**

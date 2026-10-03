@@ -77,8 +77,25 @@ export async function HomeHero({ audience }: { audience: Audience | null }) {
           </span>
         </h1>
         <p className="mx-auto mt-8 max-w-2xl animate-rise text-bodym text-muted [animation-delay:420ms] md:text-body">{sub}</p>
-        <div className="mt-9 flex animate-rise flex-wrap justify-center gap-3 [animation-delay:520ms]">
-          <CtaLink cta={{ kind: "trial" }} label={ui.cta.trial} section="home_hero" size="lg" />
+
+        {/* High-conversion value prop badges */}
+        <div className="mx-auto mt-7 flex animate-rise flex-wrap items-center justify-center gap-2.5 [animation-delay:470ms]">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-mint/30 bg-mint-soft px-3.5 py-1 text-xs font-semibold text-mint-ink shadow-xs">
+            <span className="size-1.5 rounded-full bg-mint" />
+            Lignes Allo &amp; OnOff connectées
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/5 px-3.5 py-1 text-xs font-semibold text-accent shadow-xs">
+            <span className="size-1.5 rounded-full bg-accent" />
+            Fiches de RDV Mistral AI (10s)
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3.5 py-1 text-xs font-semibold text-ink-soft shadow-xs">
+            <span className="size-1.5 rounded-full bg-slate-400" />
+            PostgreSQL &amp; Call Vault S3 Dédiés
+          </span>
+        </div>
+
+        <div className="mt-8 flex animate-rise flex-wrap justify-center gap-3.5 [animation-delay:520ms]">
+          <CtaLink cta={{ kind: "trial" }} label={ui.cta.trial} section="home_hero" size="lg" className="shadow-md shadow-accent/20" />
           <CtaLink cta={{ kind: "demo" }} label={ui.cta.demo} section="home_hero" size="lg" variant="secondary" />
         </div>
         <ul className="mt-6 flex animate-fade-in flex-wrap items-center justify-center gap-x-5 gap-y-2 text-small text-ink-soft [animation-delay:700ms]">

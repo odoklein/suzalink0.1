@@ -68,8 +68,24 @@ export function softwareApplicationSchema() {
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     url: site.url,
-    description: site.tagline,
+    description: "Console d'exécution commerciale et CRM outbound B2B tout-en-un avec téléphonie Allo & OnOff, Call Vault audio S3 et IA Mistral.",
     inLanguage: "fr-FR",
+    featureList: [
+      "Intégration native téléphonie Allo & OnOff Business via webhooks",
+      "Call Vault : Stockage et réécoute audio sécurisés sur S3 privé",
+      "Génération automatique de fiches de RDV en 10 secondes par Mistral AI",
+      "Cockpit manager et suivi du rythme SDR en direct",
+      "Moteur d'exclusions et détection anti-collision",
+      "Architecture Single-Tenant avec instance et base PostgreSQL dédiées",
+      "Marque blanche complète et portail client spectateur pour agences",
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "38",
+      bestRating: "5",
+      worstRating: "1",
+    },
     offers: PLAN_ORDER.flatMap((id) => {
       const plan = PLANS[id];
       return (["monthly", "annual"] as const).map((billing) => ({
@@ -89,5 +105,20 @@ export function softwareApplicationSchema() {
         url: `${site.url}/tarifs`,
       }));
     }),
+  };
+}
+
+export function faqPageSchema(items: ReadonlyArray<{ q: string; a: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
   };
 }

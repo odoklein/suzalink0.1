@@ -5,14 +5,14 @@ import type { Faq, Meta, Text } from "../types";
 /** Labels only. Every figure on /tarifs is read from pricing.config.ts. */
 export const pricing = {
   meta: {
-    title: "Tarifs : des formules simples, tous les modules inclus",
+    title: "Tarifs Suzalink : 3 formules transparentes, zéro stack morcelé",
     description:
-      "Solo {{solo.monthly}}, Équipe {{equipe.monthly}}, Agence {{agence.monthly}} HT par mois. Tous les modules dans chaque formule, sans engagement ou {{annual.discount}} à l'année. Essai gratuit de {{trial.days}} jours.",
+      "Indépendant {{solo.annualMonthly}}, Small Business {{equipe.annualMonthly}}, Medium Business {{agence.annualMonthly}} HT par mois. Téléphonie Allo & OnOff, Call Vault audio S3 et IA Mistral inclus. Essai gratuit de {{trial.days}} jours.",
   } satisfies Meta,
 
   header: {
-    title: "Des tarifs simples. Tous les modules inclus.",
-    sub: "Choisissez selon la taille de votre équipe. Changez de formule quand vous voulez.",
+    title: "Des formules transparentes. Fin du stack morcelé.",
+    sub: "Divisez votre budget logiciel par 4. Téléphonie Allo & OnOff, Call Vault S3, fiches Mistral AI et base PostgreSQL dédiée incluses.",
     monthly: "Mensuel",
     annual: "Annuel",
     toggleLabel: "Période de facturation",
@@ -20,24 +20,24 @@ export const pricing = {
 
   plans: {
     solo: {
-      for: "Pour les directeurs commerciaux solo",
-      support: "Centre d'aide et chat, réponse sous 48 h",
-      start: "Essai de {{trial.days}} jours, sans carte",
-      extraSeat: "non disponible, passez en Équipe",
+      for: "Pour les SDR indépendants, consultants B2B et closers freelance",
+      support: "Support par ticket & email (SLA 48h)",
+      start: "Essai de {{trial.days}} jours, sans carte bancaire",
+      extraSeat: "non disponible, passez en Small Business",
       maxUsers: "1",
     },
     equipe: {
-      for: "Pour les équipes de 2 à 10",
-      support: "Onboarding guidé de 45 min, support prioritaire sous 24 h",
-      start: "Démo à l'inscription, puis essai accompagné de {{trial.days}} jours",
-      extraSeat: "+{{equipe.extraSeat}} par mois",
-      maxUsers: "{{equipe.max}}, puis Agence",
+      for: "Pour les startups B2B, TPE et équipes de 3 à 7 personnes (Le plus populaire)",
+      support: "Support prioritaire Slack ou WhatsApp dédié (SLA 12h)",
+      start: "Démo de 45 min, puis essai accompagné de {{trial.days}} jours",
+      extraSeat: "+{{equipe.extraSeat}} par mois / utilisateur",
+      maxUsers: "{{equipe.max}}, puis Medium Business",
     },
     agence: {
-      for: "Pour les agences et SDR freelances",
-      support: "Responsable du succès client dédié, migration assistée, support sous 4 h ouvrées",
-      start: "Démo à l'inscription, puis essai accompagné de {{trial.days}} jours",
-      extraSeat: "+{{agence.extraSeat}} par mois",
+      for: "Pour les agences de prospection (DFY) et équipes de 8 à 30 commerciaux (Marque Blanche)",
+      support: "Account Manager dédié avec ligne directe (SLA 4h)",
+      start: "Démo personnalisée, onboarding white-glove et essai de {{trial.days}} jours",
+      extraSeat: "+{{agence.extraSeat}} par mois / utilisateur",
       maxUsers: "{{agence.max}}, puis contactez-nous",
     },
   } satisfies Record<PlanId, { for: string; support: string; start: string; extraSeat: string; maxUsers: string }>,

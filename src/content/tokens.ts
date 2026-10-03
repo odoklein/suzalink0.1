@@ -31,6 +31,8 @@ function planTokens(id: PlanId): Record<string, string> {
     [`${id}.ai`]: formatInt(p.aiCreditsPerMonth),
     [`${id}.credits`]: formatInt(p.leadCreditsPerMonth),
     [`${id}.workspaces`]: p.clientWorkspaces === "unlimited" ? "illimités" : formatInt(p.clientWorkspaces),
+    [`${id}.audio`]: `${formatInt(p.audioHours)} h`,
+    [`${id}.s3`]: `${p.s3StorageGb} Go`,
   };
 }
 

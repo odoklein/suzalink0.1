@@ -42,8 +42,21 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: "Suzalink, la console d'exécution commerciale", template: "%s | Suzalink" },
+  title: { default: "Suzalink | Le CRM Outbound B2B Tout-en-Un (Appels, IA & RDV)", template: "%s | Suzalink" },
   description: site.tagline,
+  keywords: [
+    "crm prospection telephonique",
+    "crm outbound b2b",
+    "logiciel cold calling france",
+    "alternative hubspot aircall modjo",
+    "crm telephonie onoff allo",
+    "transcription appel mistral ai",
+    "call vault audio s3",
+    "fiche rdv qualification bant",
+    "crm sdr closer",
+    "crm single tenant prive",
+    "crm agence prospection marque blanche",
+  ],
   applicationName: site.name,
   category: "business",
   alternates: { canonical: "./" },

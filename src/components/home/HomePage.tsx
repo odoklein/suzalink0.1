@@ -2,7 +2,7 @@ import { getLocale } from "next-intl/server";
 import type { Audience } from "@/config/audiences";
 import { dict } from "@/content";
 import type { Locale } from "@/i18n/routing";
-import { softwareApplicationSchema } from "@/lib/schema";
+import { faqPageSchema, softwareApplicationSchema } from "@/lib/schema";
 import { CtaBand } from "../blocks/CtaBand";
 import { IntegrationsGrid } from "../blocks/IntegrationsGrid";
 import { PricingTeaser } from "../blocks/PricingTeaser";
@@ -16,6 +16,7 @@ import { Section, SectionHeader } from "../ui/Section";
 import { Mascot } from "../visuals/Mascot";
 import { HomeHero } from "./HomeHero";
 import { Audiences, BuiltByAgencies, FeatureDeepDives, HowItWorks, Problem, ProofBar } from "./HomeSections";
+import { StackSavingsComparator } from "./StackSavingsComparator";
 
 /** The homepage story in 13 sections: scattered tools, one console, proof, then a plan. */
 export async function HomePage({ audience }: { audience: Audience | null }) {
@@ -26,6 +27,7 @@ export async function HomePage({ audience }: { audience: Audience | null }) {
       <HomeHero audience={audience} />
       <ProofBar />
       <Problem />
+      <StackSavingsComparator />
       <HowItWorks />
       <FeatureDeepDives />
       <Audiences audience={audience} />
@@ -52,6 +54,7 @@ export async function HomePage({ audience }: { audience: Audience | null }) {
       </Section>
       <CtaBand title={home.final.title} sub={home.final.sub} section="home_final" />
       <JsonLd data={softwareApplicationSchema()} />
+      <JsonLd data={faqPageSchema(home.faq.items)} />
       <PageJsonLd locale={locale} pathname="/" meta={home.meta} homeLabel="" />
     </>
   );
