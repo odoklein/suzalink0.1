@@ -26,7 +26,7 @@ export function MobileCtaBar({ trial, demo, label }: { trial: string; demo: stri
       aria-hidden={!visible}
       inert={!visible}
       className={cn(
-        "mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-4 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 backdrop-blur transition-transform duration-200 lg:hidden",
+        "mobile-cta fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-4 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 transition-transform duration-200 lg:hidden",
         visible ? "translate-y-0" : "translate-y-full",
       )}
     >

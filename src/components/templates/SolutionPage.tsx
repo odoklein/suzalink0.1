@@ -77,7 +77,7 @@ export function solutionPage(slug: SolutionSlug) {
                 <span className="num block bg-[linear-gradient(180deg,var(--hue),color-mix(in_srgb,var(--hue)_30%,white))] bg-clip-text font-display text-[56px] leading-none text-transparent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-5 font-display text-[22px] font-normal leading-7 text-ink">{p.title}</h3>
+                <h3 className="mt-5 font-display text-[22px] font-semibold leading-7 text-ink">{p.title}</h3>
                 <p className="mt-2 text-muted">{p.body}</p>
               </li>
             ))}
@@ -104,7 +104,7 @@ export function solutionPage(slug: SolutionSlug) {
                     </span>
                     <div className="how-text rounded-[20px] bg-white p-5 shadow-[0_1px_2px_rgb(11_18_32/0.04)] ring-1 ring-line">
                       <p className={cn("num inline-flex rounded-full px-2.5 py-0.5 text-small font-semibold", h.soft, h.ink)}>{step.time}</p>
-                      <h3 className="mt-2 font-display text-xl font-normal text-ink">{step.title}</h3>
+                      <h3 className="mt-2 font-display text-xl font-semibold text-ink">{step.title}</h3>
                       {body ? <p className="mt-1 text-muted">{body.text}</p> : null}
                     </div>
                   </li>
@@ -130,7 +130,7 @@ export function solutionPage(slug: SolutionSlug) {
                     className="group flex h-full flex-col rounded-[22px] bg-white p-6 shadow-[0_1px_2px_rgb(11_18_32/0.04)] ring-1 ring-line transition-[translate,box-shadow] duration-500 ease-out-quint hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
                   >
                     <IconTile name={m.icon} hue={mHue} className="transition-transform duration-500 ease-spring group-hover:-rotate-6 group-hover:scale-110" />
-                    <h3 className="mt-5 font-display text-lg font-normal text-ink">{f.title}</h3>
+                    <h3 className="mt-5 font-display text-lg font-semibold text-ink">{f.title}</h3>
                     {body ? <p className="mt-2 flex-1 text-[15px] leading-6 text-muted">{body.text}</p> : null}
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                       {m.name}
@@ -155,13 +155,13 @@ export function solutionPage(slug: SolutionSlug) {
             </div>
             <div data-reveal="scale" className="ring-spin rounded-[24px] [--ring-width:2px]">
               <div className="rounded-[24px] bg-white p-8 shadow-[var(--shadow-float)]">
-                <p className="flex items-center gap-2.5 font-display text-[22px] font-normal text-ink">
+                <p className="flex items-center gap-2.5 font-display text-[22px] font-semibold text-ink">
                   <span aria-hidden className={cn("size-2.5 rounded-full", h.bg)} />
                   {plan.name}
                 </p>
                 <p className="mt-1 text-sm text-muted">{pricing.plans[s.plan].for}</p>
                 <p className="mt-6 flex items-baseline gap-1.5">
-                  <span className="num font-display text-[52px] font-normal leading-none tracking-[-0.025em] text-ink">{euros(plan.price.monthly)}</span>
+                  <span className="num font-display text-[52px] font-semibold leading-none tracking-[-0.045em] text-ink">{euros(plan.price.monthly)}</span>
                   <span className="text-sm text-muted">{pricing.card.perMonth}</span>
                 </p>
                 <p className="mt-3 text-sm text-muted">{pricing.plans[s.plan].start}</p>

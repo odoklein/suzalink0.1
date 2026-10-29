@@ -32,7 +32,7 @@ export async function PricingTeaser({ tone = "white" }: { tone?: "white" | "surf
           return (
             <li key={id} data-reveal style={vars({ "--i": i })} className="relative">
               {plan.recommended ? (
-                <div aria-hidden className="absolute -inset-8 -z-10 rounded-[48px] bg-[radial-gradient(closest-side,rgb(51_85_255/0.22),rgb(122_92_255/0.08)_60%,transparent)] blur-2xl" />
+                <div aria-hidden className="absolute -inset-8 -z-10 rounded-[48px] bg-[radial-gradient(closest-side,rgb(51_85_255/0.22),rgb(122_92_255/0.08)_60%,transparent)]" />
               ) : null}
               <div className={cn("h-full rounded-[24px]", plan.recommended && "ring-spin [--ring-width:2px]")}>
                 <div
@@ -47,13 +47,13 @@ export async function PricingTeaser({ tone = "white" }: { tone?: "white" | "surf
                       {ui.badges.recommended}
                     </Badge>
                   ) : null}
-                  <p className="flex items-center gap-2.5 font-display text-[22px] font-normal text-ink">
+                  <p className="flex items-center gap-2.5 font-display text-[22px] font-semibold text-ink">
                     <span aria-hidden className={cn("size-2.5 rounded-full shadow-[0_0_0_4px_color-mix(in_srgb,currentColor_15%,transparent)]", h.bg, h.text)} />
                     {plan.name}
                   </p>
                   <p className="mt-1 text-sm text-muted">{pricing.plans[id].for}</p>
                   <p className="mt-7 flex items-baseline gap-1.5">
-                    <span className="num font-display text-[52px] font-normal leading-none tracking-[-0.025em] text-ink">{euros(plan.price.monthly)}</span>
+                    <span className="num font-display text-[52px] font-semibold leading-none tracking-[-0.045em] text-ink">{euros(plan.price.monthly)}</span>
                     <span className="text-sm text-muted">{pricing.card.perMonth}</span>
                   </p>
                   <p className={cn("mt-3 inline-flex self-start rounded-full px-2.5 py-0.5 text-sm font-medium", h.soft, h.ink)}>{users}</p>

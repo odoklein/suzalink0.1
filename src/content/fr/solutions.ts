@@ -15,7 +15,7 @@ const directeur: SolutionContent = {
   },
   hero: {
     eyebrow: "Directeur commercial solo",
-    title: "Vous prospectez seul ? Récupérez vos heures.",
+    title: "Vos listes, vos appels et votre agenda sur un seul écran.",
     sub: "Un CRM, un logiciel d'appel, un outil d'emailing, un agenda : vous payez quatre ou cinq outils et vous passez la journée à changer d'onglet. Suzalink les réunit dans une seule console, avec le prochain contact déjà à l'écran.",
     cta: "trial",
   },
@@ -91,7 +91,7 @@ const equipes: SolutionContent = {
   },
   hero: {
     eyebrow: "Équipes de 2 à 10",
-    title: "Vous managez une équipe ? Voyez tout, en temps réel.",
+    title: "L'activité de toute votre équipe, en direct.",
     sub: "Vos commerciaux travaillent dans la même console, avec les mêmes issues, les mêmes scripts et les mêmes séquences. Vous suivez l'activité en direct, sans attendre le reporting du vendredi.",
     cta: "demo",
   },
@@ -167,7 +167,7 @@ const agences: SolutionContent = {
   },
   hero: {
     eyebrow: "Agences et SDR freelances",
-    title: "Vous prospectez pour vos clients ? Prouvez chaque rendez-vous.",
+    title: "Un portail par client pour prouver chaque rendez-vous.",
     sub: "Un espace par client, un portail où il suit ses rendez-vous, des rapports prêts à partager et la facturation au rendez-vous. Suzalink a été construit dans une agence, pour les agences.",
     cta: "demo",
   },

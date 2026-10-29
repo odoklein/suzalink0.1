@@ -63,27 +63,30 @@
   --color-night-2: #0b1230;
   --color-night-3: #141d45;
 
-  /* Lastik (one weight, 400) for headlines, Satoshi for everything else. */
-  --font-display: var(--font-lastik), Georgia, "Times New Roman", serif;
+  /* Sora (variable) for headlines and figures, set tight; Satoshi for everything else. */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Type scale: desktop / mobile pairs. A serif display sets tighter than a sans. */
-  --text-h1: 4.75rem;
-  --text-h1--line-height: 4.75rem;
-  --text-h1--letter-spacing: -0.024em;
-  --text-h1m: 2.875rem;
-  --text-h1m--line-height: 3rem;
-  --text-h1m--letter-spacing: -0.02em;
-  --text-h2: 3.375rem;
-  --text-h2--line-height: 3.5rem;
-  --text-h2--letter-spacing: -0.02em;
-  --text-h2m: 2.25rem;
-  --text-h2m--line-height: 2.5rem;
-  --text-h2m--letter-spacing: -0.016em;
-  --text-h3: 1.625rem;
-  --text-h3--line-height: 2rem;
-  --text-h3--letter-spacing: -0.008em;
+  /*
+   * Type scale: desktop / mobile pairs. Sora is wide and open, so it is set a
+   * touch smaller than the old serif and pulled in hard: the bigger, the tighter.
+   */
+  --text-h1: 4.5rem;
+  --text-h1--line-height: 4.5rem;
+  --text-h1--letter-spacing: -0.055em;
+  --text-h1m: 2.625rem;
+  --text-h1m--line-height: 2.75rem;
+  --text-h1m--letter-spacing: -0.05em;
+  --text-h2: 3.125rem;
+  --text-h2--line-height: 3.375rem;
+  --text-h2--letter-spacing: -0.05em;
+  --text-h2m: 2.125rem;
+  --text-h2m--line-height: 2.375rem;
+  --text-h2m--letter-spacing: -0.045em;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.875rem;
+  --text-h3--letter-spacing: -0.035em;
   --text-body: 1.125rem;
   --text-body--line-height: 1.75rem;
   --text-bodym: 1rem;
@@ -151,8 +154,8 @@
     50% { transform: scaleX(0.82); opacity: 0.65; }
   }
   @keyframes rise {
-    from { opacity: 0; transform: translateY(0.55em); filter: blur(10px); }
-    to { opacity: 1; transform: none; filter: blur(0); }
+    from { opacity: 0; transform: translateY(0.55em); }
+    to { opacity: 1; transform: none; }
   }
   @keyframes fade-in {
     from { opacity: 0; }
@@ -226,6 +229,8 @@
   }
 
   body {
+    /* Decorative glows bleed past the edges; clip them without making body a scroll container (sticky keeps working). */
+    overflow-x: clip;
     background: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
@@ -245,13 +250,18 @@
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    /* Tight tracking eats the word gaps too: give them back. */
+    word-spacing: 0.06em;
     text-wrap: balance;
   }
 
-  /* Lastik ships one weight: never let the browser fake a bold. */
-  h1, h2, h3, h4, .font-display {
-    font-synthesis-weight: none;
+  /* Display text without a heading tag (figures, quotes) gets the same weight and pull. */
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    word-spacing: 0.06em;
   }
 
   p {
@@ -297,14 +307,12 @@
     radial-gradient(40% 56% at 14% 44%, rgb(110 170 255 / 0.8), transparent 70%),
     radial-gradient(38% 52% at 86% 38%, rgb(70 110 255 / 0.55), transparent 70%),
     radial-gradient(50% 60% at 50% 80%, rgb(140 205 255 / 0.75), transparent 72%);
-  filter: blur(56px);
 }
 
 @utility sky-haze {
   background:
     radial-gradient(34% 62% at 30% 52%, rgb(196 222 255 / 0.6), transparent 70%),
     radial-gradient(38% 60% at 72% 44%, rgb(170 202 255 / 0.45), transparent 70%);
-  filter: blur(44px);
 }
 
 /* Two cloud banks (left and right) under a blue sky that fades to white; the centre stays clear for the headline. */
@@ -389,7 +397,6 @@
     radial-gradient(7% 26% at 74% 58%, rgb(255 255 255 / 0.75) 35%, transparent 72%),
     radial-gradient(10% 34% at 88% 54%, rgb(255 255 255 / 0.92) 40%, transparent 72%),
     radial-gradient(7% 28% at 94% 36%, rgb(255 255 255 / 0.85) 40%, transparent 72%);
-  filter: blur(6px);
 }
 
 /* Film grain for dark stages (decorative layer). */
@@ -610,6 +617,26 @@
   }
 }
 
+/*
+ * Decorative loops rest while their block is off screen (<RevealObserver>
+ * marks top-level blocks data-idle), so only what is visible costs frames.
+ */
+/* The consent banner is server-rendered; before its cookie check runs, only the pre-paint script decides. */
+html:not([data-consent-needed]) [data-consent-pending] {
+  display: none;
+}
+
+/* Exact classes, not [class*=]: a substring selector makes every class change re-match the whole page. */
+[data-idle] :is(
+  .animate-aurora, .animate-twinkle, .animate-comet, .animate-float, .animate-drift,
+  .animate-ping-soft, .animate-pulse-dot, .animate-shimmer, .animate-caret,
+  .animate-key-press, .animate-toast, .motion-safe\:animate-bob, .motion-safe\:animate-bob-shadow,
+  .marquee-track
+),
+[data-idle] .ring-spin::before {
+  animation-play-state: paused;
+}
+
 @keyframes thread-draw {
   to {
     stroke-dashoffset: 0;
@@ -625,7 +652,7 @@
   from { opacity: 0; transform: translateY(24px) scale(0.94); }
 }
 @keyframes reveal-blur {
-  from { opacity: 0; transform: translateY(20px); filter: blur(12px); }
+  from { opacity: 0; transform: translateY(20px) scale(0.985); }
 }
 @keyframes reveal-left {
   from { opacity: 0; transform: translateX(-40px); }

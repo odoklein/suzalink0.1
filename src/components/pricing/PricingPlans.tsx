@@ -59,14 +59,14 @@ export function PricingPlans({ labels }: { labels: PricingPlansLabels }) {
           <div aria-hidden className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,#1d2a72_0%,#0b1230_55%,#060a1a_100%)]" />
             <div className="stars absolute inset-0 opacity-70" />
-            <div className="absolute -right-16 -top-16 size-56 rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.5),transparent)] blur-2xl" />
+            <div className="absolute -right-16 -top-16 size-56 rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.5),transparent)]" />
           </div>
-          <p className="flex items-center gap-2.5 font-display text-[22px] font-normal">
+          <p className="flex items-center gap-2.5 font-display text-[22px] font-semibold">
             <span aria-hidden className="size-2.5 rounded-full bg-white shadow-[0_0_12px_#a99bff]" />
             {labels.surMesure.name}
           </p>
           <p className="mt-1 min-h-10 text-sm text-white/65">{labels.surMesure.for}</p>
-          <p className="mt-6 font-display text-[42px] font-normal leading-none tracking-[-0.02em]">{labels.surMesure.price}</p>
+          <p className="mt-6 font-display text-[42px] font-semibold leading-none tracking-[-0.02em]">{labels.surMesure.price}</p>
           <p className="mt-3 text-sm text-white/65">{labels.surMesure.priceSub}</p>
           <ul className="mt-7 space-y-2.5 text-[15px] text-white/85">
             {labels.surMesure.bullets.map((b) => (
@@ -109,7 +109,7 @@ function PlanCard({ id, index, billing, labels }: { id: PlanId; index: number; b
   return (
     <li data-reveal style={vars({ "--i": index })} className="relative">
       {plan.recommended ? (
-        <div aria-hidden className="absolute -inset-8 -z-10 rounded-[48px] bg-[radial-gradient(closest-side,rgb(51_85_255/0.22),rgb(122_92_255/0.08)_60%,transparent)] blur-2xl" />
+        <div aria-hidden className="absolute -inset-8 -z-10 rounded-[48px] bg-[radial-gradient(closest-side,rgb(51_85_255/0.22),rgb(122_92_255/0.08)_60%,transparent)]" />
       ) : null}
       <div className={cn("h-full rounded-[24px]", plan.recommended && "ring-spin [--ring-width:2px]")}>
         <div
@@ -125,14 +125,14 @@ function PlanCard({ id, index, billing, labels }: { id: PlanId; index: number; b
               {labels.recommended}
             </Badge>
           ) : null}
-          <p className="flex items-center gap-2.5 font-display text-[22px] font-normal text-ink">
+          <p className="flex items-center gap-2.5 font-display text-[22px] font-semibold text-ink">
             <span aria-hidden className={cn("size-2.5 rounded-full shadow-[0_0_0_4px_color-mix(in_srgb,currentColor_15%,transparent)]", h.bg, h.text)} />
             {plan.name}
           </p>
           <p className="mt-1 min-h-10 text-sm text-muted">{copy.for}</p>
 
           <p className="mt-6 flex items-baseline gap-1.5" aria-live="polite">
-            <span key={`${id}-${billing}`} className="num font-display text-[52px] font-normal leading-none tracking-[-0.025em] text-ink motion-safe:animate-[rise_600ms_var(--ease-out-expo)_both]">
+            <span key={`${id}-${billing}`} className="num font-display text-[52px] font-semibold leading-none tracking-[-0.045em] text-ink motion-safe:animate-[rise_600ms_var(--ease-out-expo)_both]">
               {euros(perMonth)}
             </span>
             <span className="text-sm text-muted">{c.perMonth}</span>

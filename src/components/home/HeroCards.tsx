@@ -12,7 +12,7 @@ import { typo } from "@/lib/typo";
 export function BookedCard({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn("reveal-float", className)} style={vars({ "--fx": "60px", "--fy": "-20px" })}>
-      <div className="w-[248px] animate-float rounded-2xl bg-white/95 p-3.5 shadow-[var(--shadow-float)] ring-1 ring-ink/[0.07] backdrop-blur">
+      <div className="w-[248px] animate-float rounded-2xl bg-white/95 p-3.5 shadow-[var(--shadow-float)] ring-1 ring-ink/[0.07]">
         <div className="flex items-center gap-2.5">
           <span className="relative grid size-9 place-items-center rounded-xl bg-mint-soft text-mint-ink">
             <CalendarCheck className="size-[18px]" strokeWidth={2} />
@@ -41,7 +41,7 @@ export function BookedCard({ className }: { className?: string }) {
 export function NextActionCard({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn("reveal-float", className)} style={vars({ "--fx": "50px", "--fy": "60px" })}>
-      <div className="w-[264px] animate-float rounded-2xl bg-white/95 p-3.5 shadow-[var(--shadow-float)] ring-1 ring-ink/[0.07] backdrop-blur [animation-delay:-3.5s]">
+      <div className="w-[264px] animate-float rounded-2xl bg-white/95 p-3.5 shadow-[var(--shadow-float)] ring-1 ring-ink/[0.07] [animation-delay:-3.5s]">
         <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-violet-ink">
           <span className="grid size-6 place-items-center rounded-lg bg-[linear-gradient(135deg,#7a5cff,#3355ff)] text-white shadow-[0_6px_14px_-6px_#7a5cff]">
             <Sparkles className="size-3.5" />

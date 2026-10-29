@@ -19,7 +19,7 @@ const appels: ModuleContent = {
   },
   hero: {
     eyebrow: "Appels et téléphonie",
-    title: "Enchaînez les appels, pas les clics.",
+    title: "Vous raccrochez, le contact suivant s'affiche.",
     sub: "Le prochain contact s'affiche avec son script. Vous appelez, vous notez l'issue au clavier, le suivant arrive. Les rappels et les rendez-vous manqués passent en premier.",
     cta: "trial",
     media: { screenshot: "S1" },
@@ -127,7 +127,7 @@ const emails: ModuleContent = {
   highlights: [
     {
       icon: "inbox",
-      title: "Vos boîtes, pas les nôtres",
+      title: "Vos propres boîtes d'envoi",
       body: "Gmail, Outlook ou n'importe quelle boîte IMAP. Vous gardez vos domaines et votre réputation d'envoi.",
     },
     {
@@ -312,7 +312,7 @@ const listes: ModuleContent = {
   },
   hero: {
     eyebrow: "Listes et leads",
-    title: "Des listes prêtes à appeler, pas à nettoyer.",
+    title: "Des listes prêtes à appeler.",
     sub: "Importez un CSV ou une recherche Apollo, complétez les numéros manquants et sourcez de nouvelles entreprises. Chaque fiche reçoit une note de qualité avant d'arriver dans la file d'appels.",
     cta: "trial",
     media: { visual: "V3a" },
@@ -519,7 +519,7 @@ const pilotage: ModuleContent = {
   },
   hero: {
     eyebrow: "Pilotage d'équipe",
-    title: "Voyez tout, en temps réel.",
+    title: "L'activité de chaque commercial, en direct.",
     sub: "Les appels, rendez-vous et rappels de chaque commercial, sur un seul tableau de bord. Le planning répartit les campagnes, gère les absences et signale les conflits avant qu'ils ne coûtent un rendez-vous.",
     cta: "demo",
     media: { screenshot: "S4" },
@@ -610,7 +610,7 @@ const portail: ModuleContent = {
   },
   hero: {
     eyebrow: "Portail client",
-    title: "Vos résultats, visibles par ceux qui comptent.",
+    title: "Vos clients suivent leurs rendez-vous en direct.",
     sub: "Chaque client a son espace : rendez-vous, activité, rapports, fichiers et playbook commercial. Vous n'envoyez plus de reporting à la main, vous partagez un lien.",
     cta: "demo",
     media: { screenshot: "S6" },

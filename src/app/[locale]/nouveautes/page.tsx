@@ -44,7 +44,7 @@ export default async function ChangelogPage({ params }: PageProps<"/[locale]/nou
                   <time dateTime={r.date} className="text-small font-medium text-muted">
                     {dateFmt.format(new Date(r.date))}
                   </time>
-                  <h3 className="mt-1 font-display text-xl font-normal text-ink">{r.title}</h3>
+                  <h3 className="mt-1 font-display text-xl font-semibold text-ink">{r.title}</h3>
                   <p className="mt-2 text-muted">{r.body}</p>
                 </li>
               ))}
@@ -66,7 +66,7 @@ export default async function ChangelogPage({ params }: PageProps<"/[locale]/nou
           {soon.map((s) => (
             <li key={s.title} className="rounded-[20px] border border-dashed border-line-strong bg-white p-6">
               <Badge tone="soon">{ui.badges.soon}</Badge>
-              <h3 className="mt-4 font-display text-lg font-normal text-ink">{s.title}</h3>
+              <h3 className="mt-4 font-display text-lg font-semibold text-ink">{s.title}</h3>
               <p className="mt-2 text-[15px] leading-6 text-muted">{s.body}</p>
             </li>
           ))}

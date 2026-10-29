@@ -41,7 +41,7 @@ export async function ProofBar() {
               <StatCounter
                 value={s.value}
                 suffix={s.format === "percent" ? `${String.fromCharCode(0xa0)}%` : ""}
-                className="text-dawn font-display text-[40px] font-normal leading-none tracking-[-0.02em] md:text-[44px]"
+                className="text-dawn font-display text-[40px] font-semibold leading-none tracking-[-0.02em] md:text-[44px]"
               />
             );
             return (
@@ -145,7 +145,7 @@ export async function HowItWorks() {
           return (
             <li key={step.title} className="how-step relative flex gap-5 md:flex-col md:items-center md:text-center" style={{ ...vars({ "--i": i }), ...hueVar(hue) }}>
               <div className="relative shrink-0">
-                <div aria-hidden className="how-glow absolute -inset-4 rounded-[40px] bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--hue)_32%,transparent),transparent)] blur-lg" />
+                <div aria-hidden className="how-glow absolute -inset-4 rounded-[40px] bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--hue)_32%,transparent),transparent)]" />
                 <div className="how-tile relative size-28 overflow-hidden rounded-[26px] bg-white shadow-[0_1px_2px_rgb(11_18_32/0.05),0_18px_36px_-18px_color-mix(in_srgb,var(--hue)_55%,transparent)] ring-1 ring-line md:size-32">
                   <Visual id={step.visual} transparent showTag={false} className="size-full" />
                 </div>
@@ -154,7 +154,7 @@ export async function HowItWorks() {
                 </span>
               </div>
               <div className="how-text pt-2 md:pt-7">
-                <h3 className="font-display text-[22px] font-normal leading-7 text-ink">{step.title}</h3>
+                <h3 className="font-display text-[22px] font-semibold leading-7 text-ink">{step.title}</h3>
                 <p className="mx-auto mt-2 max-w-[17rem] text-[15px] leading-6 text-muted">{step.bodyText}</p>
               </div>
             </li>
@@ -246,7 +246,7 @@ export async function Audiences({ audience }: { audience: Audience | null }) {
                 </div>
                 <div className="flex flex-1 flex-col p-6 md:p-7">
                   <span className={cn("self-start rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset", h.soft, h.ink, h.ring)}>{card.plan}</span>
-                  <h3 className="mt-4 font-display text-[22px] font-normal leading-7 text-ink">{twoTone(card.title)}</h3>
+                  <h3 className="mt-4 font-display text-[22px] font-semibold leading-7 text-ink">{twoTone(card.title)}</h3>
                   <p className="mt-3 flex-1 text-[15px] leading-6 text-muted">{card.body}</p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                     {ui.cta.learnMore}
@@ -269,7 +269,7 @@ export async function BuiltByAgencies() {
   const words = b.quote.split(" ");
   return (
     <Section tone="surface" aria-labelledby="built-title" className="overflow-clip">
-      <div aria-hidden className="pointer-events-none absolute -right-40 top-10 size-[520px] rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.12),transparent)] blur-2xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-40 top-10 size-[520px] rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.12),transparent)]" />
       <div className="relative grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
         <div data-reveal="blur" className="lg:sticky lg:top-32 lg:self-start">
           <H2 id="built-title">{b.title}</H2>
@@ -289,7 +289,7 @@ export async function BuiltByAgencies() {
               />
             </svg>
             <p
-              className="mt-6 font-display text-[24px] font-normal leading-[34px] tracking-[-0.012em] text-ink md:text-[31px] md:leading-[43px]"
+              className="mt-6 font-display text-[24px] font-semibold leading-[34px] tracking-[-0.045em] text-ink md:text-[31px] md:leading-[43px]"
               style={vars({ "--n": words.length })}
             >
               {words.map((word, i) => (

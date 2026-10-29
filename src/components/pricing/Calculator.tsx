@@ -200,14 +200,14 @@ export function Calculator({
           <div aria-hidden className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_0%,#1d2a72_0%,#0b1230_55%,#060a1a_100%)]" />
             <div className="stars absolute inset-0 opacity-60" />
-            <div className="absolute -left-20 -top-24 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(51_85_255/0.55),transparent)] blur-3xl" />
-            <div className="absolute -bottom-24 -right-16 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.4),transparent)] blur-3xl [animation-delay:-9s]" />
+            <div className="absolute -left-20 -top-24 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(51_85_255/0.55),transparent)]" />
+            <div className="absolute -bottom-24 -right-16 size-72 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.4),transparent)] [animation-delay:-9s]" />
             <div className="grain absolute inset-0 opacity-[0.06] mix-blend-overlay" />
           </div>
           <p className="text-sm text-white/60">{labels.recommended}</p>
           <p
             key={plan.name}
-            className="mt-1 inline-block bg-[linear-gradient(95deg,#ffffff,#c9d3ff_45%,#ffc9b0)] bg-clip-text font-display text-[34px] font-normal leading-10 text-transparent motion-safe:animate-[rise_600ms_var(--ease-out-expo)_both]"
+            className="mt-1 inline-block bg-[linear-gradient(95deg,#ffffff,#c9d3ff_45%,#ffc9b0)] bg-clip-text font-display text-[34px] font-semibold leading-10 text-transparent motion-safe:animate-[rise_600ms_var(--ease-out-expo)_both]"
           >
             {plan.name}
           </p>
@@ -233,7 +233,7 @@ export function Calculator({
               <dd className="text-right">
                 <span
                   key={quote.monthlyTotal}
-                  className="num inline-block font-display text-[40px] font-normal leading-none motion-safe:animate-[rise_500ms_var(--ease-out-expo)_both]"
+                  className="num inline-block font-display text-[40px] font-semibold leading-none motion-safe:animate-[rise_500ms_var(--ease-out-expo)_both]"
                 >
                   {eurosExact(quote.monthlyTotal)}
                 </span>

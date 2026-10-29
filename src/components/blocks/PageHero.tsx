@@ -14,9 +14,9 @@ export function PageSky() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,color-mix(in_srgb,var(--hue)_7%,white)_58%,#ffffff_100%)]" />
-      <div className="absolute -left-[12%] -top-[24%] h-[78%] w-[52%] animate-aurora rounded-full bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--hue)_34%,transparent),transparent)] blur-3xl" />
-      <div className="absolute -right-[10%] -top-[6%] h-[64%] w-[44%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.18),transparent)] blur-3xl [animation-delay:-8s] [animation-duration:28s]" />
-      <div className="absolute right-[18%] top-[48%] h-[40%] w-[34%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(255_170_140/0.16),transparent)] blur-3xl [animation-delay:-14s] [animation-duration:32s]" />
+      <div className="absolute -left-[12%] -top-[24%] h-[78%] w-[52%] animate-aurora rounded-full bg-[radial-gradient(closest-side,color-mix(in_srgb,var(--hue)_34%,transparent),transparent)]" />
+      <div className="absolute -right-[10%] -top-[6%] h-[64%] w-[44%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.18),transparent)] [animation-delay:-8s] [animation-duration:28s]" />
+      <div className="absolute right-[18%] top-[48%] h-[40%] w-[34%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(255_170_140/0.16),transparent)] [animation-delay:-14s] [animation-duration:32s]" />
       <div className="bg-grid absolute inset-0 [--grid-color:color-mix(in_srgb,var(--hue)_10%,transparent)] [--grid-size:60px] [mask-image:radial-gradient(ellipse_75%_65%_at_30%_0%,#000_20%,transparent_75%)]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
     </div>

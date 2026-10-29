@@ -131,7 +131,7 @@ function Title({ icon, tone, title, sub, right }: { icon: ReactNode; tone: Tone;
         <span className={cn("grid size-9 place-items-center rounded-xl", TONE[tone].soft, TONE[tone].text)}>{icon}</span>
         <span className="leading-tight">
           <span className="block text-[15px] font-semibold">{title}</span>
-          <span className="mt-0.5 block text-[11.5px] text-[#6b7280]">{sub}</span>
+          <span className="mt-0.5 block text-[11.5px] text-[#6b6860]">{sub}</span>
         </span>
       </p>
       {right}
@@ -187,10 +187,10 @@ function Kpi({
         {chip}
       </div>
       <p className="mt-auto flex items-baseline gap-2">
-        <span className="num font-display text-[50px] leading-none tracking-[-0.01em]">{value}</span>
-        {unit ? <span className="text-[13px] font-medium text-[#6b7280]">{unit}</span> : null}
+        <span className="num font-display font-semibold tracking-[-0.045em] text-[50px] leading-none tracking-[-0.01em]">{value}</span>
+        {unit ? <span className="text-[13px] font-medium text-[#6b6860]">{unit}</span> : null}
       </p>
-      <p className="mt-2 truncate text-[12px] text-[#6b7280]">{foot}</p>
+      <p className="mt-2 truncate text-[12px] text-[#6b6860]">{foot}</p>
     </div>
   );
 }
@@ -198,8 +198,8 @@ function Kpi({
 function DateTile({ day, month, hot, muted }: { day: number; month: string; hot?: boolean; muted?: boolean }) {
   return (
     <span className={cn("flex size-11 shrink-0 flex-col items-center justify-center rounded-xl bg-white ring-1", hot ? "ring-rose/30" : "ring-black/[0.07]")}>
-      <span className={cn("num font-display text-[19px] leading-none", muted && "text-[#5b6475]")}>{day}</span>
-      <span className={cn("mt-1 text-[9px] font-bold uppercase leading-none tracking-[0.08em]", hot ? "text-rose-ink" : "text-[#9aa3b2]")}>{month}</span>
+      <span className={cn("num font-display font-semibold tracking-[-0.04em] text-[19px] leading-none", muted && "text-[#5b6475]")}>{day}</span>
+      <span className={cn("mt-1 text-[9px] font-bold uppercase leading-none tracking-[0.08em]", hot ? "text-rose-ink" : "text-[#74726b]")}>{month}</span>
     </span>
   );
 }
@@ -242,17 +242,17 @@ export function PortalMock() {
   const weeks = [...WEEKS, { label: "S40", dates: "En cours", value: week, current: true }];
 
   return (
-    <div ref={ref} aria-hidden className="relative flex flex-col overflow-hidden bg-[#f7f8fb] font-sans leading-snug text-[#0b1220]" style={{ width: MOCK_W, height: MOCK_H }}>
+    <div ref={ref} aria-hidden className="relative flex flex-col overflow-hidden bg-transparent font-sans leading-snug text-[#0b0b0c]" style={{ width: MOCK_W, height: MOCK_H }}>
       {/* Top bar: the agency and its client, the portal tabs, sharing */}
       <header className="grid h-16 shrink-0 grid-cols-[1fr_auto_1fr] items-center border-b border-black/5 bg-white px-6">
         <div className="flex items-center gap-2.5">
-          <span className="grid size-8 place-items-center rounded-[10px] bg-[#0b0f1a] font-display text-[18px] leading-none text-white">S</span>
+          <span className="grid size-8 place-items-center rounded-[10px] bg-[#0b0b0c] font-display font-semibold tracking-[-0.04em] text-[18px] leading-none text-white">S</span>
           <span className="text-[14px] font-semibold">Suzali Conseil</span>
           <span className="px-1 text-[15px] text-[#c2c8d2]">×</span>
           <span className="grid size-8 place-items-center rounded-[10px] bg-rose-soft text-[11.5px] font-bold tracking-wide text-rose-ink ring-1 ring-rose/20">TL</span>
           <span className="leading-tight">
             <span className="block text-[14px] font-semibold">Transports Lemaire</span>
-            <span className="block text-[10.5px] text-[#6b7280]">Espace client</span>
+            <span className="block text-[10.5px] text-[#6b6860]">Espace client</span>
           </span>
         </div>
 
@@ -262,7 +262,7 @@ export function PortalMock() {
             { label: "Rapports", Icon: ChartColumn, on: true },
             { label: "Activité", Icon: Activity },
           ].map(({ label, Icon, on }) => (
-            <span key={label} className={cn("flex items-center gap-2 rounded-full px-4 py-2", on ? "bg-[#0b0f1a] text-white" : "text-[#5b6475]")}>
+            <span key={label} className={cn("flex items-center gap-2 rounded-full px-4 py-2", on ? "bg-[#0b0b0c] text-white" : "text-[#5b6475]")}>
               <Icon size={14} />
               {t(label)}
             </span>
@@ -278,7 +278,7 @@ export function PortalMock() {
           <span
             className={cn(
               "flex h-9 w-[160px] items-center justify-center gap-2 rounded-xl text-[13px] font-semibold text-white transition-[scale,background-color,box-shadow] duration-150",
-              pressed ? "scale-95 bg-accent-hover shadow-none" : "bg-accent shadow-[0_8px_20px_-8px_rgb(51_85_255/0.8)]",
+              pressed ? "scale-95 bg-[#2a2a2c] shadow-none" : "bg-[#0b0b0c] shadow-[0_8px_20px_-10px_rgb(11_11_12/0.6)]",
             )}
           >
             {copied ? <Check size={14} strokeWidth={3} /> : <Link2 size={14} strokeWidth={2.5} />}
@@ -288,9 +288,9 @@ export function PortalMock() {
             <Avatar initials="ÉL" seed={2} size={34} />
             <span className="leading-tight">
               <span className="block text-[12.5px] font-semibold">Élodie Lemaire</span>
-              <span className="block text-[10.5px] text-[#6b7280]">Directrice commerciale</span>
+              <span className="block text-[10.5px] text-[#6b6860]">Directrice commerciale</span>
             </span>
-            <ChevronDown size={14} className="text-[#9aa3b2]" />
+            <ChevronDown size={14} className="text-[#74726b]" />
           </span>
         </div>
       </header>
@@ -300,21 +300,21 @@ export function PortalMock() {
         <div className="flex items-center justify-between gap-6">
           <div>
             <p className="flex items-center gap-3">
-              <span className="font-display text-[32px] leading-none tracking-[-0.01em]">{t("Rapport de campagne · Septembre 2026")}</span>
+              <span className="font-display font-semibold tracking-[-0.045em] text-[32px] leading-none tracking-[-0.01em]">{t("Rapport de campagne · Septembre 2026")}</span>
               <span className="flex items-center gap-1.5 rounded-full bg-mint-soft px-2.5 py-1 text-[11px] font-semibold text-mint-ink">
                 <span className="size-1.5 animate-pulse-dot rounded-full bg-mint" /> En direct
               </span>
             </p>
-            <p className="mt-2.5 text-[12.5px] text-[#6b7280]">
-              Mission <b className="font-semibold text-[#0b1220]">Industriels Rhône-Alpes</b> · {t("du 1er au 30 septembre 2026 · menée par l'équipe Suzali Conseil")}
+            <p className="mt-2.5 text-[12.5px] text-[#6b6860]">
+              Mission <b className="font-semibold text-[#0b0b0c]">Industriels Rhône-Alpes</b> · {t("du 1er au 30 septembre 2026 · menée par l'équipe Suzali Conseil")}
             </p>
           </div>
           <div className="flex items-center gap-2 text-[12.5px] font-semibold">
             <span className="flex h-9 items-center gap-2 rounded-xl bg-white px-3 ring-1 ring-black/10">
-              <CalendarDays size={14} className="text-[#6b7280]" /> Septembre 2026 <ChevronDown size={14} className="text-[#9aa3b2]" />
+              <CalendarDays size={14} className="text-[#6b6860]" /> Septembre 2026 <ChevronDown size={14} className="text-[#74726b]" />
             </span>
             <span className="flex h-9 items-center gap-2 rounded-xl bg-white px-3 ring-1 ring-black/10">
-              <Download size={14} className="text-[#6b7280]" /> Rapport PDF
+              <Download size={14} className="text-[#6b6860]" /> Rapport PDF
             </span>
           </div>
         </div>
@@ -371,7 +371,7 @@ export function PortalMock() {
             <div className="relative mt-auto" style={{ height: PLOT_TOP + PLOT_H + AXIS_H }}>
               {[0, 2, 4, 6].map((v) => (
                 <div key={v} className="absolute inset-x-0 flex -translate-y-1/2 items-center gap-2.5" style={{ top: PLOT_TOP + PLOT_H - v * UNIT }}>
-                  <span className="num w-4 text-right text-[11.5px] font-medium text-[#9aa3b2]">{v}</span>
+                  <span className="num w-4 text-right text-[11.5px] font-medium text-[#74726b]">{v}</span>
                   <span className={cn("h-px flex-1", v === 0 ? "bg-[#dfe3ea]" : "bg-[#eef0f4]")} />
                 </div>
               ))}
@@ -384,7 +384,7 @@ export function PortalMock() {
                       <div className="relative flex w-full flex-col items-center justify-end" style={{ height: PLOT_TOP + PLOT_H }}>
                         <span
                           key={current ? `v-${w.value}` : "v"}
-                          className={cn("mb-2 font-display text-[22px] leading-none", current ? "animate-pop text-rose-ink" : "text-[#374151]")}
+                          className={cn("mb-2 font-display font-semibold tracking-[-0.045em] text-[22px] leading-none", current ? "animate-pop text-rose-ink" : "text-[#374151]")}
                         >
                           {w.value}
                         </span>
@@ -401,7 +401,7 @@ export function PortalMock() {
                       </div>
                       <div className="relative mt-3 text-center leading-tight">
                         <p className={cn("text-[13px] font-semibold", current && "text-rose-ink")}>{w.label}</p>
-                        <p className={cn("mt-0.5 text-[11px]", current ? "font-semibold text-rose-ink" : "text-[#9aa3b2]")}>{w.dates}</p>
+                        <p className={cn("mt-0.5 text-[11px]", current ? "font-semibold text-rose-ink" : "text-[#74726b]")}>{w.dates}</p>
                       </div>
                     </div>
                   );
@@ -438,7 +438,7 @@ export function PortalMock() {
                     className={cn(
                       "absolute inset-x-0 top-0 flex items-center gap-3 rounded-2xl px-3",
                       s < 0 ? "transition-none" : "transition-[transform,background-color,box-shadow] duration-700 ease-out-expo",
-                      fresh ? "bg-rose-soft/70 shadow-[inset_0_0_0_1px_rgb(247_70_138/0.22)]" : "bg-[#f7f8fb] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.03)]",
+                      fresh ? "bg-rose-soft/70 shadow-[inset_0_0_0_1px_rgb(247_70_138/0.22)]" : "bg-transparent shadow-[inset_0_0_0_1px_rgb(0_0_0/0.03)]",
                     )}
                     style={{ height: ROW_H, transform: `translateY(${s * ROW_STEP}px)` }}
                   >
@@ -447,10 +447,10 @@ export function PortalMock() {
                       <span className="flex items-center gap-2">
                         <span className="truncate text-[14px] font-semibold">{r.company}</span>
                         {s === 0 ? (
-                          <span className="animate-pop rounded-full bg-rose px-2 py-[3px] text-[9.5px] font-bold uppercase leading-none tracking-[0.06em] text-white">Nouveau</span>
+                          <span className="animate-pop rounded-full bg-rose-ink px-2 py-[3px] text-[9.5px] font-bold uppercase leading-none tracking-[0.06em] text-white">Nouveau</span>
                         ) : null}
                       </span>
-                      <span className="mt-0.5 block truncate text-[11.5px] text-[#6b7280]">
+                      <span className="mt-0.5 block truncate text-[11.5px] text-[#6b6860]">
                         {r.person} · {r.role}
                       </span>
                     </span>
@@ -465,7 +465,7 @@ export function PortalMock() {
               })}
             </div>
 
-            <p className="mt-3.5 flex items-center gap-2.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#9aa3b2]">
+            <p className="mt-3.5 flex items-center gap-2.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[#74726b]">
               {t("Rendez-vous passé · à noter")}
               <span className="h-px flex-1 bg-black/[0.06]" />
             </p>
@@ -473,7 +473,7 @@ export function PortalMock() {
               <DateTile day={past.day} month={past.month} muted />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[14px] font-semibold">{past.company}</span>
-                <span className="mt-0.5 block truncate text-[11.5px] text-[#6b7280]">
+                <span className="mt-0.5 block truncate text-[11.5px] text-[#6b6860]">
                   {past.person} · {past.role}
                 </span>
               </span>
@@ -512,7 +512,7 @@ export function PortalMock() {
       {/* Toast under the share button, over the report actions */}
       <div
         className={cn(
-          "absolute right-6 top-[80px] z-20 flex h-[54px] w-[318px] items-center gap-3 rounded-2xl bg-[#0b0f1a] pl-3.5 pr-4 text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] [transition:opacity_180ms_ease,translate_500ms_var(--ease-out-expo)]",
+          "absolute right-6 top-[80px] z-20 flex h-[54px] w-[318px] items-center gap-3 rounded-2xl bg-[#0b0b0c] pl-3.5 pr-4 text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] [transition:opacity_180ms_ease,translate_500ms_var(--ease-out-expo)]",
           copied ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
         )}
       >

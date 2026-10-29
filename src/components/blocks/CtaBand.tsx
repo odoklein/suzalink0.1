@@ -33,8 +33,8 @@ export async function CtaBand({
           <div aria-hidden className="absolute inset-0 -z-10">
             {/* Sky at sunrise: blue overhead, warming to peach and gold at the horizon */}
             <div className="absolute inset-0 bg-[linear-gradient(180deg,#6aa4ff_0%,#94c1ff_26%,#d3e4ff_52%,#ffe1d3_78%,#ffd59e_100%)]" />
-            <div className="absolute left-1/2 top-[70%] size-[640px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(255_222_160/0.95),rgb(255_168_130/0.45)_45%,transparent)] blur-2xl" />
-            <div className="absolute -left-[10%] -top-[30%] h-[70%] w-[50%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.28),transparent)] blur-3xl" />
+            <div className="absolute left-1/2 top-[70%] size-[640px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(255_222_160/0.95),rgb(255_168_130/0.45)_45%,transparent)]" />
+            <div className="absolute -left-[10%] -top-[30%] h-[70%] w-[50%] animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.28),transparent)]" />
             <Clouds className="top-[6%] opacity-90" duration={110} />
             <Clouds className="top-[40%] h-52 scale-125 opacity-60" duration={150} reverse />
             <div className="bg-grid absolute inset-0 [--grid-color:rgb(255_255_255/0.2)] [mask-image:linear-gradient(to_bottom,#000,transparent_70%)]" />

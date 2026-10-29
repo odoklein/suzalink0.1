@@ -29,7 +29,7 @@ export default async function IntegrationsPage({ params }: PageProps<"/[locale]/
       <Section tone="surface" containerClassName="space-y-14">
         {categories.map((cat) => (
           <div key={cat} className="grid gap-6 lg:grid-cols-[220px_1fr]">
-            <h2 className="font-display text-xl font-normal text-ink">{integrationCategories[cat]}</h2>
+            <h2 className="font-display text-xl font-semibold text-ink">{integrationCategories[cat]}</h2>
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {items
                 .filter((i) => i.category === cat)

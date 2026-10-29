@@ -256,7 +256,7 @@ function BookedCard({ m, state, selected, animate }: { m: Meeting; state: SlotSt
         "absolute inset-x-[2px] z-10 rounded-[9px] border-l-[3px] py-1 pl-1.5 pr-1 transition-[opacity,scale,background-color,border-color,color,box-shadow] duration-500 ease-out-expo",
         state === "hidden" && "scale-95 border-transparent opacity-0",
         state === "selecting" && "border-transparent bg-mint-soft/70 text-mint-ink outline-[1.5px] outline-offset-[-1.5px] outline-mint outline-dashed",
-        live && "border-[#0a9e6e] bg-mint text-white shadow-[0_12px_24px_-12px_rgb(16_185_129/0.95)]",
+        live && "border-[#0a7a56] bg-mint-ink text-white shadow-[0_12px_24px_-12px_rgb(16_185_129/0.95)]",
         state === "done" && "border-mint bg-mint-soft text-mint-ink",
         selected && state === "done" && "ring-1 ring-mint/60",
       )}
@@ -307,8 +307,8 @@ function Step({ on, active, tone, icon, label, sub, line }: { on: boolean; activ
           </span>
         ) : null}
       </div>
-      <p className={cn("mt-1.5 whitespace-nowrap text-[10.5px] font-semibold leading-4 transition-colors duration-500", on ? "text-[#0b1220]" : "text-[#9aa3b2]")}>{label}</p>
-      <div className="mt-px flex items-center gap-1 whitespace-nowrap text-[9.5px] leading-[14px] text-[#6b7280]">{sub}</div>
+      <p className={cn("mt-1.5 whitespace-nowrap text-[10.5px] font-semibold leading-4 transition-colors duration-500", on ? "text-[#0b0b0c]" : "text-[#74726b]")}>{label}</p>
+      <div className="mt-px flex items-center gap-1 whitespace-nowrap text-[9.5px] leading-[14px] text-[#6b6860]">{sub}</div>
     </li>
   );
 }
@@ -351,9 +351,10 @@ export function BookingMock() {
     <div ref={ref}>
       <MockShell
         variant="sdr"
-        active="Rendez-vous"
+        active="Calendrier"
         crumb="Rendez-vous"
-        page="Planning"
+        tabs={["Mes RDV", "Calendrier"]}
+        page="Calendrier"
         user={{ initials: "CR", name: "Camille R.", role: "SDR" }}
         right={
           calling ? (
@@ -361,33 +362,33 @@ export function BookingMock() {
               <span className="size-1.5 animate-pulse-dot rounded-full bg-rose" /> En appel · {m.contact} <span className="num">{m.live[phase]}</span>
             </span>
           ) : (
-            <span className="flex items-center gap-1.5 rounded-lg bg-[#f6f7f9] px-2 py-1 font-medium text-[#0b1220] ring-1 ring-black/5">
-              <PhoneOff size={11} className="text-[#9aa3b2]" /> Appel terminé · {f.contact} · {f.call}
+            <span className="flex items-center gap-1.5 rounded-lg bg-[#f1f0ec] px-2 py-1 font-medium text-[#0b0b0c] ring-1 ring-black/5">
+              <PhoneOff size={11} className="text-[#74726b]" /> Appel terminé · {f.contact} · {f.call}
             </span>
           )
         }
       >
-        <div className="grid h-full grid-cols-[minmax(0,1fr)_360px] gap-3 bg-[#f7f8fb] p-4 leading-snug">
+        <div className="grid h-full grid-cols-[minmax(0,1fr)_360px] gap-3 bg-transparent p-4 leading-snug">
           {/* Week planning */}
           <Panel className="flex min-w-0 flex-col p-3">
             <div className="flex items-center justify-between gap-3 px-1">
               <PanelTitle icon={<CalendarDays size={14} />} tone="mint" title="Du 5 au 9 octobre 2026" sub="Logistique IDF · via Cal.com" />
               <div className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[10.5px] font-medium">
                 <span className="flex items-center rounded-lg ring-1 ring-black/10">
-                  <span className="grid size-[26px] place-items-center text-[#6b7280]">
+                  <span className="grid size-[26px] place-items-center text-[#6b6860]">
                     <ChevronLeft size={13} />
                   </span>
                   <span className="px-1">{t("Aujourd'hui")}</span>
-                  <span className="grid size-[26px] place-items-center text-[#6b7280]">
+                  <span className="grid size-[26px] place-items-center text-[#6b6860]">
                     <ChevronRight size={13} />
                   </span>
                 </span>
                 <span className="flex rounded-lg p-0.5 ring-1 ring-black/10">
-                  <span className="px-2 py-1 text-[#6b7280]">Jour</span>
-                  <span className="rounded-md bg-[#0b0f1a] px-2 py-1 font-semibold text-white">Semaine</span>
-                  <span className="px-2 py-1 text-[#6b7280]">Mois</span>
+                  <span className="px-2 py-1 text-[#6b6860]">Jour</span>
+                  <span className="rounded-md bg-[#0b0b0c] px-2 py-1 font-semibold text-white">Semaine</span>
+                  <span className="px-2 py-1 text-[#6b6860]">Mois</span>
                 </span>
-                <span className="flex items-center gap-1 rounded-lg bg-accent px-2.5 py-[7px] font-semibold text-white">
+                <span className="flex items-center gap-1 rounded-lg bg-[#0b0b0c] px-2.5 py-[7px] font-semibold text-white">
                   <CalendarPlus size={12} /> Prendre RDV
                 </span>
               </div>
@@ -395,12 +396,12 @@ export function BookingMock() {
 
             {/* Day headers */}
             <div className="mt-3 grid grid-cols-[36px_repeat(5,minmax(0,1fr))] border-b border-black/[0.06] pb-2">
-              <span className="self-center text-[8.5px] font-medium text-[#9aa3b2]">UTC+2</span>
+              <span className="self-center text-[8.5px] font-medium text-[#74726b]">UTC+2</span>
               {DAYS.map((d, i) => (
                 <div key={d.label} className="flex items-center gap-1.5 px-2">
-                  <span className="text-[10px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{d.label}</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wide text-[#74726b]">{d.label}</span>
                   <span className={cn("grid size-6 place-items-center rounded-full text-[12.5px] font-semibold", i === TODAY && "bg-accent text-white")}>{d.n}</span>
-                  <span className="num ml-auto text-[9.5px] font-medium text-[#9aa3b2]">{counts[i]} RDV</span>
+                  <span className="num ml-auto text-[9.5px] font-medium text-[#74726b]">{counts[i]} RDV</span>
                 </div>
               ))}
             </div>
@@ -409,11 +410,11 @@ export function BookingMock() {
             <div className="relative grid grid-cols-[36px_repeat(5,minmax(0,1fr))]" style={{ height: HOURS * H }}>
               <div className="relative">
                 {Array.from({ length: HOURS }, (_, i) => (
-                  <span key={i} className="num absolute right-2 text-[9.5px] font-medium leading-3 text-[#9aa3b2]" style={{ top: i * H + 3 }}>
+                  <span key={i} className="num absolute right-2 text-[9.5px] font-medium leading-3 text-[#74726b]" style={{ top: i * H + 3 }}>
                     {hhmm(START + i)}
                   </span>
                 ))}
-                <span className="num absolute right-1 z-20 -translate-y-1/2 rounded-[4px] bg-rose px-1 py-px text-[8.5px] font-bold leading-3 text-white" style={{ top: y(NOW) }}>
+                <span className="num absolute right-1 z-20 -translate-y-1/2 rounded-[4px] bg-rose-ink px-1 py-px text-[8.5px] font-bold leading-3 text-white" style={{ top: y(NOW) }}>
                   {hhmm(NOW)}
                 </span>
               </div>
@@ -455,7 +456,7 @@ export function BookingMock() {
               {/* Toast */}
               <div
                 className={cn(
-                  "absolute inset-x-6 bottom-3 z-30 flex items-center gap-2.5 rounded-2xl bg-[#0b0f1a] px-3.5 py-2.5 text-[11.5px] font-medium text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
+                  "absolute inset-x-6 bottom-3 z-30 flex items-center gap-2.5 rounded-2xl bg-[#0b0b0c] px-3.5 py-2.5 text-[11.5px] font-medium text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
                   toastOn ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
                 )}
               >
@@ -468,7 +469,7 @@ export function BookingMock() {
             </div>
 
             {/* Legend */}
-            <div className="mt-auto flex items-center gap-3 px-1 pt-2.5 text-[10px] font-medium text-[#6b7280]">
+            <div className="mt-auto flex items-center gap-3 px-1 pt-2.5 text-[10px] font-medium text-[#6b6860]">
               {(["confirme", "attente", "manque", "annule"] as Status[]).map((s) => (
                 <span key={s} className="flex items-center gap-1.5">
                   <span className={cn("size-2 rounded-[3px]", STATUSES[s].dot)} /> {STATUSES[s].label}
@@ -490,12 +491,12 @@ export function BookingMock() {
               <Avatar initials={f.initials} seed={f.seed} size={42} className="shadow-[0_8px_18px_-8px_rgb(51_85_255/0.6)]" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="whitespace-nowrap font-display text-[20px] leading-6">{f.company}</p>
+                  <p className="whitespace-nowrap font-display font-semibold tracking-[-0.045em] text-[20px] leading-6">{f.company}</p>
                   <Chip tone={fk.tone}>
                     <fk.Icon size={10} /> {fk.label}
                   </Chip>
                 </div>
-                <p className="mt-0.5 whitespace-nowrap text-[11px] text-[#6b7280]">
+                <p className="mt-0.5 whitespace-nowrap text-[11px] text-[#6b6860]">
                   {f.contact} · {f.role}
                 </p>
               </div>
@@ -507,8 +508,8 @@ export function BookingMock() {
                 ["Horaire", range(f.from, f.to)],
                 ["Commercial", f.owner],
               ].map(([k, v]) => (
-                <div key={k} className="rounded-xl bg-[#f7f8fb] px-2.5 py-2">
-                  <p className="text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{k}</p>
+                <div key={k} className="rounded-xl bg-transparent px-2.5 py-2">
+                  <p className="text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">{k}</p>
                   <p className="mt-0.5 whitespace-nowrap text-[11.5px] font-semibold">{v}</p>
                 </div>
               ))}
@@ -516,12 +517,12 @@ export function BookingMock() {
 
             <div className="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-3.5">
               <p className="flex items-center gap-2 text-[12.5px] font-semibold">
-                <FileText size={13} className="text-[#6b7280]" /> Fiche RDV
+                <FileText size={13} className="text-[#6b6860]" /> Fiche RDV
                 <span className="inline-flex items-center gap-1 rounded-full bg-violet-soft px-2 py-0.5 text-[10px] font-semibold text-violet-ink">
                   <Sparkles size={10} className={cn(drafting && "animate-pulse-dot")} /> {drafting ? t("L'IA rédige…") : t("Rédigée par l'IA")}
                 </span>
               </p>
-              <span className="flex items-center gap-1 text-[10px] text-[#6b7280]">
+              <span className="flex items-center gap-1 text-[10px] text-[#6b6860]">
                 <AudioLines size={11} /> Transcription · {f.call}
               </span>
             </div>
@@ -536,13 +537,13 @@ export function BookingMock() {
                     <span
                       className={cn(
                         "grid size-6 shrink-0 place-items-center rounded-lg transition-colors duration-300",
-                        typing ? "bg-violet-soft text-violet-ink" : written ? "bg-mint-soft text-mint-ink" : "bg-[#f1f3f6] text-[#9aa3b2]",
+                        typing ? "bg-violet-soft text-violet-ink" : written ? "bg-mint-soft text-mint-ink" : "bg-[#f1f3f6] text-[#74726b]",
                       )}
                     >
                       <part.Icon size={12} />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className={cn("text-[11px] font-semibold leading-4", !written && "text-[#9aa3b2]")}>{part.title}</p>
+                      <p className={cn("text-[11px] font-semibold leading-4", !written && "text-[#74726b]")}>{part.title}</p>
                       {written ? (
                         <div className="mt-0.5 text-[11px] leading-[17px] text-[#4b5563]">
                           {lines.map((line, l) => (
@@ -578,7 +579,7 @@ export function BookingMock() {
             </ol>
 
             {/* Manager validation */}
-            <div className="mt-auto rounded-2xl bg-[#f7f8fb] p-3">
+            <div className="mt-auto rounded-2xl bg-transparent p-3">
               <div className="flex items-center justify-between">
                 <p className="text-[11px] font-semibold">Validation manager</p>
                 <Chip key={confirmed ? "ok" : "wait"} tone={confirmed ? "mint" : "sun"} className={cn(played > 0 && "animate-pop")}>
@@ -621,7 +622,7 @@ export function BookingMock() {
                   sub={notified ? "Fiche RDV jointe" : "après confirmation"}
                 />
               </ol>
-              <p className="mt-3 border-t border-black/[0.06] pt-2.5 text-[10px] leading-snug text-[#6b7280]">
+              <p className="mt-3 border-t border-black/[0.06] pt-2.5 text-[10px] leading-snug text-[#6b6860]">
                 {notified ? t(`${f.owner} a reçu le rendez-vous et sa fiche.`) : t("Le client n'est prévenu qu'après la confirmation d'un manager.")}
               </p>
             </div>

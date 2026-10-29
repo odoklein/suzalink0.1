@@ -34,7 +34,7 @@ export function Eyebrow({ children, className, hue = "accent", index }: { childr
   const h = HUE[hue];
   return (
     <p className={cn("flex", className)}>
-      <span className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-1.5 pr-3 text-[13px] font-medium leading-5 text-ink-soft shadow-[0_1px_2px_rgb(11_18_32/0.05),0_6px_16px_-8px_rgb(51_85_255/0.28)] ring-1 ring-line backdrop-blur">
+      <span className="inline-flex items-center gap-2 rounded-full bg-white/85 py-1 pl-1.5 pr-3 text-[13px] font-medium leading-5 text-ink-soft shadow-[0_1px_2px_rgb(11_18_32/0.05),0_6px_16px_-8px_rgb(51_85_255/0.28)] ring-1 ring-line">
         {index ? (
           <span className={cn("num inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-bold", h.soft, h.ink)}>{index}</span>
         ) : (
@@ -73,8 +73,8 @@ export function H1({ children, className, id, size = "full" }: { children: React
     <h1
       id={id}
       className={cn(
-        "font-display font-normal text-ink",
-        size === "split" ? "text-h1m md:text-[3.25rem] md:leading-[3.5rem] md:tracking-[-0.022em] xl:text-[3.75rem] xl:leading-[4rem]" : "text-h1m md:text-h1",
+        "font-display font-semibold text-ink",
+        size === "split" ? "text-h1m md:text-[3.25rem] md:leading-[3.5rem] md:tracking-[-0.05em] xl:text-[3.75rem] xl:leading-[4rem]" : "text-h1m md:text-h1",
         className,
       )}
     >
@@ -86,14 +86,14 @@ export function H1({ children, className, id, size = "full" }: { children: React
 /** `dark` for headlines on a night stage. */
 export function H2({ children, className, id, dark }: { children: ReactNode; className?: string; id?: string; dark?: boolean }) {
   return (
-    <h2 id={id} className={cn("font-display text-h2m font-normal md:text-h2", dark ? "text-white" : "text-ink", className)}>
+    <h2 id={id} className={cn("font-display text-h2m font-semibold md:text-h2", dark ? "text-white" : "text-ink", className)}>
       {twoTone(children, dark)}
     </h2>
   );
 }
 
 export function H3({ children, className, as: Tag = "h3" }: { children: ReactNode; className?: string; as?: "h3" | "h4" }) {
-  return <Tag className={cn("font-display text-h3 font-normal text-ink", className)}>{children}</Tag>;
+  return <Tag className={cn("font-display text-h3 font-semibold text-ink", className)}>{children}</Tag>;
 }
 
 export function Lead({ children, className }: { children: ReactNode; className?: string }) {

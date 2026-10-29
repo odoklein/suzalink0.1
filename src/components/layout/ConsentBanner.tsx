@@ -17,8 +17,14 @@ type Labels = {
   categories: Record<"necessary" | "analytics" | "marketing", { title: string; body: string }>;
 };
 
+/*
+ * Server-rendered so it paints with the page instead of after hydration: until
+ * the effect has read the cookie (open === null) the dialog is "pending", and
+ * globals.css shows it only when the pre-paint script in the layout found no
+ * choice (html[data-consent-needed]).
+ */
 export function ConsentBanner({ labels }: { labels: Labels }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean | null>(null);
   const [details, setDetails] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
@@ -34,17 +40,19 @@ export function ConsentBanner({ labels }: { labels: Labels }) {
       show();
       setDetails(true);
     };
+    const hide = () => setOpen(false);
     // Reading a cookie is a browser-only side effect, so the check waits for mount.
-    if (!readConsent()) show();
+    if (readConsent()) hide();
+    else show();
     window.addEventListener(CONSENT_OPEN_EVENT, onOpen);
     return () => window.removeEventListener(CONSENT_OPEN_EVENT, onOpen);
   }, []);
 
   useEffect(() => {
-    document.documentElement.toggleAttribute("data-consent-open", open);
+    if (open !== null) document.documentElement.toggleAttribute("data-consent-open", open);
   }, [open]);
 
-  if (!open) return null;
+  if (open === false) return null;
 
   const decide = (choice: { analytics: boolean; marketing: boolean }) => {
     writeConsent(choice);
@@ -59,6 +67,7 @@ export function ConsentBanner({ labels }: { labels: Labels }) {
     <div
       role="dialog"
       aria-modal="false"
+      data-consent-pending={open === null ? "" : undefined}
       aria-labelledby="consent-title"
       className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-xl rounded-[20px] bg-white p-5 shadow-[var(--shadow-lift)] ring-1 ring-line sm:inset-x-auto sm:left-6 sm:right-auto sm:max-w-md"
     >

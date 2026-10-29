@@ -43,7 +43,7 @@ export default async function SecurityPage({ params }: PageProps<"/[locale]/secu
               <Lead className="mt-5">{s.hosting.body}</Lead>
               {isLive("ai-mistral") ? (
                 <div className="mt-10 rounded-[20px] bg-white p-6 ring-1 ring-line">
-                  <p className="font-display text-lg font-normal text-ink">{s.ai.title}</p>
+                  <p className="font-display text-lg font-semibold text-ink">{s.ai.title}</p>
                   <p className="mt-1 text-muted">{s.ai.body}</p>
                 </div>
               ) : null}
@@ -64,7 +64,7 @@ export default async function SecurityPage({ params }: PageProps<"/[locale]/secu
                 <IconTile name={c.icon} />
                 {c.soon ? <Badge tone="soon">{ui.badges.soon}</Badge> : null}
               </div>
-              <h3 className="mt-5 font-display text-lg font-normal text-ink">{c.title}</h3>
+              <h3 className="mt-5 font-display text-lg font-semibold text-ink">{c.title}</h3>
               <p className="mt-2 text-[15px] leading-6 text-muted">{c.body}</p>
             </li>
           ))}

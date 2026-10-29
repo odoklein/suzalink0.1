@@ -25,7 +25,7 @@ export function KeyChip({ keyLabel, label, sub, className }: { keyLabel: string;
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-2xl bg-white/95 p-2.5 pr-4 shadow-[var(--shadow-lift)] ring-1 ring-line backdrop-blur",
+        "flex items-center gap-3 rounded-2xl bg-white/95 p-2.5 pr-4 shadow-[var(--shadow-lift)] ring-1 ring-line",
         className,
       )}
     >

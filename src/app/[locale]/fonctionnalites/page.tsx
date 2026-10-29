@@ -102,7 +102,7 @@ export default async function FeaturesPage({ params }: PageProps<"/[locale]/fonc
                         <Icon name={m.icon} className="size-5" />
                       </span>
                     ) : null}
-                    <h2 className={cn("font-display text-[26px] font-normal leading-8", night ? "text-white" : "text-ink")}>{m.name}</h2>
+                    <h2 className={cn("font-display text-[26px] font-semibold leading-8", night ? "text-white" : "text-ink")}>{m.name}</h2>
                     <p className={cn("mt-2 flex-1", night ? "text-white/70" : "text-muted")}>{m.hero.sub}</p>
                     <span className={cn("mt-6 inline-flex items-center gap-1.5 font-semibold", night ? "text-white" : "text-accent")}>
                       {ui.cta.learnMore}

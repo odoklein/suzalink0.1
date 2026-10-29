@@ -13,7 +13,7 @@ import { Logo, Wordmark } from "./Logo";
 function Column({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/45">{title}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/65">{title}</p>
       <ul className="mt-5 space-y-3 text-small text-muted">{children}</ul>
     </div>
   );

@@ -325,28 +325,28 @@ export function TeamMock() {
 
   return (
     <div ref={ref}>
-      <MockShell variant="manager" active="Performance" crumb="Manager" page="Équipe · Classement">
-        <div className="flex h-full flex-col gap-3 bg-[#f7f8fb] p-4 leading-[1.35]">
+      <MockShell variant="manager" active="Pilotage" activeSub="Statistiques" crumb="Pilotage" tabs={["Statistiques", "Analyse IA"]} page="Statistiques">
+        <div className="flex h-full flex-col gap-3 bg-transparent p-4 leading-[1.35]">
           {/* Page header */}
           <div className="flex h-7 shrink-0 items-center justify-between">
             <p className="flex items-center gap-2.5">
-              <span className="grid size-7 place-items-center rounded-[10px] bg-[#0b0f1a] text-white">
+              <span className="grid size-7 place-items-center rounded-[10px] bg-[#0b0b0c] text-white">
                 <Users size={14} />
               </span>
-              <span className="font-display text-[21px] leading-none">{t("Performance de l'équipe")}</span>
+              <span className="font-display font-semibold tracking-[-0.045em] text-[21px] leading-none">{t("Performance de l'équipe")}</span>
               <Chip tone="accent">6 commerciaux · 4 missions</Chip>
             </p>
             <span className="flex items-center gap-2 text-[11px]">
               <span className="flex rounded-lg bg-white p-0.5 ring-1 ring-black/10">
                 <span className="px-2 py-0.5">Jour</span>
-                <span className="rounded-md bg-[#0b0f1a] px-2 py-0.5 font-semibold text-white">Semaine</span>
+                <span className="rounded-md bg-[#0b0b0c] px-2 py-0.5 font-semibold text-white">Semaine</span>
                 <span className="px-2 py-0.5">Mois</span>
               </span>
               <span className="flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 ring-1 ring-black/10">
-                Tous les clients <ChevronDown size={11} className="text-[#9aa3b2]" />
+                Tous les clients <ChevronDown size={11} className="text-[#74726b]" />
               </span>
               <span className="flex items-center gap-1 rounded-lg bg-white px-2.5 py-1 ring-1 ring-black/10">
-                Toutes les missions <ChevronDown size={11} className="text-[#9aa3b2]" />
+                Toutes les missions <ChevronDown size={11} className="text-[#74726b]" />
               </span>
             </span>
           </div>
@@ -388,7 +388,7 @@ export function TeamMock() {
                 sub={board === "rdv" ? "Rendez-vous décrochés · semaine en cours" : "Appels passés · semaine en cours"}
                 right={<BoardSwitch board={board} />}
               />
-              <div className={cn(GRID, "mt-3 px-2.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#9aa3b2]")}>
+              <div className={cn(GRID, "mt-3 px-2.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#74726b]")}>
                 <span className="text-center">#</span>
                 <span>Commercial</span>
                 <span>{board === "rdv" ? "RDV / objectif" : "Appels / objectif"}</span>
@@ -433,7 +433,7 @@ export function TeamMock() {
                               <span className="flex items-center gap-1.5 text-[12px] font-semibold">
                                 {r.name}
                                 {scored ? (
-                                  <span className={cn("rounded-full bg-mint px-1.5 py-px text-[9px] font-bold text-white", fresh(scoredAt) && "animate-pop")}>
+                                  <span className={cn("rounded-full bg-mint-ink px-1.5 py-px text-[9px] font-bold text-white", fresh(scoredAt) && "animate-pop")}>
                                     +1 RDV
                                   </span>
                                 ) : null}
@@ -443,7 +443,7 @@ export function TeamMock() {
                                   <Check size={10} strokeWidth={3} /> Objectif atteint
                                 </span>
                               ) : (
-                                <span className="mt-0.5 block truncate text-[10px] text-[#6b7280]">{MISSIONS[r.mission].name}</span>
+                                <span className="mt-0.5 block truncate text-[10px] text-[#6b6860]">{MISSIONS[r.mission].name}</span>
                               )}
                             </span>
                           </span>
@@ -461,7 +461,7 @@ export function TeamMock() {
                             </span>
                             <span className="num w-[54px] shrink-0 text-right text-[12px] font-semibold">
                               <span className={cn("transition-colors duration-500", reached && "text-mint-ink")}>{nf(value)}</span>
-                              <span className="text-[10px] font-medium text-[#9aa3b2]">/{goal}</span>
+                              <span className="text-[10px] font-medium text-[#74726b]">/{goal}</span>
                             </span>
                           </span>
                           <span className="num text-right text-[11.5px] font-medium">{board === "rdv" ? r.callsNow : r.rdvNow}</span>
@@ -504,11 +504,11 @@ export function TeamMock() {
                           </span>
                           <span className="min-w-0 flex-1 leading-tight">
                             <span className="block truncate text-[11.5px] text-[#374151]">
-                              <b className="font-semibold text-[#0b1220]">{p.name}</b> {t(ev.verb)}
+                              <b className="font-semibold text-[#0b0b0c]">{p.name}</b> {t(ev.verb)}
                             </span>
-                            <span className="mt-0.5 block truncate text-[10px] text-[#6b7280]">{t(ev.detail)}</span>
+                            <span className="mt-0.5 block truncate text-[10px] text-[#6b6860]">{t(ev.detail)}</span>
                           </span>
-                          <span className="shrink-0 self-start pt-[7px] text-[9.5px] text-[#9aa3b2]">{t(AGO[i])}</span>
+                          <span className="shrink-0 self-start pt-[7px] text-[9.5px] text-[#74726b]">{t(AGO[i])}</span>
                         </div>
                       </div>
                     </div>
@@ -527,7 +527,7 @@ export function TeamMock() {
               sub={t("Répartition par mission · absences et capacité")}
               right={
                 <span className="flex items-center gap-2 text-[10px]">
-                  <span className="mr-1 flex items-center gap-2.5 font-medium text-[#6b7280]">
+                  <span className="mr-1 flex items-center gap-2.5 font-medium text-[#6b6860]">
                     {Object.values(MISSIONS).map((m) => (
                       <span key={m.name} className="flex items-center gap-1">
                         <span className={cn("size-2 rounded-[3px]", TONE[m.tone].solid)} />
@@ -541,7 +541,7 @@ export function TeamMock() {
                   <span className="flex items-center gap-1.5 rounded-lg bg-accent-tint px-2.5 py-1 text-[10.5px] font-semibold text-accent ring-1 ring-accent/20">
                     <RefreshCw size={11} /> {t("Rééquilibrer")}
                   </span>
-                  <span className="flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[10.5px] font-medium text-[#0b1220] ring-1 ring-black/10">
+                  <span className="flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[10.5px] font-medium text-[#0b0b0c] ring-1 ring-black/10">
                     <Copy size={11} /> Copier la semaine
                   </span>
                 </span>
@@ -559,10 +559,10 @@ function Kpi({ label, value, unit, flash, children }: { label: string; value: st
   return (
     <div className="flex items-center justify-between gap-3 px-4 py-2.5">
       <div className="min-w-0">
-        <p className="text-[9.5px] font-semibold uppercase tracking-[0.08em] text-[#9aa3b2]">{t(label)}</p>
+        <p className="text-[9.5px] font-semibold uppercase tracking-[0.08em] text-[#74726b]">{t(label)}</p>
         <p className="mt-1.5 flex items-baseline gap-1.5 whitespace-nowrap">
-          <span className={cn("font-display text-[26px] leading-none transition-colors duration-500", flash && "text-mint-ink")}>{value}</span>
-          <span className="text-[10.5px] text-[#6b7280]">{t(unit)}</span>
+          <span className={cn("font-display font-semibold tracking-[-0.045em] text-[26px] leading-none transition-colors duration-500", flash && "text-mint-ink")}>{value}</span>
+          <span className="text-[10.5px] text-[#6b6860]">{t(unit)}</span>
         </p>
       </div>
       {children}
@@ -586,7 +586,7 @@ function WeekBars({ today, rising }: { today: number; rising: boolean }) {
         ))}
         <span className="h-[62%] w-[9px] rounded-[3px] border border-dashed border-accent/35" />
       </span>
-      <span className="flex gap-[5px] text-[8px] font-semibold text-[#9aa3b2]">
+      <span className="flex gap-[5px] text-[8px] font-semibold text-[#74726b]">
         {["L", "M", "M", "J", "V"].map((d, i) => (
           <span key={i} className={cn("w-[9px] text-center", i === TODAY && "text-accent")}>
             {d}
@@ -605,7 +605,7 @@ function BoardSwitch({ board }: { board: Board }) {
         style={{ transform: `translateX(${board === "calls" ? 82 : 0}px)` }}
       />
       {(["rdv", "calls"] as const).map((b) => (
-        <span key={b} className={cn("relative w-[82px] py-1 text-center transition-colors duration-300", board === b ? "text-[#0b1220]" : "text-[#6b7280]")}>
+        <span key={b} className={cn("relative w-[82px] py-1 text-center transition-colors duration-300", board === b ? "text-[#0b0b0c]" : "text-[#6b6860]")}>
           {b === "rdv" ? "Rendez-vous" : "Appels"}
         </span>
       ))}
@@ -654,7 +654,7 @@ function RankBadge({ rank }: { rank: number }) {
       </span>
     );
   }
-  return <span className="text-[11px] font-semibold text-[#9aa3b2]">{rank + 1}</span>;
+  return <span className="text-[11px] font-semibold text-[#74726b]">{rank + 1}</span>;
 }
 
 function Trend({ delta }: { delta: number }) {
@@ -681,8 +681,8 @@ function Planning() {
       ))}
 
       <div className="relative grid h-[18px] items-center" style={{ gridTemplateColumns: `${NAME_W}px 1fr` }}>
-        <span className="text-[9px] font-semibold uppercase tracking-[0.08em] text-[#9aa3b2]">{t("Équipe · capacité")}</span>
-        <span className="grid grid-cols-5 text-[10px] font-semibold text-[#6b7280]">
+        <span className="text-[9px] font-semibold uppercase tracking-[0.08em] text-[#74726b]">{t("Équipe · capacité")}</span>
+        <span className="grid grid-cols-5 text-[10px] font-semibold text-[#6b6860]">
           {DAYS.map((d, i) => (
             <span key={d} className={cn("flex items-center gap-1.5 px-2", i === TODAY && "text-accent")}>
               {d}
@@ -698,7 +698,7 @@ function Planning() {
             <span className="flex items-center gap-2 pr-3">
               <Avatar initials={p.initials} seed={p.seed} size={18} />
               <span className="text-[11px] font-semibold">{p.name}</span>
-              <span className={cn("ml-auto text-[10px] font-medium", p.over ? "text-rose-ink" : "text-[#9aa3b2]")}>{p.capacity}</span>
+              <span className={cn("ml-auto text-[10px] font-medium", p.over ? "text-rose-ink" : "text-[#74726b]")}>{p.capacity}</span>
             </span>
             <span className="relative h-full">
               {blocks(p.plan).map((b) => (

@@ -180,7 +180,7 @@ export function HeaderClient({
       onMouseEnter={() => hoverOpen(key)}
       onMouseLeave={() => hoverOpen(null)}
     >
-      <div className="rounded-[22px] bg-white/95 p-3 shadow-[0_2px_4px_rgb(11_18_32/0.04),0_24px_60px_-20px_rgb(11_18_32/0.32)] ring-1 ring-ink/[0.07] backdrop-blur-xl">
+      <div className="rounded-[22px] bg-white/95 p-3 shadow-[0_2px_4px_rgb(11_18_32/0.04),0_24px_60px_-20px_rgb(11_18_32/0.32)] ring-1 ring-ink/[0.07]">
         {children}
       </div>
     </div>
@@ -341,7 +341,7 @@ export function HeaderClient({
         id="menu-mobile"
         inert={!mobileOpen}
         className={cn(
-          "fixed inset-x-0 bottom-0 top-0 -z-10 overflow-y-auto overscroll-contain bg-white/90 pt-20 backdrop-blur-2xl transition-[opacity,visibility] duration-300 lg:hidden",
+          "fixed inset-x-0 bottom-0 top-0 -z-10 overflow-y-auto overscroll-contain bg-white/[0.97] pt-20 transition-[opacity,visibility] duration-300 lg:hidden",
           mobileOpen ? "visible opacity-100" : "pointer-events-none invisible opacity-0",
         )}
       >

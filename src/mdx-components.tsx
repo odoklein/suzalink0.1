@@ -18,8 +18,8 @@ function typeset(children: ReactNode): ReactNode {
 }
 
 const components: MDXComponents = {
-  h2: ({ children }) => <h2 className="mt-14 scroll-mt-24 font-display text-2xl font-normal text-ink first:mt-0">{typeset(children)}</h2>,
-  h3: ({ children }) => <h3 className="mt-8 font-display text-lg font-normal text-ink">{typeset(children)}</h3>,
+  h2: ({ children }) => <h2 className="mt-14 scroll-mt-24 font-display text-2xl font-semibold text-ink first:mt-0">{typeset(children)}</h2>,
+  h3: ({ children }) => <h3 className="mt-8 font-display text-lg font-semibold text-ink">{typeset(children)}</h3>,
   p: ({ children }) => <p className="mt-4 text-ink-soft">{typeset(children)}</p>,
   ul: ({ children }) => <ul className="mt-4 list-disc space-y-2 pl-6 text-ink-soft marker:text-accent">{children}</ul>,
   ol: ({ children }) => <ol className="mt-4 list-decimal space-y-2 pl-6 text-ink-soft marker:text-muted">{children}</ol>,

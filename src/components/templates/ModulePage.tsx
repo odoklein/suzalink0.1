@@ -101,7 +101,7 @@ export function modulePage(slug: ModuleSlug) {
               </div>
               <div data-reveal="scale" className="ring-spin rounded-[24px]">
                 <div className="rounded-[24px] bg-white p-8 text-center shadow-[var(--shadow-float)]">
-                  <p className="num font-display text-[60px] font-normal leading-none tracking-[-0.025em] text-ink">{addon.price}</p>
+                  <p className="num font-display text-[60px] font-semibold leading-none tracking-[-0.045em] text-ink">{addon.price}</p>
                   <p className={cn("mx-auto mt-4 inline-flex rounded-full px-3 py-1 text-sm font-medium", h.soft, h.ink)}>HT {addon.unit}</p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export function modulePage(slug: ModuleSlug) {
                   >
                     <IconTile name={other.icon} hue={otherHue} className="transition-transform duration-500 ease-spring group-hover:-rotate-6 group-hover:scale-110" />
                     <span>
-                      <span className="flex items-center gap-1.5 font-display text-lg font-normal text-ink">
+                      <span className="flex items-center gap-1.5 font-display text-lg font-semibold text-ink">
                         {other.name}
                         <ArrowRight aria-hidden className="size-4 text-accent transition-transform duration-300 ease-spring group-hover:translate-x-1" />
                       </span>

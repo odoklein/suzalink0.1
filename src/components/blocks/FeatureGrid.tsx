@@ -43,7 +43,7 @@ export async function FeatureGrid({
               {card.icon ? <IconTile name={card.icon} hue={hue} className="transition-transform duration-500 ease-spring group-hover:-rotate-6 group-hover:scale-110" /> : null}
               {card.soon ? <Badge tone="soon">{ui.badges.soon}</Badge> : null}
             </div>
-            <h3 className="mt-5 font-display text-[19px] font-normal leading-6 text-ink">{card.title}</h3>
+            <h3 className="mt-5 font-display text-[19px] font-semibold leading-6 text-ink">{card.title}</h3>
             <p className="mt-2 text-[15px] leading-6 text-muted">{card.bodyText}</p>
           </div>
         </li>

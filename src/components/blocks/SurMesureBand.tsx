@@ -28,7 +28,7 @@ export async function SurMesureBand({ tone = "surface" }: { tone?: "white" | "su
             </div>
           </div>
           <div className="relative p-6 pt-0 md:p-10 lg:pl-0">
-            <div aria-hidden className="absolute inset-10 rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.45),transparent)] blur-3xl" />
+            <div aria-hidden className="absolute inset-10 rounded-full bg-[radial-gradient(closest-side,rgb(122_92_255/0.45),transparent)]" />
             <div className="relative overflow-hidden rounded-[24px] shadow-[0_40px_80px_-30px_rgb(0_0_0/0.6)] ring-1 ring-white/15" data-reveal="scale">
               <Visual id="V10" showTag={false} />
             </div>

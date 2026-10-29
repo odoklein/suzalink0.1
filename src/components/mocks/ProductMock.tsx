@@ -1,7 +1,12 @@
 import type { ComponentType } from "react";
 import type { ScreenshotId } from "@/config/visuals";
 import { FitBox } from "../ui/FitBox";
+import { AiMock } from "./AiMock";
+import { BookingMock } from "./BookingMock";
 import { CallsMock } from "./CallsMock";
+import { EmailsMock } from "./EmailsMock";
+import { PortalMock } from "./PortalMock";
+import { TeamMock } from "./TeamMock";
 import { MOCK_H, MOCK_W } from "./kit";
 
 /**
@@ -10,16 +15,21 @@ import { MOCK_H, MOCK_W } from "./kit";
  */
 const MOCKS: Partial<Record<ScreenshotId, ComponentType>> = {
   S1: CallsMock,
+  S2: EmailsMock,
+  S3: BookingMock,
+  S4: TeamMock,
+  S5: AiMock,
+  S6: PortalMock,
 };
 
 /** The app page each screenshot shows, printed in the window's address bar. */
 export const MOCK_PATH: Record<ScreenshotId, string> = {
-  S1: "app.suzalink.com/appels",
-  S2: "app.suzalink.com/emails/sequences",
-  S3: "app.suzalink.com/rendez-vous",
-  S4: "app.suzalink.com/pilotage",
-  S5: "app.suzalink.com/ia/analyse",
-  S6: "app.suzalink.com/portail/transports-lemaire",
+  S1: "app.suzalink.com/sdr/action",
+  S2: "app.suzalink.com/sdr/emails",
+  S3: "app.suzalink.com/sdr/calendar",
+  S4: "app.suzalink.com/manager/analytics",
+  S5: "app.suzalink.com/manager/analyse-ia",
+  S6: "app.suzalink.com/client/portal",
 };
 
 export function hasMock(id: ScreenshotId): boolean {

@@ -11,7 +11,7 @@ import { Bullets } from "./Bullets";
 import { Stage } from "./Stage";
 
 const headingClass =
-  "font-display text-[34px] font-normal leading-[38px] tracking-[-0.018em] text-ink md:text-[46px] md:leading-[50px]";
+  "font-display text-[34px] font-semibold leading-[38px] tracking-[-0.045em] text-ink md:text-[46px] md:leading-[50px]";
 
 function MoreLink({ link, className }: { link: DeepDive["link"]; className?: string }) {
   if (!link) return null;

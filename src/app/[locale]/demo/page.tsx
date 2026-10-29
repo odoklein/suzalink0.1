@@ -54,7 +54,7 @@ export default async function DemoPage({ params }: PageProps<"/[locale]/demo">) 
         </div>
 
         <div className="rounded-[24px] bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-line md:p-10">
-          <h2 className="font-display text-2xl font-normal text-ink">{demo.form.title}</h2>
+          <h2 className="font-display text-2xl font-semibold text-ink">{demo.form.title}</h2>
           <p className="mt-1 text-sm text-muted">{ui.cal.timezone}</p>
           <div className="mt-8">
             <LeadFlow kind="demo" labels={flowLabels(d, "demo")} calLink={calLinks.demo} />

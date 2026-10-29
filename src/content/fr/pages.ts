@@ -9,7 +9,7 @@ export const featuresOverview = {
   } satisfies Meta,
   hero: {
     eyebrow: "Fonctionnalités",
-    title: "Tout ce qu'il faut pour prospecter, dans une seule console.",
+    title: "Tout pour prospecter, dans un seul outil.",
     sub: "Sept modules qui partagent les mêmes contacts, les mêmes campagnes et les mêmes résultats. Tous inclus, dans chaque formule.",
   },
   chain: {
@@ -28,7 +28,7 @@ export const surMesure = {
   } satisfies Meta,
   hero: {
     eyebrow: "Sur-mesure",
-    title: "Pas le temps de prospecter ? Notre équipe le fait pour vous, sur Suzalink.",
+    title: "Notre équipe prospecte pour vous, sur Suzalink.",
     sub: "L'équipe de Suzali Conseil, agence de prospection, mène vos campagnes d'appels sur Suzalink. Vous suivez chaque rendez-vous dans votre portail.",
   },
   steps: {
@@ -109,7 +109,7 @@ export const security = {
   } satisfies Meta,
   hero: {
     eyebrow: "Sécurité et RGPD",
-    title: "Vos données, et celles de vos prospects, entre de bonnes mains.",
+    title: "Où sont vos données, et qui peut y accéder.",
     sub: "Voici comment Suzalink héberge, protège et traite vos données. Nous n'écrivons ici que ce qui est en place. Ce qui arrive est marqué « Bientôt ».",
   },
   hosting: {
@@ -199,7 +199,7 @@ export const about = {
     items: [
       { title: "Moins d'outils, plus de terrain", body: "Chaque onglet en moins, c'est du temps rendu à la vente." },
       {
-        title: "Prouver, pas promettre",
+        title: "Des résultats que le client peut vérifier",
         body: "Nous ne publions que ce que le produit fait aujourd'hui. Ce qui arrive est marqué « Bientôt ».",
       },
       { title: "Construit à l'usage", body: "Chaque fonction a d'abord servi dans nos propres campagnes, avant d'arriver chez vous." },

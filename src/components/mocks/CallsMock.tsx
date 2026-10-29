@@ -128,23 +128,24 @@ export function CallsMock() {
     <div ref={ref}>
       <MockShell
         variant="sdr"
-        active="Espace d'appel"
-        crumb="SDR"
-        page="Espace d'appel"
+        active="Appeler"
+        crumb="Appeler"
+        tabs={["File d’appel", "Rappels"]}
+        page="File d’appel"
         user={{ initials: "CR", name: "Camille R.", role: "SDR" }}
         right={
-          <span className="flex items-center gap-1.5 rounded-lg bg-[#f6f7f9] px-2 py-1 font-medium text-[#0b1220] ring-1 ring-black/5">
+          <span className="flex items-center gap-1.5 rounded-lg bg-[#f1f0ec] px-2 py-1 font-medium text-[#0b0b0c] ring-1 ring-black/5">
             <Timer size={11} className="text-accent" /> Session 01:42
           </span>
         }
       >
-        <div className="grid h-full grid-cols-[264px_1fr_252px] gap-3 bg-[#f7f8fb] p-4">
+        <div className="grid h-full grid-cols-[264px_1fr_252px] gap-3 bg-transparent p-4">
           {/* Queue */}
           <Panel className="flex flex-col p-3">
             <div className="px-1">
               <PanelTitle icon={<PhoneCall size={14} />} tone="coral" title="File d'appels" sub="Mission · Logistique IDF" right={<Chip tone="coral">48</Chip>} />
-              <div className="mt-3 flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10.5px] font-medium text-[#6b7280]">
-                <span className="flex-1 rounded-md bg-white py-1 text-center text-[#0b1220] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Tous 48</span>
+              <div className="mt-3 flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10.5px] font-medium text-[#6b6860]">
+                <span className="flex-1 rounded-md bg-white py-1 text-center text-[#0b0b0c] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Tous 48</span>
                 <span className="flex-1 py-1 text-center">Rappels 6</span>
                 <span className="flex-1 py-1 text-center">Nouveaux 31</span>
               </div>
@@ -165,8 +166,8 @@ export function CallsMock() {
                     {active ? <span className="absolute -left-0.5 top-2 h-[calc(100%-16px)] w-[3px] rounded-full bg-accent" /> : null}
                     <Avatar initials={q.initials} seed={i} size={30} className={cn(done && !active && "opacity-50")} />
                     <span className="min-w-0 flex-1">
-                      <span className={cn("block truncate text-[12px] font-semibold", done && !active && "text-[#9aa3b2] line-through decoration-[#c9ced8]")}>{q.name}</span>
-                      <span className="block truncate text-[10px] text-[#6b7280]">{q.company}</span>
+                      <span className={cn("block truncate text-[12px] font-semibold", done && !active && "text-[#74726b] line-through decoration-[#c9ced8]")}>{q.name}</span>
+                      <span className="block truncate text-[10px] text-[#6b6860]">{q.company}</span>
                     </span>
                     {done ? (
                       <Chip tone={o.tone} className="animate-pop">
@@ -183,7 +184,7 @@ export function CallsMock() {
                   <Avatar initials={q.initials} seed={i + 4} size={30} />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-[12px] font-semibold">{q.name}</span>
-                    <span className="block truncate text-[10px] text-[#6b7280]">{q.company}</span>
+                    <span className="block truncate text-[10px] text-[#6b6860]">{q.company}</span>
                   </span>
                   <Chip tone={q.status.tone}>{q.status.label}</Chip>
                 </li>
@@ -197,9 +198,9 @@ export function CallsMock() {
               <div className="flex items-start gap-3">
                 <Avatar initials={c.initials} seed={index} size={48} className="shadow-[0_8px_18px_-8px_rgb(51_85_255/0.6)]" />
                 <div className="min-w-0 flex-1">
-                  <p className="font-display text-[23px] leading-7">{c.name}</p>
-                  <p className="text-[11px] text-[#6b7280]">
-                    {c.role} · <span className="font-semibold text-[#0b1220]">{c.company}</span>
+                  <p className="font-display font-semibold tracking-[-0.045em] text-[23px] leading-7">{c.name}</p>
+                  <p className="text-[11px] text-[#6b6860]">
+                    {c.role} · <span className="font-semibold text-[#0b0b0c]">{c.company}</span>
                   </p>
                 </div>
                 {calling ? (
@@ -221,14 +222,14 @@ export function CallsMock() {
                   ["Source", c.source],
                   ["Dernier appel", c.last],
                 ].map(([k, v]) => (
-                  <div key={k} className="rounded-xl bg-[#f7f8fb] px-2.5 py-2">
-                    <p className="text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{k}</p>
+                  <div key={k} className="rounded-xl bg-transparent px-2.5 py-2">
+                    <p className="text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">{k}</p>
                     <p className="mt-0.5 truncate text-[11.5px] font-semibold">{v}</p>
                   </div>
                 ))}
               </div>
               <div className="mt-3 flex items-center gap-2">
-                <span className={cn("flex h-8 flex-1 items-center justify-center gap-2 rounded-xl text-[11.5px] font-semibold", calling ? "bg-rose text-white" : "bg-mint text-white")}>
+                <span className={cn("flex h-8 flex-1 items-center justify-center gap-2 rounded-xl text-[11.5px] font-semibold", calling ? "bg-rose text-white" : "bg-mint-ink text-white")}>
                   {calling ? <PhoneOff size={13} /> : <PhoneCall size={13} />}
                   {calling ? "Raccrocher" : "Appeler +33 6 •• •• 42 18"}
                 </span>
@@ -240,7 +241,7 @@ export function CallsMock() {
             <Panel className="flex-1">
               <div className="flex gap-1.5 text-[10.5px] font-semibold">
                 {["Accroche", "Découverte", "Objections", "Conclusion"].map((tab, i) => (
-                  <span key={tab} className={cn("rounded-full px-2.5 py-1", i === Math.min(2, Math.max(0, phase - 1)) ? "bg-[#0b0f1a] text-white" : "text-[#6b7280] ring-1 ring-black/10")}>
+                  <span key={tab} className={cn("rounded-full px-2.5 py-1", i === Math.min(2, Math.max(0, phase - 1)) ? "bg-[#0b0b0c] text-white" : "text-[#6b6860] ring-1 ring-black/10")}>
                     {tab}
                   </span>
                 ))}
@@ -256,7 +257,7 @@ export function CallsMock() {
                 <b>{t("Objection fréquente :")}</b> {t("« On a déjà un prestataire. » Demandez ce qui manque aujourd'hui.")}
               </div>
               <div className="mt-3 rounded-xl px-3 py-2.5 ring-1 ring-black/10">
-                <p className="text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{t("Note d'appel")}</p>
+                <p className="text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">{t("Note d'appel")}</p>
                 <p className="mt-1 min-h-[18px] text-[12px] font-medium">
                   {phase >= 3 ? (
                     <span key={`note-${index}`} className="inline-block animate-type">
@@ -277,7 +278,7 @@ export function CallsMock() {
             {/* Toast */}
             <div
               className={cn(
-                "absolute inset-x-6 bottom-4 flex items-center gap-2.5 rounded-2xl bg-[#0b0f1a] px-3.5 py-2.5 text-[11.5px] font-medium text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
+                "absolute inset-x-6 bottom-4 flex items-center gap-2.5 rounded-2xl bg-[#0b0b0c] px-3.5 py-2.5 text-[11.5px] font-medium text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
                 keyed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
               )}
             >
@@ -312,7 +313,7 @@ export function CallsMock() {
                   );
                 })}
               </div>
-              <div className="mt-2.5 flex items-center justify-between rounded-xl bg-[#0b0f1a] px-3 py-2 text-[10.5px] font-semibold text-white">
+              <div className="mt-2.5 flex items-center justify-between rounded-xl bg-[#0b0b0c] px-3 py-2 text-[10.5px] font-semibold text-white">
                 <span>Valider · contact suivant</span>
                 <span className={cn("rounded-md bg-white/10 px-1.5 py-0.5 transition-colors", phase === 5 && "bg-accent")}>Entrée ↵</span>
               </div>
@@ -326,9 +327,9 @@ export function CallsMock() {
                   { label: "RDV décrochés", value: rdv, max: 5, tone: "mint" as Tone },
                 ].map((s) => (
                   <div key={s.label}>
-                    <p className="flex items-baseline justify-between text-[10.5px] text-[#6b7280]">
+                    <p className="flex items-baseline justify-between text-[10.5px] text-[#6b6860]">
                       {s.label}
-                      <span className="num text-[13px] font-semibold text-[#0b1220]">{s.value}</span>
+                      <span className="num text-[13px] font-semibold text-[#0b0b0c]">{s.value}</span>
                     </p>
                     <div className="mt-1 h-1.5 rounded-full bg-[#f1f3f6]">
                       <div className={cn("h-1.5 rounded-full transition-[width] duration-700 ease-out-expo", TONE[s.tone].solid)} style={{ width: `${Math.min(100, (s.value / s.max) * 100)}%` }} />

@@ -4,14 +4,14 @@ import type { DeepDive, Faq, Meta, Text } from "../types";
 
 export const home = {
   meta: {
-    title: "Suzalink, la console d'exécution commerciale",
-    description: "La plateforme d'exécution commerciale qui transforme l'activité en résultats.",
+    title: "Suzalink : CRM de prospection B2B (appels, emails, RDV)",
+    description: "Vos listes, vos appels, vos emails et vos rendez-vous dans un seul CRM de prospection, avec une IA qui indique qui rappeler. Essai gratuit de 14 jours, hébergé en France.",
   } satisfies Meta,
 
   hero: {
-    eyebrow: "Console d'exécution commerciale",
+    eyebrow: "CRM de prospection B2B",
     title: ["Moins d'onglets.", "Plus de rendez-vous."],
-    sub: "Appels, emails, listes et prise de rendez-vous dans un seul espace, avec une IA qui vous indique la prochaine action. Conçu par des agences de prospection, pour ceux qui vendent.",
+    sub: "Vos listes, vos appels, vos emails et vos rendez-vous dans un seul outil. Le prochain contact s'affiche avec son script, et l'IA vous dit qui rappeler en priorité. Conçu par une agence de prospection qui s'en sert tous les jours.",
     /** Swapped in when the visitor lands with ?utm_audience=… */
     subByAudience: {
       solo: "Appels, emails, listes et rendez-vous dans une seule console, avec le prochain contact déjà à l'écran. Pour les directeurs commerciaux qui prospectent eux-mêmes.",
@@ -32,7 +32,7 @@ export const home = {
 
   problem: {
     title: "Votre prospection est éparpillée.",
-    body: "Un CRM pour les contacts, un logiciel d'appel, un outil d'emailing, un agenda et un tableur pour le reporting. Cinq abonnements, cinq onglets, des données qui ne se parlent pas.",
+    body: "Un CRM pour les contacts, un logiciel d'appel, un outil d'emailing, un agenda et un tableur pour le reporting. Vous payez cinq abonnements et recopiez les mêmes contacts d'un outil à l'autre.",
     tools: ["CRM", "Logiciel d'appel", "Emailing", "Agenda", "Tableur"],
     stackLink: "Calculez le coût de votre stack",
   },
@@ -74,11 +74,11 @@ export const home = {
   features: [
     {
       eyebrow: "Appels",
-      title: "Enchaînez les appels, pas les clics.",
-      body: "Le prochain contact arrive avec son script. Vous notez l'issue au clavier et le suivant s'affiche.",
+      title: "Vous raccrochez, le contact suivant s'affiche.",
+      body: "Il arrive avec son script. Vous notez le résultat de l'appel d'une touche et passez au suivant.",
       bullets: [
-        "File intelligente : rappels et rendez-vous manqués d'abord",
-        "Près de 30 issues d'appel, les plus utilisées au clavier",
+        "Les rappels et les rendez-vous manqués passent en tête de file",
+        "Une trentaine de résultats d'appel, les plus courants au clavier",
         claimed(
           "Rappels planifiés, enregistrements et transcriptions, téléphonie illimitée en option",
           "voip-addon",
@@ -90,8 +90,8 @@ export const home = {
     },
     {
       eyebrow: "Emails",
-      title: "Des séquences qui arrivent en boîte de réception.",
-      body: "Vos boîtes Gmail, Outlook ou IMAP, des séquences qui respectent vos horaires et une boîte partagée pour les réponses.",
+      title: "Des séquences envoyées depuis vos propres boîtes.",
+      body: "Connectez Gmail, Outlook ou IMAP. Les relances partent à vos horaires, s'arrêtent quand le prospect répond, et les réponses arrivent dans une boîte partagée.",
       bullets: [
         "Gmail, Outlook et IMAP",
         claimed("Séquences A/B, préchauffage et plafonds d'envoi", "email-ab", "Séquences qui s'arrêtent à la réponse, plafonds d'envoi"),
@@ -102,11 +102,11 @@ export const home = {
     },
     {
       eyebrow: "IA",
-      title: "Une IA qui connaît vos campagnes.",
-      body: "Elle répond sur vos campagnes, vos rendez-vous et votre activité, et vous dit quoi faire ensuite.",
+      title: "Une IA qui a lu vos appels, vos emails et vos rendez-vous.",
+      body: "Demandez quelle mission convertit le mieux ou qui rappeler cette semaine. Elle répond avec vos chiffres et propose l'action suivante.",
       bullets: [
-        "Un assistant qui répond sur vos campagnes, rendez-vous et activité",
-        "Analyse IA Stratégique aux recommandations classées",
+        "Un assistant qui répond avec les chiffres de vos campagnes",
+        "Une analyse de la semaine, avec les actions classées par priorité",
         claimed(
           "Comptes rendus depuis Leexi, Grain ou Fireflies, scripts et emails rédigés",
           "grain-fireflies",
@@ -118,8 +118,8 @@ export const home = {
     },
     {
       eyebrow: "Pilotage et portail client",
-      title: "Vos résultats, visibles par ceux qui comptent.",
-      body: "Vous suivez l'équipe en direct, vos clients suivent leurs rendez-vous dans leur portail.",
+      title: "Votre équipe en direct, vos clients dans leur portail.",
+      body: "Les appels, rendez-vous et rappels de chaque commercial sur un tableau de bord. Vos clients consultent leurs rendez-vous et leurs rapports quand ils veulent.",
       bullets: [
         "Tableaux de bord, classements et planning d'équipe",
         claimed("Rapport IA quotidien", "daily-ai-report", "Rapports de campagne en PDF et synthèse mensuelle"),
@@ -132,28 +132,28 @@ export const home = {
 
   audiences: {
     title: "Pour qui ?",
-    sub: "Trois façons de prospecter, une seule console.",
+    sub: "Choisissez ce qui vous ressemble.",
     cards: [
       {
         audience: "solo",
-        title: "Vous prospectez seul ? Récupérez vos heures.",
-        body: "Tout sur un écran, le prochain contact en file, l'IA qui propose la suite.",
+        title: "Je prospecte moi-même",
+        body: "Pour le directeur commercial qui appelle lui-même : listes, appels, emails et agenda sur un seul écran.",
         plan: "Solo",
         href: "/solutions/directeur-commercial",
         visual: "V8a",
       },
       {
         audience: "equipes",
-        title: "Vous managez une équipe ? Voyez tout, en temps réel.",
-        body: "Tableaux de bord, classements, planning et une méthode commune.",
+        title: "Je manage une équipe",
+        body: "Pour les équipes de 2 à 10 : l'activité de chacun en direct, les mêmes scripts et un planning partagé.",
         plan: "Équipe",
         href: "/solutions/equipes-commerciales",
         visual: "V8b",
       },
       {
         audience: "agences",
-        title: "Vous prospectez pour vos clients ? Prouvez chaque rendez-vous.",
-        body: "Portail client, rapports partagés, un espace par client, facturation au rendez-vous.",
+        title: "Je prospecte pour mes clients",
+        body: "Pour les agences et SDR freelances : un espace et un portail par client, des rapports partagés, la facturation au rendez-vous.",
         plan: "Agence",
         href: "/solutions/agences",
         visual: "V8c",
@@ -186,7 +186,7 @@ export const home = {
   built: {
     title: "Construit par des agences qui vivent de la prise de rendez-vous.",
     quote:
-      "Nous avons d'abord construit Suzalink pour notre propre agence : trop d'outils, et trop de mal à prouver nos résultats, les rendez-vous obtenus chaque mois. Aujourd'hui, nous l'ouvrons aux commerciaux qui vivent la même chose.",
+      "Nous avons construit Suzalink pour notre propre agence. Nos commerciaux passaient d'un outil à l'autre toute la journée, et nos clients nous demandaient chaque mois la preuve des rendez-vous obtenus. Nous l'ouvrons aujourd'hui aux équipes qui vivent la même chose.",
     people: [
       { name: "Hichem Hammouche", role: "CEO, Suzali Conseil" },
       { name: "Amine Hallab", role: "Finance et management" },
@@ -201,7 +201,7 @@ export const home = {
   },
 
   surMesure: {
-    title: "Pas le temps de prospecter ? Notre équipe le fait pour vous, sur Suzalink.",
+    title: "Notre équipe peut aussi prospecter pour vous.",
     body: "L'équipe de Suzali Conseil mène vos campagnes d'appels sur Suzalink. Vous suivez chaque rendez-vous dans votre portail.",
   },
 
@@ -239,8 +239,8 @@ export const home = {
   },
 
   final: {
-    title: "Votre prochain rendez-vous commence ici.",
-    sub: "{{trial.days}} jours pour essayer, sans carte bancaire.",
+    title: "Importez une liste et passez vos premiers appels aujourd'hui.",
+    sub: "{{trial.days}} jours pour tester Suzalink sur vos propres listes.",
   },
 };
 

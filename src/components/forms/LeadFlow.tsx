@@ -86,7 +86,7 @@ export function LeadFlow({ kind, labels, calLink }: { kind: "demo" | "expert"; l
   if (step.name === "slot") {
     return (
       <div>
-        <p className="flex items-center gap-2 font-display text-xl font-normal text-ink">
+        <p className="flex items-center gap-2 font-display text-xl font-semibold text-ink">
           <CalendarCheck aria-hidden className="size-5 text-accent" />
           {labels.slotTitle}
         </p>
@@ -114,7 +114,7 @@ export function LeadFlow({ kind, labels, calLink }: { kind: "demo" | "expert"; l
         <span className="inline-flex size-10 items-center justify-center rounded-full bg-success text-white">
           <Check aria-hidden className="size-5" strokeWidth={3} />
         </span>
-        <p className="mt-5 font-display text-2xl font-normal text-ink">{labels.doneTitle}</p>
+        <p className="mt-5 font-display text-2xl font-semibold text-ink">{labels.doneTitle}</p>
         <p className="mt-2 text-ink-soft">{step.booked ? labels.doneBody : labels.calMissing}</p>
         {labels.prepare?.length ? (
           <div className="mt-8 rounded-[16px] bg-white p-6 ring-1 ring-line">

@@ -115,8 +115,8 @@ function Toggle() {
 
 function Kpi({ label, className, children }: { label: string; className?: string; children: ReactNode }) {
   return (
-    <div className={cn("shrink-0 rounded-xl bg-[#f7f8fb] px-3 py-2", className)}>
-      <p className="whitespace-nowrap text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{label}</p>
+    <div className={cn("shrink-0 rounded-xl bg-transparent px-3 py-2", className)}>
+      <p className="whitespace-nowrap text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">{label}</p>
       <div className="mt-0.5 text-[15px] font-semibold leading-5">{children}</div>
     </div>
   );
@@ -125,7 +125,7 @@ function Kpi({ label, className, children }: { label: string; className?: string
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="flex h-9 items-center gap-2 px-3 text-[11.5px]">
-      <span className="w-9 shrink-0 text-[10px] font-medium text-[#9aa3b2]">{label}</span>
+      <span className="w-9 shrink-0 text-[10px] font-medium text-[#74726b]">{label}</span>
       {children}
     </div>
   );
@@ -133,7 +133,7 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
 
 function Rule({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
-    <div className="flex h-8 items-center gap-2 rounded-lg bg-[#f7f8fb] px-2.5 text-[11px]">
+    <div className="flex h-8 items-center gap-2 rounded-lg bg-transparent px-2.5 text-[11px]">
       <span className="grid size-5 place-items-center rounded-md bg-white text-azure-ink ring-1 ring-black/[0.06]">{icon}</span>
       <span className="font-medium text-[#374151]">{label}</span>
       <span className="ml-auto font-semibold">{children}</span>
@@ -169,18 +169,19 @@ export function EmailsMock() {
     <div ref={ref}>
       <MockShell
         variant="sdr"
-        active="Email"
+        active="Email Hub"
         crumb="Email Hub"
+        tabs={["Vue d’ensemble", "Réception", "Envoyés", "Séquences", "Templates"]}
         page="Séquences"
         user={{ initials: "CR", name: "Camille R.", role: "SDR" }}
         right={
-          <span className="flex items-center gap-1.5 rounded-lg bg-[#f6f7f9] px-2 py-1 font-medium text-[#0b1220] ring-1 ring-black/5">
+          <span className="flex items-center gap-1.5 rounded-lg bg-[#f1f0ec] px-2 py-1 font-medium text-[#0b0b0c] ring-1 ring-black/5">
             <RefreshCw size={11} className="text-azure" /> {t("Boîtes synchronisées")}
           </span>
         }
       >
         {/* Explicit line height: the page's 28 px body leading would make every row too tall. */}
-        <div className="grid h-full grid-cols-[232px_1fr] gap-3 bg-[#f7f8fb] p-4 leading-[1.4]">
+        <div className="grid h-full grid-cols-[232px_1fr] gap-3 bg-transparent p-4 leading-[1.4]">
           {/* Sequences, shared inbox and sending mailboxes */}
           <div className="flex min-h-0 flex-col gap-3">
             <Panel className="flex flex-1 flex-col p-3">
@@ -196,8 +197,8 @@ export function EmailsMock() {
                     </span>
                   }
                 />
-                <div className="mt-3 flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10.5px] font-medium text-[#6b7280]">
-                  <span className="flex-1 rounded-md bg-white py-1 text-center text-[#0b1220] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Toutes 4</span>
+                <div className="mt-3 flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10.5px] font-medium text-[#6b6860]">
+                  <span className="flex-1 rounded-md bg-white py-1 text-center text-[#0b0b0c] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Toutes 4</span>
                   <span className="flex-1 py-1 text-center">Actives 2</span>
                   <span className="flex-1 py-1 text-center">Brouillon 1</span>
                 </div>
@@ -213,7 +214,7 @@ export function EmailsMock() {
                         <span className="min-w-0 flex-1 truncate text-[12px] font-semibold">{s.name}</span>
                         <Chip tone={s.status.tone}>{s.status.label}</Chip>
                       </span>
-                      <span className="mt-1 flex items-center justify-between text-[10px] text-[#6b7280]">
+                      <span className="mt-1 flex items-center justify-between text-[10px] text-[#6b6860]">
                         <span className="flex items-center gap-1">
                           <Users size={10} /> {s.contacts} contacts
                         </span>
@@ -232,7 +233,7 @@ export function EmailsMock() {
                   );
                 })}
               </ul>
-              <p className="mt-auto flex items-center gap-2 border-t border-black/[0.05] px-1 pt-2.5 text-[10.5px] font-medium text-[#6b7280]">
+              <p className="mt-auto flex items-center gap-2 border-t border-black/[0.05] px-1 pt-2.5 text-[10.5px] font-medium text-[#6b6860]">
                 <Archive size={12} /> {t("Séquences archivées")}
                 <span className="num ml-auto rounded-full bg-[#f1f3f6] px-1.5 text-[10px] font-semibold text-[#5b6475]">6</span>
               </p>
@@ -262,7 +263,7 @@ export function EmailsMock() {
                   <span className="mt-0.5 block truncate text-[10px] text-[#5b6475]">{t(`« ${last.quote} »`)}</span>
                 </span>
               </div>
-              <p className="mb-1 mt-3 flex items-center justify-between px-1 text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">
+              <p className="mb-1 mt-3 flex items-center justify-between px-1 text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">
                 {t("Boîtes d'envoi")}
                 <span className="normal-case tracking-normal">3 connectées</span>
               </p>
@@ -274,7 +275,7 @@ export function EmailsMock() {
                     </span>
                     <span className="min-w-0 flex-1 leading-tight">
                       <span className="block truncate text-[11px] font-semibold">{m.address}</span>
-                      <span className="block text-[9.5px] text-[#6b7280]">
+                      <span className="block text-[9.5px] text-[#6b6860]">
                         {m.provider} · <span className="num">{m.sent ?? today}</span> / {CAP} {t("aujourd'hui")}
                       </span>
                     </span>
@@ -293,12 +294,12 @@ export function EmailsMock() {
               </span>
               <div className="min-w-0 flex-1">
                 <p className="flex items-center gap-2">
-                  <span className="font-display text-[22px] leading-7">Relance salons 2026</span>
+                  <span className="font-display font-semibold tracking-[-0.045em] text-[22px] leading-7">Relance salons 2026</span>
                   <Chip tone="mint">
                     <span className="size-1.5 animate-pulse-dot rounded-full bg-mint" /> Active
                   </Chip>
                 </p>
-                <p className="mt-0.5 truncate text-[10.5px] text-[#6b7280]">{t("Mission Salons B2B 2026 · lancée le 15 septembre par Camille R.")}</p>
+                <p className="mt-0.5 truncate text-[10.5px] text-[#6b6860]">{t("Mission Salons B2B 2026 · lancée le 15 septembre par Camille R.")}</p>
               </div>
               <Kpi label="Contacts">
                 <span className="num">428</span>
@@ -309,7 +310,7 @@ export function EmailsMock() {
               <Kpi label={t("Envoyés aujourd'hui")} className="w-[132px]">
                 <span className="flex items-baseline gap-1">
                   <Tick still={reset} value={today} />
-                  <span className="text-[10.5px] font-medium text-[#9aa3b2]">/ {CAP}</span>
+                  <span className="text-[10.5px] font-medium text-[#74726b]">/ {CAP}</span>
                 </span>
                 <span className="mt-1 block h-1 overflow-hidden rounded-full bg-black/[0.06]">
                   <span data-grow-on-view className="block h-1" style={vars({ "--delay": "300ms" })}>
@@ -366,15 +367,15 @@ export function EmailsMock() {
                                   on ? "bg-accent-tint shadow-[0_10px_22px_-16px_rgb(51_85_255/0.6)] ring-accent/25" : "bg-white ring-black/[0.07]",
                                 )}
                               >
-                                <p className="flex items-center gap-1.5 text-[9.5px] font-semibold uppercase tracking-wide text-[#9aa3b2]">
+                                <p className="flex items-center gap-1.5 text-[9.5px] font-semibold uppercase tracking-wide text-[#74726b]">
                                   <Mail size={11} className={on ? "text-accent" : "text-azure"} /> Email · {s.day}
                                   <span className="ml-auto flex items-center gap-1 font-medium normal-case tracking-normal text-[#5b6475]">
                                     <Clock size={10} /> {t(s.time)}
                                   </span>
                                 </p>
                                 <p className="mt-0.5 text-[12.5px] font-semibold">{s.title}</p>
-                                <p className="mt-0.5 text-[10.5px] text-[#6b7280]">
-                                  <span className="num font-semibold text-[#0b1220]">{s.sent + (on ? sends : 0)}</span> envoyés ·{" "}
+                                <p className="mt-0.5 text-[10.5px] text-[#6b6860]">
+                                  <span className="num font-semibold text-[#0b0b0c]">{s.sent + (on ? sends : 0)}</span> envoyés ·{" "}
                                   <Tick still={reset} value={repliesAt(i)} className="font-semibold text-mint-ink" /> réponses
                                 </p>
                                 <div className="mt-1.5 flex h-6 items-center justify-between gap-2 border-t border-black/[0.06] pt-1.5">
@@ -387,13 +388,13 @@ export function EmailsMock() {
                                       Envoi en cours
                                     </span>
                                   ) : (
-                                    <span className="flex items-center gap-1 text-[10px] text-[#6b7280]">
-                                      <Users size={11} /> <Tick still={reset} value={upcomingAt(i)} className="font-semibold text-[#0b1220]" /> à venir
+                                    <span className="flex items-center gap-1 text-[10px] text-[#6b6860]">
+                                      <Users size={11} /> <Tick still={reset} value={upcomingAt(i)} className="font-semibold text-[#0b0b0c]" /> à venir
                                     </span>
                                   )}
                                   {on ? (
-                                    <span className="text-[10px] text-[#6b7280]">
-                                      <Tick still={reset} value={upcomingAt(0)} className="font-semibold text-[#0b1220]" /> à venir
+                                    <span className="text-[10px] text-[#6b6860]">
+                                      <Tick still={reset} value={upcomingAt(0)} className="font-semibold text-[#0b0b0c]" /> à venir
                                     </span>
                                   ) : hit ? (
                                     <span
@@ -417,7 +418,7 @@ export function EmailsMock() {
                         <span className="relative z-10 grid size-7 shrink-0 place-items-center rounded-full border border-dashed border-[#c3cad6] bg-white text-[#8a93a3] ring-4 ring-white">
                           <Plus size={13} />
                         </span>
-                        <span className="flex h-7 flex-1 items-center rounded-xl border border-dashed border-[#d4d8df] px-3 text-[10.5px] font-medium text-[#6b7280]">
+                        <span className="flex h-7 flex-1 items-center rounded-xl border border-dashed border-[#d4d8df] px-3 text-[10.5px] font-medium text-[#6b6860]">
                           {t("Ajouter une étape · email ou délai")}
                         </span>
                       </li>
@@ -459,7 +460,7 @@ export function EmailsMock() {
                       </span>
                     )}
                     <span className="ml-auto shrink-0">
-                      <Tick still={reset} value={CAP - today} className="font-semibold text-[#0b1220]" /> envois restants
+                      <Tick still={reset} value={CAP - today} className="font-semibold text-[#0b0b0c]" /> envois restants
                     </span>
                   </div>
                 </Panel>
@@ -467,7 +468,7 @@ export function EmailsMock() {
                 {/* Reply toast */}
                 <div
                   className={cn(
-                    "absolute inset-x-3 bottom-3 z-20 flex items-center gap-2.5 rounded-2xl bg-[#0b0f1a] px-3 py-2.5 text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
+                    "absolute inset-x-3 bottom-3 z-20 flex items-center gap-2.5 rounded-2xl bg-[#0b0b0c] px-3 py-2.5 text-white shadow-[0_18px_40px_-12px_rgb(11_15_26/0.6)] transition-[opacity,translate] duration-500 ease-out-expo",
                     showToast ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
                   )}
                 >
@@ -493,8 +494,8 @@ export function EmailsMock() {
                   title={t("Étape 1 · Premier contact")}
                   sub={t("Email · J+0 · 9 h 00")}
                   right={
-                    <span className="flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10px] font-medium text-[#6b7280]">
-                      <span className="rounded-md bg-white px-2 py-0.5 text-[#0b1220] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Modèle</span>
+                    <span className="flex rounded-lg bg-[#f1f3f6] p-0.5 text-[10px] font-medium text-[#6b6860]">
+                      <span className="rounded-md bg-white px-2 py-0.5 text-[#0b0b0c] shadow-[0_1px_2px_rgb(0_0_0/0.08)]">Modèle</span>
                       <span className="px-2 py-0.5">Aperçu</span>
                     </span>
                   }
@@ -506,12 +507,12 @@ export function EmailsMock() {
                     </span>
                     <span className="min-w-0 truncate font-semibold">camille@suzali-conseil.fr</span>
                     <span className="shrink-0 rounded-full bg-rose-soft px-1.5 py-px text-[9px] font-semibold text-rose-ink">Gmail</span>
-                    <ChevronDown size={12} className="ml-auto shrink-0 text-[#9aa3b2]" />
+                    <ChevronDown size={12} className="ml-auto shrink-0 text-[#74726b]" />
                   </Field>
                   <Field label="À">
-                    <Users size={12} className="shrink-0 text-[#9aa3b2]" />
+                    <Users size={12} className="shrink-0 text-[#74726b]" />
                     <span className="min-w-0 truncate">{t("Liste « Salons B2B 2026 »")}</span>
-                    <span className="ml-auto shrink-0 text-[10px] text-[#6b7280]">428 contacts</span>
+                    <span className="ml-auto shrink-0 text-[10px] text-[#6b6860]">428 contacts</span>
                   </Field>
                   <Field label="Objet">
                     <span className="min-w-0 flex-1 truncate font-semibold">
@@ -554,11 +555,11 @@ export function EmailsMock() {
                       {t(" : je vous propose 20 minutes pour vous montrer notre méthode.")}
                     </p>
                     <p>{t("Mardi ou jeudi, qu'est-ce qui vous arrange ?")}</p>
-                    <p className="text-[#6b7280]">Camille Roussel · Suzali Conseil</p>
+                    <p className="text-[#6b6860]">Camille Roussel · Suzali Conseil</p>
                   </div>
                 </div>
 
-                <p className="mt-3 px-0.5 text-[9px] font-semibold uppercase tracking-wide text-[#9aa3b2]">{t("Règles d'envoi")}</p>
+                <p className="mt-3 px-0.5 text-[9px] font-semibold uppercase tracking-wide text-[#74726b]">{t("Règles d'envoi")}</p>
                 <div className="mt-1.5 space-y-1.5">
                   <Rule icon={<Clock size={11} />} label="Horaires">
                     {t("Lun.–ven. · 9 h–18 h")}
@@ -575,7 +576,7 @@ export function EmailsMock() {
                   <span className="flex h-8 items-center gap-1.5 rounded-xl px-3 text-[11px] font-medium ring-1 ring-black/10">
                     <Send size={12} /> Envoyer un test
                   </span>
-                  <span className="ml-auto flex h-8 items-center rounded-xl bg-accent px-4 text-[11.5px] font-semibold text-white shadow-[0_8px_18px_-8px_rgb(51_85_255/0.7)]">
+                  <span className="ml-auto flex h-8 items-center rounded-xl bg-[#0b0b0c] px-4 text-[11.5px] font-semibold text-white">
                     Enregistrer
                   </span>
                 </div>

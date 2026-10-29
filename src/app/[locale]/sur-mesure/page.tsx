@@ -46,7 +46,7 @@ export default async function SurMesurePage({ params }: PageProps<"/[locale]/sur
               <span className="num relative inline-flex size-10 items-center justify-center rounded-full bg-accent font-semibold text-white">
                 {i + 1}
               </span>
-              <h3 className="mt-5 font-display text-lg font-normal text-ink">{step.title}</h3>
+              <h3 className="mt-5 font-display text-lg font-semibold text-ink">{step.title}</h3>
               <p className="mt-2 text-[15px] leading-6 text-muted">{step.body}</p>
             </li>
           ))}
@@ -59,7 +59,7 @@ export default async function SurMesurePage({ params }: PageProps<"/[locale]/sur
           {s.included.items.map((item) => (
             <li key={item.title} className="rounded-[20px] bg-white p-6 ring-1 ring-line">
               <IconTile name={item.icon} />
-              <h3 className="mt-5 font-display text-lg font-normal text-ink">{item.title}</h3>
+              <h3 className="mt-5 font-display text-lg font-semibold text-ink">{item.title}</h3>
               <p className="mt-2 text-[15px] leading-6 text-muted">{item.body}</p>
             </li>
           ))}

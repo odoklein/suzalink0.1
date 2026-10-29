@@ -84,9 +84,9 @@ export async function AddOns() {
                 <IconTile name={card.icon} hue={card.hue} />
                 {state === "soon" ? <Badge tone="soon">{ui.badges.soon}</Badge> : null}
               </div>
-              <p className="mt-5 font-display text-lg font-normal text-ink">{card.name}</p>
+              <p className="mt-5 font-display text-lg font-semibold text-ink">{card.name}</p>
               <p className="mt-3 flex items-baseline gap-1.5">
-                <span className="num font-display text-[38px] font-normal leading-none tracking-[-0.02em] text-ink">{card.price}</span>
+                <span className="num font-display text-[38px] font-semibold leading-none tracking-[-0.02em] text-ink">{card.price}</span>
                 <span className="text-sm text-muted">HT {card.unit}</span>
               </p>
               {body ? <p className="mt-4 flex-1 text-[15px] leading-6 text-muted">{body.text}</p> : null}
@@ -165,17 +165,17 @@ export async function ComparisonTable() {
         <caption className="sr-only">{t.title}</caption>
         <thead>
           <tr>
-            <th scope="col" className="sticky top-[78px] z-10 w-[22%] border-b border-line bg-white/95 py-4 backdrop-blur" />
+            <th scope="col" className="sticky top-[78px] z-10 w-[22%] border-b border-line bg-white/95 py-4" />
             {cols.map((c) => (
               <th
                 key={c}
                 scope="col"
                 className={cn(
-                  "sticky top-[78px] z-10 border-b border-line bg-white/95 px-4 py-4 align-bottom backdrop-blur",
+                  "sticky top-[78px] z-10 border-b border-line bg-white/95 px-4 py-4 align-bottom",
                   c !== "sur-mesure" && PLANS[c].recommended && "rounded-t-[18px] bg-accent-tint/95 shadow-[inset_0_2px_0_var(--color-accent)]",
                 )}
               >
-                <span className="flex items-center gap-2 font-display text-lg font-normal text-ink">
+                <span className="flex items-center gap-2 font-display text-lg font-semibold text-ink">
                   {name(c)}
                   {c !== "sur-mesure" && PLANS[c].recommended ? <Badge tone="accent">{ui.badges.recommended}</Badge> : null}
                 </span>
@@ -219,7 +219,7 @@ export async function ComparisonTable() {
         {cols.map((c) => (
           <details key={c} className="group rounded-[16px] bg-white ring-1 ring-line" open={c !== "sur-mesure" && PLANS[c].recommended}>
             <summary className="flex cursor-pointer items-center justify-between gap-3 p-5">
-              <span className="flex items-center gap-2 font-display text-lg font-normal text-ink">
+              <span className="flex items-center gap-2 font-display text-lg font-semibold text-ink">
                 {name(c)}
                 {c !== "sur-mesure" && PLANS[c].recommended ? <Badge tone="accent">{ui.badges.recommended}</Badge> : null}
               </span>
@@ -292,7 +292,7 @@ export async function PricingHeader() {
   const { pricing } = await dict();
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <h1 className="animate-rise font-display text-h1m font-normal text-ink md:text-h1">{twoTone(pricing.header.title)}</h1>
+      <h1 className="animate-rise font-display text-h1m font-semibold text-ink md:text-h1">{twoTone(pricing.header.title)}</h1>
       <div className="animate-rise [animation-delay:120ms]">
         <Lead className="mt-6">{pricing.header.sub}</Lead>
       </div>

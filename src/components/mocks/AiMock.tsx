@@ -186,7 +186,7 @@ function Stream({ text, from = 0, step = 26 }: { text: string; from?: number; st
   return (
     <Words
       text={text}
-      bold="font-semibold text-[#0b1220]"
+      bold="font-semibold text-[#0b0b0c]"
       word={(i) => ({ className: cn("animate-fade-in [animation-duration:450ms]", DELAYED), style: delay(from + i * step) })}
     />
   );
@@ -208,7 +208,7 @@ function Rank({ n, top }: { n: number; top?: boolean }) {
       {top ? <span className="absolute -inset-1 animate-pulse-dot rounded-[14px] bg-violet/35 blur-[6px]" /> : null}
       <span
         className={cn(
-          "relative grid size-9 place-items-center rounded-xl font-display text-[18px] leading-none",
+          "relative grid size-9 place-items-center rounded-xl font-display font-semibold tracking-[-0.04em] text-[18px] leading-none",
           top ? cn(SPARK_TILE, "shadow-[0_6px_16px_-6px_rgb(122_92_255/0.9)]") : "bg-violet-soft text-violet-ink",
         )}
       >
@@ -227,10 +227,10 @@ function ActionButton({ reco, state }: { reco: Reco; state: "idle" | "pressed" |
         done
           ? "bg-mint-soft text-mint-ink"
           : state === "pressed"
-            ? "scale-95 bg-accent-hover text-white shadow-[0_0_0_4px_rgb(51_85_255/0.18)]"
+            ? "scale-95 bg-[#2a2a2c] text-white shadow-[0_0_0_4px_rgb(11_11_12/0.12)]"
             : reco.primary
-              ? "bg-accent text-white shadow-[0_6px_14px_-6px_rgb(51_85_255/0.75)]"
-              : "bg-white text-[#0b1220] ring-1 ring-black/10",
+              ? "bg-[#0b0b0c] text-white shadow-[0_6px_14px_-8px_rgb(11_11_12/0.6)]"
+              : "bg-white text-[#0b0b0c] ring-1 ring-black/10",
       )}
     >
       {done ? (
@@ -239,7 +239,7 @@ function ActionButton({ reco, state }: { reco: Reco; state: "idle" | "pressed" |
         </span>
       ) : (
         <>
-          {t(reco.action)} <ArrowRight size={12} className={reco.primary ? "opacity-80" : "text-[#9aa3b2]"} />
+          {t(reco.action)} <ArrowRight size={12} className={reco.primary ? "opacity-80" : "text-[#74726b]"} />
         </>
       )}
       {state === "pressed" ? <Cursor className="-bottom-3 right-5" /> : null}
@@ -269,7 +269,7 @@ function RecoCard({ reco, rank, state, style }: { reco: Reco; rank: number; stat
         <p className="mt-0.5 whitespace-nowrap text-[11px] leading-4 text-[#5b6475]">
           <Words text={reco.why} bold="font-semibold text-violet-ink" />
         </p>
-        <p className="mt-2 flex items-center gap-2 text-[10px] leading-[14px] text-[#9aa3b2]">
+        <p className="mt-2 flex items-center gap-2 text-[10px] leading-[14px] text-[#74726b]">
           <Chip tone="mint" className="leading-[14px]">
             <TrendingUp size={10} strokeWidth={2.5} /> {t(reco.impact)}
           </Chip>
@@ -299,10 +299,10 @@ function SkeletonCard() {
 function Kpi({ k }: { k: (typeof KPIS)[number] }) {
   return (
     <div className="rounded-xl bg-white/85 px-3 py-2 ring-1 ring-black/[0.05]">
-      <p className="whitespace-nowrap text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#9aa3b2]">{k.label}</p>
+      <p className="whitespace-nowrap text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#74726b]">{k.label}</p>
       <p className="mt-1 flex items-baseline gap-1 whitespace-nowrap leading-5">
         <span className="num text-[16px] font-semibold">{t(k.value)}</span>
-        {k.unit ? <span className="num text-[11px] font-medium text-[#9aa3b2]">{t(k.unit)}</span> : null}
+        {k.unit ? <span className="num text-[11px] font-medium text-[#74726b]">{t(k.unit)}</span> : null}
         <span className={cn("ml-1 text-[9.5px] font-semibold", TONE[k.tone].text)}>{t(k.delta)}</span>
       </p>
     </div>
@@ -316,7 +316,7 @@ function AssistantHead({ time }: { time: string }) {
         <Sparkles size={11} />
       </span>
       <span className="font-semibold">Assistant</span>
-      <span className="text-[10px] text-[#9aa3b2]">{time}</span>
+      <span className="text-[10px] text-[#74726b]">{time}</span>
     </p>
   );
 }
@@ -340,7 +340,7 @@ function UserBubble({ text, style }: { text: string; style?: CSSProperties }) {
   return (
     <p
       className={cn(
-        "ml-auto w-fit max-w-[94%] animate-slide-in rounded-2xl rounded-br-md bg-accent px-3 py-2 text-[11.5px] font-medium leading-4 text-white shadow-[0_8px_18px_-10px_rgb(51_85_255/0.8)]",
+        "ml-auto w-fit max-w-[94%] animate-slide-in rounded-2xl rounded-br-md bg-[#0b0b0c] px-3 py-2 text-[11.5px] font-medium leading-4 text-white",
         DELAYED,
       )}
       style={style}
@@ -398,16 +398,18 @@ export function AiMock() {
     <div ref={ref} className="relative">
       <MockShell
         variant="manager"
-        active="Analyse IA"
-        crumb="IA"
-        page="Analyse IA Stratégique"
+        active="Pilotage"
+        activeSub="Analyse IA"
+        crumb="Pilotage"
+        tabs={["Statistiques", "Analyse IA"]}
+        page="Analyse IA"
         right={
           <span className="flex items-center gap-1.5 rounded-lg bg-violet-soft px-2 py-1 font-medium text-violet-ink">
             <Sparkles size={11} /> {t("Crédits IA · 640 / 1 000")}
           </span>
         }
       >
-        <div className="grid h-full grid-cols-[1fr_356px] gap-3 bg-[#f7f8fb] p-4 leading-[1.4]">
+        <div className="grid h-full grid-cols-[1fr_356px] gap-3 bg-transparent p-4 leading-[1.4]">
           {/* Analysis */}
           <div className="flex min-w-0 flex-col gap-3">
             <div className="relative overflow-hidden rounded-[18px] bg-white p-4 ring-1 ring-violet/15">
@@ -418,10 +420,10 @@ export function AiMock() {
                     <Sparkles size={18} />
                   </span>
                   <div>
-                    <p className="font-display text-[22px] leading-none">Analyse IA Stratégique</p>
-                    <p className="mt-1.5 flex items-center gap-1.5 whitespace-nowrap text-[11px] leading-4 text-[#6b7280]">
+                    <p className="font-display font-semibold tracking-[-0.045em] text-[22px] leading-none">Analyse IA Stratégique</p>
+                    <p className="mt-1.5 flex items-center gap-1.5 whitespace-nowrap text-[11px] leading-4 text-[#6b6860]">
                       Mission
-                      <span className="inline-flex items-center gap-1 rounded-md bg-white px-1.5 font-semibold text-[#0b1220] ring-1 ring-black/10">
+                      <span className="inline-flex items-center gap-1 rounded-md bg-white px-1.5 font-semibold text-[#0b0b0c] ring-1 ring-black/10">
                         Logistique IDF <ChevronDown size={10} />
                       </span>
                       {t("· 3 SDR · 1 284 appels, 386 emails et 46 RDV lus")}
@@ -430,16 +432,16 @@ export function AiMock() {
                 </div>
                 <div className="flex flex-col items-end gap-1.5">
                   <span className="flex rounded-lg bg-white p-0.5 text-[10.5px] leading-4 ring-1 ring-black/10">
-                    <span className="px-2 py-0.5 text-[#6b7280]">7j</span>
-                    <span className="rounded-md bg-[#0b0f1a] px-2 py-0.5 font-semibold text-white">30j</span>
-                    <span className="px-2 py-0.5 text-[#6b7280]">Trimestre</span>
+                    <span className="px-2 py-0.5 text-[#6b6860]">7j</span>
+                    <span className="rounded-md bg-[#0b0b0c] px-2 py-0.5 font-semibold text-white">30j</span>
+                    <span className="px-2 py-0.5 text-[#6b6860]">Trimestre</span>
                   </span>
                   {analysing ? (
                     <span className="flex items-center gap-1 text-[10px] font-semibold leading-[14px] text-violet-ink">
                       <RefreshCw size={10} className="animate-spin" /> {t("Analyse en cours…")}
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-[10px] leading-[14px] text-[#6b7280]">
+                    <span className="flex items-center gap-1 text-[10px] leading-[14px] text-[#6b6860]">
                       <RefreshCw size={10} /> {t(intro ? "Mise à jour il y a 4 min" : "Mise à jour à l'instant")}
                     </span>
                   )}
@@ -474,7 +476,7 @@ export function AiMock() {
                   {shown || "…"}
                 </Chip>
               </span>
-              <span className="flex items-center gap-1 text-[10.5px] font-medium text-[#6b7280]">
+              <span className="flex items-center gap-1 text-[10.5px] font-medium text-[#6b6860]">
                 {t("Trier : impact estimé")} <ChevronDown size={11} />
               </span>
             </p>
@@ -500,15 +502,15 @@ export function AiMock() {
                 <span className="flex items-center gap-1.5 text-[13px] font-semibold">
                   Assistant <span className="size-1.5 rounded-full bg-mint" />
                 </span>
-                <span className="block text-[10px] text-[#6b7280]">{t("Répond à partir de vos appels, emails et RDV")}</span>
+                <span className="block text-[10px] text-[#6b6860]">{t("Répond à partir de vos appels, emails et RDV")}</span>
               </span>
-              <span className="grid size-7 place-items-center rounded-lg text-[#6b7280] ring-1 ring-black/10">
+              <span className="grid size-7 place-items-center rounded-lg text-[#6b6860] ring-1 ring-black/10">
                 <History size={13} />
               </span>
               <span
                 className={cn(
                   "relative grid size-7 place-items-center rounded-lg ring-1 ring-black/10 transition-[scale,background-color] duration-200",
-                  p === 19 ? "scale-90 bg-violet-soft text-violet-ink" : "text-[#6b7280]",
+                  p === 19 ? "scale-90 bg-violet-soft text-violet-ink" : "text-[#6b6860]",
                 )}
               >
                 <SquarePen size={13} />
@@ -525,11 +527,11 @@ export function AiMock() {
                   <span className={cn("grid size-11 place-items-center rounded-2xl shadow-[0_10px_24px_-10px_rgb(122_92_255/0.9)]", SPARK_TILE)}>
                     <Sparkles size={19} />
                   </span>
-                  <p className="mt-3 font-display text-[21px] leading-none">Bonjour Camille</p>
-                  <p className="mt-2 text-[11px] leading-4 text-[#6b7280]">{t("Je connais vos campagnes, vos rendez-vous et l'activité de l'équipe.")}</p>
+                  <p className="mt-3 font-display font-semibold tracking-[-0.045em] text-[21px] leading-none">Bonjour Camille</p>
+                  <p className="mt-2 text-[11px] leading-4 text-[#6b6860]">{t("Je connais vos campagnes, vos rendez-vous et l'activité de l'équipe.")}</p>
                   <div className="mt-4 w-full space-y-1.5 text-left">
                     {STARTERS.map((s) => (
-                      <p key={s} className="flex items-center gap-2 rounded-xl bg-[#f7f8fb] px-3 py-2 text-[11px] leading-4 text-[#374151] ring-1 ring-black/[0.04]">
+                      <p key={s} className="flex items-center gap-2 rounded-xl bg-transparent px-3 py-2 text-[11px] leading-4 text-[#374151] ring-1 ring-black/[0.04]">
                         <CornerDownRight size={11} className="shrink-0 text-violet" /> {t(s)}
                       </p>
                     ))}
@@ -538,7 +540,7 @@ export function AiMock() {
               ) : (
                 <>
                   {/* Q1: which mission converts best */}
-                  <p className="text-center text-[10px] leading-[14px] text-[#9aa3b2]">{t("Aujourd'hui · 10:42")}</p>
+                  <p className="text-center text-[10px] leading-[14px] text-[#74726b]">{t("Aujourd'hui · 10:42")}</p>
                   <UserBubble key={`q1-${loop}`} text={Q1} style={delay(at(0))} />
                   <div key={`a1-${loop}`} className="space-y-2">
                     <AssistantHead time="10:42" />
@@ -552,15 +554,15 @@ export function AiMock() {
                       </p>
                     ) : null}
                     {q1(4) ? (
-                      <div className={cn("animate-slide-in rounded-xl bg-[#f7f8fb] p-2.5 ring-1 ring-black/[0.04]", DELAYED)} style={delay(at(750))}>
-                        <p className="flex items-center justify-between text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#9aa3b2]">
+                      <div className={cn("animate-slide-in rounded-xl bg-transparent p-2.5 ring-1 ring-black/[0.04]", DELAYED)} style={delay(at(750))}>
+                        <p className="flex items-center justify-between text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#74726b]">
                           <span>RDV pour 100 appels</span>
                           <span>30 derniers jours</span>
                         </p>
                         <div className="relative mt-2 space-y-2">
                           {MISSIONS.map((m, i) => (
                             <div key={m.name} className="flex items-center gap-2 text-[10.5px] leading-[14px]">
-                              <span className={cn("w-[104px] shrink-0 truncate", i === 0 ? "font-semibold text-[#0b1220]" : "text-[#5b6475]")}>{m.name}</span>
+                              <span className={cn("w-[104px] shrink-0 truncate", i === 0 ? "font-semibold text-[#0b0b0c]" : "text-[#5b6475]")}>{m.name}</span>
                               <Bar
                                 pct={(m.value / MISSION_MAX) * 100}
                                 fill={i === 0 ? "bg-gradient-to-r from-[#7a5cff] to-[#a98fff]" : "bg-violet/25"}
@@ -577,7 +579,7 @@ export function AiMock() {
                             style={{ left: `calc(112px + (100% - 144px) * ${MISSION_AVG / MISSION_MAX})` }}
                           />
                         </div>
-                        <p className="mt-1.5 flex items-center justify-end gap-1 text-[9px] leading-3 text-[#9aa3b2]">
+                        <p className="mt-1.5 flex items-center justify-end gap-1 text-[9px] leading-3 text-[#74726b]">
                           <span className="h-2.5 border-l border-dashed border-[#9aa3b2]" /> {t("moyenne des missions : 3,1")}
                         </p>
                       </div>
@@ -587,7 +589,7 @@ export function AiMock() {
                         <p className="text-[12px] leading-[18px] text-[#374151]">
                           <Stream text={"Logistique IDF suit à 3,6, mais **14\u00a0leads chauds** y attendent un rappel depuis plus de 7 jours."} from={at(1350)} />
                         </p>
-                        <p className={cn("flex animate-fade-in items-center text-[9.5px] leading-[14px] text-[#9aa3b2]", DELAYED)} style={delay(at(1850))}>
+                        <p className={cn("flex animate-fade-in items-center text-[9.5px] leading-[14px] text-[#74726b]", DELAYED)} style={delay(at(1850))}>
                           {t("Sources : 2 146 appels · 61 RDV · 4 missions")}
                           <span className="ml-auto flex items-center gap-2 text-[#b4bbc7]">
                             <Copy size={11} />
@@ -634,8 +636,8 @@ export function AiMock() {
                           </p>
                         ) : null}
                         {p >= 14 ? (
-                          <div className="animate-slide-in space-y-1.5 rounded-xl bg-[#f7f8fb] p-2.5 ring-1 ring-black/[0.04]">
-                            <p className="flex items-center justify-between text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#9aa3b2]">
+                          <div className="animate-slide-in space-y-1.5 rounded-xl bg-transparent p-2.5 ring-1 ring-black/[0.04]">
+                            <p className="flex items-center justify-between text-[9px] font-semibold uppercase leading-3 tracking-wide text-[#74726b]">
                               <span>Répartition proposée</span>
                               <span>14 leads</span>
                             </p>
@@ -661,7 +663,7 @@ export function AiMock() {
                             </span>
                             <span className="min-w-0 flex-1 leading-tight">
                               <span className="block text-[11px] font-semibold">{t("14 rappels · demain 10 h")}</span>
-                              <span className="block truncate text-[9.5px] text-[#6b7280]">{t("Dans la file de chaque SDR")}</span>
+                              <span className="block truncate text-[9.5px] text-[#6b6860]">{t("Dans la file de chaque SDR")}</span>
                             </span>
                             <span
                               className={cn(
@@ -669,8 +671,8 @@ export function AiMock() {
                                 created
                                   ? "bg-mint-soft text-mint-ink"
                                   : p === 17
-                                    ? "scale-95 bg-accent-hover text-white shadow-[0_0_0_4px_rgb(51_85_255/0.18)]"
-                                    : "bg-accent text-white",
+                                    ? "scale-95 bg-[#2a2a2c] text-white shadow-[0_0_0_4px_rgb(11_11_12/0.12)]"
+                                    : "bg-[#0b0b0c] text-white",
                               )}
                             >
                               {created ? (
@@ -698,7 +700,7 @@ export function AiMock() {
                   { icon: <ScrollText size={10} />, label: "Script d'appel" },
                   { icon: <NotebookPen size={10} />, label: "Compte rendu Leexi" },
                 ].map((a) => (
-                  <span key={a.label} className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#f7f8fb] px-2 py-1 ring-1 ring-black/[0.05]">
+                  <span key={a.label} className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-transparent px-2 py-1 ring-1 ring-black/[0.05]">
                     <span className="text-violet">{a.icon}</span> {t(a.label)}
                   </span>
                 ))}
@@ -711,14 +713,14 @@ export function AiMock() {
               >
                 <p className="h-4 whitespace-nowrap text-[11.5px] leading-4">
                   {!intro && p === 1 ? (
-                    <span key={`type-${loop}`} className="inline-block animate-type font-medium text-[#0b1220]">
+                    <span key={`type-${loop}`} className="inline-block animate-type font-medium text-[#0b0b0c]">
                       {t(Q1)}
                       <span className="ml-px inline-block h-3.5 w-px translate-y-0.5 animate-caret bg-[#0b1220]" />
                     </span>
                   ) : (
                     <>
                       <span className="mr-px inline-block h-3.5 w-px translate-y-0.5 animate-caret bg-[#0b1220]" />
-                      <span className="text-[#9aa3b2]">{t("Posez une question sur vos campagnes…")}</span>
+                      <span className="text-[#74726b]">{t("Posez une question sur vos campagnes…")}</span>
                     </>
                   )}
                 </p>
@@ -726,7 +728,7 @@ export function AiMock() {
                   <span className="inline-flex items-center gap-1 rounded-md bg-violet-soft px-1.5 py-0.5 text-[10px] font-semibold leading-[14px] text-violet-ink">
                     <AtSign size={10} /> Toutes les missions <ChevronDown size={10} />
                   </span>
-                  <span className={cn("grid size-7 place-items-center rounded-lg text-white transition-colors duration-300", busy ? "bg-[#0b0f1a]" : "bg-accent")}>
+                  <span className={cn("grid size-7 place-items-center rounded-lg text-white transition-colors duration-300", busy ? "bg-[#0b0b0c]" : "bg-accent")}>
                     {busy ? <span className="size-2.5 rounded-[3px] bg-white" /> : <ArrowUp size={14} strokeWidth={2.5} />}
                   </span>
                 </div>
@@ -735,15 +737,6 @@ export function AiMock() {
           </div>
         </div>
       </MockShell>
-
-      {/* The « Analyse IA » shortcut at the top of the sidebar is the current page. Same box as the kit's pill. */}
-      <div aria-hidden className="pointer-events-none absolute left-3 top-14 w-[166px]">
-        <div className="flex items-center gap-2 rounded-lg border border-amber-300/70 bg-amber-300/15 px-2.5 py-1.5 text-[11px] font-semibold text-transparent shadow-[0_0_22px_-4px_rgb(252_211_77/0.55)]">
-          <Sparkles size={12} /> Analyse IA
-          <span className="ml-auto size-1.5 animate-pulse-dot rounded-full bg-amber-300" />
-        </div>
-        <span className="absolute -left-3 bottom-1.5 top-1.5 w-[3px] rounded-r bg-accent" />
-      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export async function Subprocessors() {
   return (
     <div className="rounded-[20px] bg-white ring-1 ring-line">
       <div className="flex items-baseline justify-between gap-4 border-b border-line p-5">
-        <p className="font-display text-lg font-normal text-ink">{s.title}</p>
+        <p className="font-display text-lg font-semibold text-ink">{s.title}</p>
         <p className="text-xs text-muted">{s.note}</p>
       </div>
       <dl className="divide-y divide-line">

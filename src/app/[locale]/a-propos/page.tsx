@@ -30,13 +30,13 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/a-propo
           </div>
           <div className="lg:pt-16">
             <Quote aria-hidden className="size-8 text-accent" strokeWidth={1.5} />
-            <div className="mt-4 space-y-4 font-display text-[22px] font-normal leading-8 tracking-[-0.01em] text-ink md:text-[24px] md:leading-9">
+            <div className="mt-4 space-y-4 font-display text-[22px] font-semibold leading-8 tracking-[-0.01em] text-ink md:text-[24px] md:leading-9">
               {a.story.map((p) => (
                 <p key={p}>{p}</p>
               ))}
             </div>
             <div className="mt-10 border-t border-line pt-6">
-              <p className="num font-display text-[44px] font-normal leading-none tracking-[-0.02em] text-ink">{a.stat.value}</p>
+              <p className="num font-display text-[44px] font-semibold leading-none tracking-[-0.02em] text-ink">{a.stat.value}</p>
               <p className="mt-2 text-muted">{a.stat.label}</p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/a-propo
           {a.people.map((p) => (
             <li key={p.name} className="rounded-[20px] bg-white p-7 ring-1 ring-line">
               <PersonPhoto name={p.name} size="lg" />
-              <p className="mt-6 font-display text-xl font-normal text-ink">{p.name}</p>
+              <p className="mt-6 font-display text-xl font-semibold text-ink">{p.name}</p>
               <p className="mt-1 text-muted">{p.role}</p>
               <p className="mt-4 inline-flex rounded-full bg-surface px-3 py-1 text-xs font-medium text-ink-soft ring-1 ring-line">{p.org}</p>
             </li>
@@ -63,7 +63,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/a-propo
           {a.values.items.map((v, i) => (
             <li key={v.title} className="border-t-2 border-accent pt-6">
               <p className="num text-small font-semibold text-accent">0{i + 1}</p>
-              <h3 className="mt-3 font-display text-xl font-normal text-ink">{v.title}</h3>
+              <h3 className="mt-3 font-display text-xl font-semibold text-ink">{v.title}</h3>
               <p className="mt-2 text-muted">{v.body}</p>
             </li>
           ))}

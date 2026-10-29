@@ -46,7 +46,7 @@ export async function HomeHero({ audience }: { audience: Audience | null }) {
         <div className="animate-rise">
           <Eyebrow className="mb-7 justify-center">{h.eyebrow}</Eyebrow>
         </div>
-        <h1 className="mx-auto max-w-4xl font-display text-h1m font-normal text-ink md:text-h1">
+        <h1 className="mx-auto max-w-4xl font-display text-h1m font-semibold text-ink md:text-h1">
           <span className="block">
             <Words text={first} />
           </span>

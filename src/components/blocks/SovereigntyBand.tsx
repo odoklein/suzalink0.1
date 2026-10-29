@@ -34,7 +34,7 @@ export async function SovereigntyBand({ tone = "surface" }: { tone?: "white" | "
               >
                 <IconTile name={fact.icon} hue={FACT_HUE[fact.icon]} />
                 <div>
-                  <p className="font-display text-lg font-normal text-ink">{fact.title}</p>
+                  <p className="font-display text-lg font-semibold text-ink">{fact.title}</p>
                   <p className="mt-1 text-muted">{fact.body}</p>
                 </div>
               </li>
